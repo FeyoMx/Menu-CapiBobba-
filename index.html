@@ -18,26 +18,26 @@
         /* Estilos generales del cuerpo de la página */
         body {
             font-family: 'Nunito', sans-serif;
-            width: 100%; /* Asegura que ocupe todo el ancho disponible */
-            max-width: 1080px; /* Ancho máximo para el contenido principal */
+            width: 100%; /* Ensures it occupies the full available width */
+            max-width: 1080px; /* Maximum width for the main content */
             height: auto;
-            margin: 0 auto; /* Centra el contenido */
-            /* Degradado de fondo para un toque kawaii (Modo Claro por defecto) */
+            margin: 0 auto; /* Centers the content */
+            /* Background gradient for a kawaii touch (Light Mode by default) */
             background: linear-gradient(180deg, #FFE1E6 0%, #F3E8FF 25%, #E0F2FE 50%, #FFF9E6 75%, #FFE1E6 100%);
             position: relative;
-            overflow-x: hidden; /* Evita el scroll horizontal */
+            overflow-x: hidden; /* Prevents horizontal scrolling */
             line-height: 1.4;
-            transition: background 0.5s ease-in-out; /* Transición suave para el cambio de fondo */
+            transition: background 0.5s ease-in-out; /* Smooth transition for background change */
         }
         
-        /* Elementos decorativos flotantes estilo kawaii */
+        /* Decorative floating kawaii elements */
         .kawaii-decoration {
             position: absolute;
             z-index: 1;
             opacity: 0.4;
         }
         
-        /* Decoración de taza de bubble tea */
+        /* Bubble tea cup decoration */
         .bubble-tea-cup {
             width: 80px;
             height: 100px;
@@ -48,7 +48,7 @@
         }
         
         .bubble-tea-cup::before {
-            content: '🧋'; /* Emoji de bubble tea */
+            content: '🧋'; /* Bubble tea emoji */
             position: absolute;
             font-size: 50px;
             top: 50%;
@@ -56,7 +56,7 @@
             transform: translate(-50%, -50%);
         }
         
-        /* Capibaras flotantes */
+        /* Floating capybaras */
         .capybara-float-1 {
             top: 25%;
             left: 5%;
@@ -78,7 +78,7 @@
             color: #FF69B4;
         }
         
-        /* Contenedor principal del menú */
+        /* Main menu container */
         .menu-container {
             position: relative;
             z-index: 2;
@@ -86,19 +86,19 @@
             min-height: 100vh;
         }
         
-        /* Envoltura del contenido principal */
+        /* Main content wrapper */
         .content-wrapper {
-            background: rgba(255, 255, 255, 0.98); /* Fondo blanco semitransparente (Modo Claro por defecto) */
+            background: rgba(255, 255, 255, 0.98); /* Semi-transparent white background (Light Mode by default) */
             border-radius: 30px;
             padding: 35px 25px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15); /* Sombra suave */
-            border: 4px solid #FFB6C1; /* Borde rosa claro (Modo Claro por defecto) */
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15); /* Soft shadow */
+            border: 4px solid #FFB6C1; /* Light pink border (Light Mode by default) */
             position: relative;
             overflow: hidden;
-            transition: background 0.5s ease-in-out, border-color 0.5s ease-in-out; /* Transición suave */
+            transition: background 0.5s ease-in-out, border-color 0.5s ease-in-out; /* Smooth transition */
         }
         
-        /* Borde superior con efecto arcoíris animado */
+        /* Top border with animated rainbow effect */
         .content-wrapper::before {
             content: '';
             position: absolute;
@@ -111,68 +111,68 @@
             animation: rainbow 3s linear infinite;
         }
         
-        /* Animación para el borde arcoíris */
+        /* Animation for the rainbow border */
         @keyframes rainbow {
             0% { background-position: 0% 50%; }
             100% { background-position: 200% 50%; }
         }
         
-        /* Sección del encabezado */
+        /* Header section */
         .header {
             text-align: center;
             margin-bottom: 40px;
             position: relative;
         }
         
-        /* Contenedor de la mascota/logo */
+        /* Mascot/logo container */
         .capybobba-mascot {
             width: 250px; 
             height: 250px; 
             margin: 0 auto 0;
             position: relative;
             overflow: hidden;
-            background: none; /* Sin fondo fijo para que los logos se muestren sin interferencia */
-            display: flex; /* Para centrar el posible emoji de fallback si no carga ninguna imagen */
+            background: none; /* No fixed background for logos to show without interference */
+            display: flex; /* To center the possible emoji fallback if no image loads */
             align-items: center;
             justify-content: center;
-            font-size: 150px; /* Tamaño del emoji de capibara si las imágenes no cargan */
+            font-size: 150px; /* Capybara emoji size if images don't load */
         }
 
-        /* Estilos base para las imágenes de logo */
+        /* Base styles for logo images */
         .capybobba-mascot img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Ajusta la imagen dentro del contenedor */
-            position: absolute; /* Para superponerlas y controlar la visibilidad */
+            object-fit: contain; /* Adjusts the image within the container */
+            position: absolute; /* To overlap and control visibility */
             top: 0;
             left: 0;
-            transition: opacity 0.3s ease-in-out; /* Transición suave al cambiar de logo */
+            transition: opacity 0.3s ease-in-out; /* Smooth transition when changing logo */
         }
 
-        /* Por defecto (Modo Claro), muestra el logo claro y oculta el oscuro */
+        /* By default (Light Mode), shows the light logo and hides the dark one */
         #logoLight {
             opacity: 1; 
-            z-index: 2; /* Asegura que esté encima */
+            z-index: 2; /* Ensures it's on top */
         }
 
         #logoDark {
             opacity: 0;
-            z-index: 1; /* Estará debajo del logo claro por defecto */
+            z-index: 1; /* Will be below the light logo by default */
         }
         
-        /* Regla de media query para Modo Oscuro */
+        /* Media query rule for Dark Mode */
         @media (prefers-color-scheme: dark) {
-            /* Cambia el fondo del body a un tono oscuro */
+            /* Changes body background to a dark tone */
             body {
                 background: linear-gradient(180deg, #333333 0%, #1a1a1a 100%);
             }
-            /* Ajusta el fondo y borde del contenedor principal para modo oscuro */
+            /* Adjusts background and border of the main container for dark mode */
             .content-wrapper {
-                background: rgba(45, 45, 45, 0.98); /* Fondo oscuro semitransparente */
-                border-color: #9370DB; /* Borde violeta para contrastar */
+                background: rgba(45, 45, 45, 0.98); /* Semi-transparent dark background */
+                border-color: #9370DB; /* Purple border for contrast */
             }
 
-            /* En modo oscuro, oculta el logo claro y muestra el oscuro */
+            /* In dark mode, hides the light logo and shows the dark one */
             #logoLight {
                 opacity: 0;
             }
@@ -180,33 +180,33 @@
                 opacity: 1;
             }
 
-            /* También puedes ajustar colores de texto generales si es necesario para el modo oscuro */
-            .main-title, .tagline, .section-title, .flavor-name, .flavor-description, .topping-name, .topping-description, .whatsapp-text, .whatsapp-number, .whatsapp-click-legend, .order-step, .final-message {
-                /* Asegura que los textos sean legibles en fondos oscuros */
-                color: #F0F0F0; /* Blanco suave */
-                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra para mejor legibilidad */
+            /* You can also adjust general text colors if necessary for dark mode */
+            .main-title, .tagline, .section-title, .flavor-name, .flavor-description, .topping-name, .topping-description, .whatsapp-text, .whatsapp-number, .whatsapp-click-legend, .order-step, .final-message, .promotion-item-title, .promotion-item-description {
+                /* Ensures texts are readable on dark backgrounds */
+                color: #F0F0F0; /* Soft white */
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Shadow for better readability */
             }
 
-            /* Ajuste de degradado para el título principal en modo oscuro */
+            /* Gradient adjustment for the main title in dark mode */
             .main-title {
-                background: linear-gradient(135deg, #FFB6C1, #87CEEB, #DDA0DD); /* Degradado más claro */
+                background: linear-gradient(135deg, #FFB6C1, #87CEEB, #DDA0DD); /* Lighter gradient */
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 background-clip: text;
             }
-            /* Ajuste para el tagline */
+            /* Adjustment for the tagline */
             .tagline {
-                color: #DDA0DD; /* Tono lila para contraste */
+                color: #DDA0DD; /* Lilac tone for contrast */
             }
-            /* Ajuste para los títulos de sección */
+            /* Adjustment for section titles */
             .section-title {
-                color: #87CEEB; /* Tono azul claro para contraste */
+                color: #87CEEB; /* Light blue tone for contrast */
             }
-            /* Ajuste de descripciones y leyendas en modo oscuro */
+            /* Adjustment for descriptions and legends in dark mode */
             .section-description, .click-legend, .flavor-description, .topping-description {
-                color: #B0B0B0; /* Gris claro para legibilidad */
+                color: #B0B0B0; /* Light gray for readability */
             }
-            /* Ajuste de fondo de las secciones en modo oscuro */
+            /* Adjustment of section background in dark mode */
             .menu-section {
                 background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
                 border-color: #9370DB;
@@ -240,31 +240,54 @@
             .order-step {
                 color: #E0E0E0;
             }
+
+            /* New styles for promotions in dark mode */
+            .promotions-section {
+                background: linear-gradient(135deg, #4b2a4b, #6a4a6a); /* Darker background for promotions */
+                border-color: #FFB6C1; /* Light pink border */
+            }
+
+            .promotion-item {
+                background: rgba(80, 80, 80, 0.9); /* Darker background for promotion items */
+                border-color: #DDA0DD; /* Lilac border */
+            }
+
+            .promotion-item:hover {
+                border-color: #FF69B4; /* Strong pink border on hover */
+            }
+
+            .promotion-item-title {
+                color: #FFB6C1; /* Light pink tone for promotion title */
+            }
+
+            .promotion-item-description {
+                color: #E0E0E0; /* Light text for promotion description */
+            }
         }
         
-        /* Corazón flotante en la mascota */
+        /* Floating heart on the mascot */
         .capybobba-mascot::after {
             content: '💕';
             position: absolute;
             font-size: 65px; 
             top: -20px;      
             right: -20px;    
-            animation: float 2s ease-in-out infinite; /* Animación de flotación */
-            z-index: 3; /* Asegura que esté por encima de los logos */
+            animation: float 2s ease-in-out infinite; /* Floating animation */
+            z-index: 3; /* Ensures it's on top of logos */
         }
         
-        /* Animación de flotación */
+        /* Floating animation */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
         }
         
-        /* Título principal del menú */
+        /* Main menu title */
         .main-title {
             font-size: 52px;
             font-weight: 900;
-            background: linear-gradient(135deg, #FF1493, #9370DB, #00CED1); /* Degradado de color para el texto */
+            background: linear-gradient(135deg, #FF1493, #9370DB, #00CED1); /* Text color gradient */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -273,19 +296,19 @@
             letter-spacing: -1px;
         }
         
-        /* Subtítulo/eslogan */
+        /* Subtitle/slogan */
         .tagline {
             font-size: 26px;
             font-weight: 700;
-            color: #FF69B4; /* Rosa cereza */
+            color: #FF69B4; /* Cherry pink */
             margin-bottom: 25px;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
         
-        /* Estilo para las secciones del menú */
+        /* Menu section style */
         .menu-section {
             margin-bottom: 45px;
-            background: linear-gradient(135deg, #FFF8F0, #F0F8FF); /* Fondo suave */
+            background: linear-gradient(135deg, #FFF8F0, #F0F8FF); /* Soft background */
             border-radius: 25px;
             padding: 30px 25px;
             border: 3px solid #FFB6C1;
@@ -294,7 +317,7 @@
             overflow: hidden;
         }
         
-        /* Borde animado para las secciones */
+        /* Animated border for sections */
         .menu-section::before {
             content: '';
             position: absolute;
@@ -305,34 +328,34 @@
             background: linear-gradient(45deg, #FFB6C1, #DDA0DD, #87CEEB, #FFD700);
             border-radius: 25px;
             z-index: -1;
-            animation: borderGlow 3s linear infinite; /* Animación de brillo de borde */
+            animation: borderGlow 3s linear infinite; /* Border glow animation */
         }
         
-        /* Animación de brillo de borde */
+        /* Border glow animation */
         @keyframes borderGlow {
             0% { filter: hue-rotate(0deg); }
             100% { filter: hue-rotate(360deg); }
         }
         
-        /* Encabezado de sección */
+        /* Section header */
         .section-header {
             text-align: center;
             margin-bottom: 25px;
         }
         
-        /* Título de sección */
+        /* Section title */
         .section-title {
             font-size: 30px;
             font-weight: 800;
-            color: #FF1493; /* Rosa fuerte */
+            color: #FF1493; /* Strong pink */
             margin-bottom: 15px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
             line-height: 1.2;
         }
         
-        /* Banner de precio */
+        /* Price banner */
         .price-banner {
-            background: linear-gradient(135deg, #FFD700, #FFA500, #FF6347); /* Degradado de naranja a rojo */
+            background: linear-gradient(135deg, #FFD700, #FFA500, #FF6347); /* Orange to red gradient */
             color: white;
             font-size: 26px;
             font-weight: 800;
@@ -346,47 +369,47 @@
             max-width: fit-content;
         }
         
-        /* Descripción de sección */
+        /* Section description */
         .section-description {
             font-size: 18px;
-            color: #8B4513; /* Marrón oscuro */
+            color: #8B4513; /* Dark brown */
             font-weight: 600;
             text-align: center;
             margin-bottom: 25px;
             line-height: 1.5;
         }
 
-        /* Leyenda para click en sabores */
+        /* Legend for clicking on flavors */
         .click-legend {
-            font-size: 14px; /* Letra más pequeña */
+            font-size: 14px; /* Smaller font */
             color: #8B4513;
             text-align: center;
-            margin-bottom: 15px; /* Espacio antes de la cuadrícula de sabores */
+            margin-bottom: 15px; /* Space before the flavor grid */
             font-style: italic;
             font-weight: 600;
         }
         
-        /* Elementos de sabor en la cuadrícula */
+        /* Flavor items in the grid */
         .flavor-grid {
             display: grid;
-            gap: 20px; /* Espacio entre elementos */
+            gap: 20px; /* Space between elements */
             margin-top: 25px;
         }
         
-        /* Elemento individual de sabor */
+        /* Individual flavor item */
         .flavor-item {
             background: white;
             border-radius: 20px;
             padding: 22px 20px;
             border: 3px solid #FFB6C1;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease; /* Transición suave para hover */
+            transition: all 0.3s ease; /* Smooth transition for hover */
             position: relative;
             overflow: hidden;
             cursor: pointer;
         }
         
-        /* Efecto de brillo al pasar el ratón */
+        /* Glow effect on hover */
         .flavor-item::before {
             content: '';
             position: absolute;
@@ -403,7 +426,7 @@
         }
         
         .flavor-item:hover {
-            transform: translateY(-8px); /* Elevación al pasar el ratón */
+            transform: translateY(-8px); /* Lift on hover */
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             border-color: #FF69B4;
         }
@@ -423,18 +446,18 @@
             font-weight: 600;
         }
         
-        /* Sección de bebidas calientes */
+        /* Hot drinks section */
         .hot-drinks {
-            background: linear-gradient(135deg, #FFF8DC, #F0E68C); /* Fondo amarillo suave */
-            border: 3px solid #DDA0DD; /* Borde lila */
-            display: flex; /* Usar flexbox para centrar el botón */
+            background: linear-gradient(135deg, #FFF8DC, #F0E68C); /* Soft yellow background */
+            border: 3px solid #DDA0DD; /* Lilac border */
+            display: flex; /* Use flexbox to center the button */
             flex-direction: column;
             align-items: center;
         }
 
-        /* Estilo para el botón de ver bebidas calientes */
+        /* Style for the view hot drinks button */
         .hot-drinks-button {
-            background: linear-gradient(45deg, #FF6347, #FF4500); /* Degradado naranja-rojo */
+            background: linear-gradient(45deg, #FF6347, #FF4500); /* Orange-red gradient */
             color: white;
             font-size: 22px;
             font-weight: 800;
@@ -444,7 +467,7 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 20px; /* Espacio superior */
+            margin-top: 20px; /* Top space */
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
             display: inline-flex;
             align-items: center;
@@ -454,25 +477,25 @@
         .hot-drinks-button:hover {
             transform: translateY(-5px) scale(1.02);
             box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(45deg, #FF4500, #FF6347); /* Invertir degradado al hover */
+            background: linear-gradient(45deg, #FF4500, #FF6347); /* Invert gradient on hover */
         }
         
-        /* Sección de toppings */
+        /* Toppings section */
         .toppings-section {
-            background: linear-gradient(135deg, #E6E6FA, #F0F8FF); /* Fondo azul claro suave */
-            border: 3px solid #9370DB; /* Borde violeta */
+            background: linear-gradient(135deg, #E6E6FA, #F0F8FF); /* Soft light blue background */
+            border: 3px solid #9370DB; /* Purple border */
         }
         
-        /* Título de toppings */
+        /* Toppings title */
         .toppings-title {
-            color: #9370DB; /* Violeta */
+            color: #9370DB; /* Purple */
             text-align: center;
             margin-bottom: 25px;
         }
         
-        /* Precio de topping */
+        /* Topping price */
         .topping-price {
-            background: linear-gradient(135deg, #32CD32, #00CED1); /* Degradado de verde a azul */
+            background: linear-gradient(135deg, #32CD32, #00CED1); /* Green to blue gradient */
             color: white;
             padding: 10px 20px;
             border-radius: 15px;
@@ -483,7 +506,7 @@
             margin: 0 10px;
         }
         
-        /* Elemento individual de topping */
+        /* Individual topping item */
         .topping-item {
             background: rgba(255, 255, 255, 0.9);
             border-radius: 18px;
@@ -495,7 +518,7 @@
         }
         
         .topping-item:hover {
-            transform: translateX(10px); /* Deslizamiento al pasar el ratón */
+            transform: translateX(10px); /* Slide on hover */
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
         
@@ -509,13 +532,51 @@
         .topping-description {
             font-size: 16px;
             color: #8B4513;
-            font-weight: 600;
             line-height: 1.4;
+            font-weight: 600;
         }
         
-        /* Sección de cómo ordenar */
+        /* Styles for the Promotions and News section */
+        .promotions-section {
+            background: linear-gradient(135deg, #FFC0CB, #ADD8E6); /* Light pink to light blue */
+            border: 3px solid #FF69B4; /* Strong pink border */
+        }
+
+        .promotion-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 22px 20px;
+            margin-bottom: 18px;
+            border: 3px solid #FFB6C1;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer; /* Added cursor to indicate it's clickable */
+        }
+
+        .promotion-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+            border-color: #FF1493;
+        }
+
+        .promotion-item-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: #FF1493; /* Strong pink */
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .promotion-item-description {
+            font-size: 17px;
+            color: #8B4513;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+
+        /* Order section */
         .order-section {
-            background: linear-gradient(135deg, #FF69B4, #9370DB, #00CED1); /* Degradado multicolor */
+            background: linear-gradient(135deg, #FF69B4, #9370DB, #00CED1); /* Multicolor gradient */
             color: white;
             text-align: center;
             border-radius: 30px;
@@ -527,7 +588,7 @@
             overflow: hidden;
         }
         
-        /* Patrón de burbujas de fondo para la sección de ordenar */
+        /* Bubble pattern background for the order section */
         .order-section::before {
             content: '';
             position: absolute;
@@ -544,7 +605,7 @@
             z-index: 2;
         }
         
-        /* Título de la sección de ordenar */
+        /* Order section title */
         .order-title {
             font-size: 36px;
             font-weight: 900;
@@ -553,7 +614,7 @@
             line-height: 1.2;
         }
         
-        /* Sección de WhatsApp */
+        /* WhatsApp section */
         .whatsapp-section {
             margin: 30px 0;
         }
@@ -565,15 +626,15 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
         
-        /* Estilos para el enlace de WhatsApp */
+        /* Styles for the WhatsApp link */
         .whatsapp-link {
             text-decoration: none;
             color: white;
         }
 
-        /* Número de WhatsApp */
+        /* WhatsApp number */
         .whatsapp-number {
-            background: #25D366; /* Verde WhatsApp */
+            background: #25D366; /* WhatsApp Green */
             color: white;
             font-size: 32px;
             font-weight: 900;
@@ -584,23 +645,23 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
             border: 4px solid white;
             letter-spacing: 1px;
-            animation: pulse 2s infinite; /* Animación de pulsación */
+            animation: pulse 2s infinite; /* Pulsing animation */
             
-            /* Usar flexbox para organizar el número y la leyenda */
+            /* Use flexbox to organize the number and legend */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            line-height: 1; /* Ajustar line-height para que la leyenda no tenga mucho espacio */
+            line-height: 1; /* Adjust line-height so the legend doesn't have too much space */
         }
 
-        /* Estilo para la nueva leyenda dentro del botón de WhatsApp */
+        /* Style for the new legend inside the WhatsApp button */
         .whatsapp-click-legend {
-            font-size: 14px; /* Letra más pequeña */
-            font-weight: 600; /* Seminegrita */
-            color: rgba(255, 255, 255, 0.8); /* Blanco ligeramente transparente */
-            margin-top: 5px; /* Espacio entre el número y la leyenda */
-            text-shadow: none; /* Quitar sombra de texto si la hereda del padre */
+            font-size: 14px; /* Smaller font */
+            font-weight: 600; /* Semi-bold */
+            color: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+            margin-top: 5px; /* Space between number and legend */
+            text-shadow: none; /* Remove text shadow if inherited from parent */
         }
         
         @keyframes pulse {
@@ -609,14 +670,14 @@
             100% { transform: scale(1); }
         }
         
-        /* Pasos para ordenar */
+        /* Order steps */
         .order-steps {
-            background: rgba(255, 255, 255, 0.15); /* Fondo semitransparente */
+            background: rgba(255, 255, 255, 0.15); /* Semi-transparent background */
             border-radius: 20px;
             padding: 25px;
             margin: 30px auto;
             max-width: 650px;
-            backdrop-filter: blur(10px); /* Efecto de desenfoque */
+            backdrop-filter: blur(10px); /* Blur effect */
             border: 2px solid rgba(255, 255, 255, 0.3);
         }
         
@@ -634,7 +695,7 @@
             margin-bottom: 0;
         }
         
-        /* Mensaje final */
+        /* Final message */
         .final-message {
             background: linear-gradient(135deg, #FFD700, #FFA500, #FF6347);
             color: white;
@@ -657,7 +718,7 @@
             margin-top: 20px;
         }
         
-        /* Divisores con emojis animados */
+        /* Dividers with animated emojis */
         .kawaii-divider {
             text-align: center;
             margin: 40px 0;
@@ -667,7 +728,7 @@
         .kawaii-divider .emoji {
             display: inline-block;
             margin: 0 15px;
-            animation: bounce 2s infinite; /* Animación de rebote */
+            animation: bounce 2s infinite; /* Bounce animation */
         }
         
         .kawaii-divider .emoji:nth-child(2) {
@@ -678,19 +739,19 @@
             animation-delay: 0.6s;
         }
         
-        /* Animación de rebote */
+        /* Bounce animation */
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
             40% { transform: translateY(-10px); }
             60% { transform: translateY(-5px); }
         }
         
-        /* Optimizaciones para dispositivos móviles */
+        /* Mobile optimizations */
         @media (max-width: 768px) {
-            /* Los anchos ya son fluidos, se ajustan automáticamente */
+            /* Widths are already fluid, they adjust automatically */
             
             .menu-container {
-                padding: 15px 10px; /* Menor padding en móviles */
+                padding: 15px 10px; /* Smaller padding on mobile */
             }
             
             .content-wrapper {
@@ -698,11 +759,11 @@
             }
             
             .main-title {
-                font-size: 42px; /* Reducción de tamaño de fuente para el título principal */
+                font-size: 42px; /* Font size reduction for main title */
             }
             
             .section-title {
-                font-size: 26px; /* Reducción de tamaño de fuente para títulos de sección */
+                font-size: 26px; /* Font size reduction for section titles */
             }
             
             .price-banner {
@@ -716,7 +777,7 @@
             }
 
             .whatsapp-number .whatsapp-click-legend {
-                font-size: 12px; /* Más pequeña en móvil */
+                font-size: 12px; /* Smaller on mobile */
             }
             
             .order-title {
@@ -736,79 +797,95 @@
             }
 
             .flavor-image-content, .hot-drinks-image-content {
-                width: 90%; /* Asegura que el contenedor de la imagen no sea demasiado grande */
+                width: 90%; /* Ensures the image container is not too large */
                 max-width: 300px;
                 padding: 20px;
             }
         }
         
-        /* Optimizaciones para impresión/captura de pantalla */
+        /* Print/screenshot optimizations */
         @media print {
             body {
-                background: white; /* Fondo blanco para impresión */
+                background: white; /* White background for printing */
             }
             
             .kawaii-decoration {
-                display: none; /* Oculta las decoraciones flotantes */
+                display: none; /* Hides floating decorations */
             }
         }
 
-        /* --- Estilos para el visor de imágenes de sabor (overlay) --- */
+        /* --- Styles for flavor image viewer (overlay) --- */
         .flavor-image-overlay, .hot-drinks-image-overlay {
-            position: fixed; /* Fijo en la pantalla */
+            position: fixed; /* Fixed on screen */
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente oscuro */
+            background: rgba(0, 0, 0, 0.6); /* Semi-transparent dark background */
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 1000; /* Asegura que esté por encima de todo */
-            opacity: 0; /* Inicialmente oculto */
-            pointer-events: none; /* No interactuable cuando oculto */
-            transition: opacity 0.3s ease-in-out; /* Transición suave para aparecer/desaparecer */
+            z-index: 1000; /* Ensures it's on top of everything */
+            opacity: 0; /* Initially hidden */
+            pointer-events: none; /* Not interactable when hidden */
+            transition: opacity 0.3s ease-in-out; /* Smooth transition for showing/hiding */
         }
 
         .flavor-image-overlay.show, .hot-drinks-image-overlay.show {
-            opacity: 1; /* Muestra el overlay */
-            pointer-events: auto; /* Permite interacción cuando visible */
+            opacity: 1; /* Shows the overlay */
+            pointer-events: auto; /* Allows interaction when visible */
         }
 
         .flavor-image-content, .hot-drinks-image-content {
-            background: rgba(255, 255, 255, 0.95); /* Fondo blanco casi opaco */
+            background: rgba(255, 255, 255, 0.95); /* Almost opaque white background */
             border-radius: 20px;
             padding: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             text-align: center;
-            border: 4px solid #FF69B4; /* Borde rosa vibrante */
+            border: 4px solid #FF69B4; /* Vibrant pink border */
             max-width: 400px; 
-            width: 80%; /* Ancho fluido */
-            transform: scale(0.9); /* Ligeramente más pequeño al inicio */
-            opacity: 0; /* Añadido para la transición suave del contenido */
-            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Transición para el escalado y opacidad */
+            width: 80%; /* Fluid width */
+            transform: scale(0.9); /* Slightly smaller initially */
+            opacity: 0; /* Added for smooth content transition */
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Transition for scaling and opacity */
         }
 
         .flavor-image-overlay.show .flavor-image-content, .hot-drinks-image-overlay.show .hot-drinks-image-content {
-            transform: scale(1); /* Escala normal al mostrar */
-            opacity: 1; /* Transiciona a opacidad completa al mostrar */
+            transform: scale(1); /* Normal scale when showing */
+            opacity: 1; /* Transitions to full opacity when showing */
         }
 
         .flavor-image-content img, .hot-drinks-image-content img {
-            max-width: 100%; /* Asegura que la imagen no se desborde */
+            max-width: 100%; /* Ensures the image doesn't overflow */
             height: auto;
             border-radius: 15px;
             margin-bottom: 20px;
             border: 3px solid #DDA0DD;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            object-fit: cover; /* Ajusta la imagen manteniendo su relación de aspecto */
+            object-fit: contain; /* Shows the complete image without cropping */
         }
 
-        .flavor-image-name, .hot-drinks-image-name {
+        .flavor-image-name {
             font-size: 28px;
             font-weight: 800;
             color: #FF1493;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* NEW/ADJUSTED: Style for the hot drinks image name */
+        .hot-drinks-name { /* This class exists in HTML and now has styling */
+            font-size: 28px;
+            font-weight: 800;
+            color: #FF1493; /* Strong pink, matching flavor names */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow for definition */
+            margin-top: 10px; /* Add some space above the text */
+        }
+        /* Ensure dark mode also adjusts this text color */
+        @media (prefers-color-scheme: dark) {
+            .hot-drinks-name {
+                color: #FFB6C1; /* A light pink for dark mode for better visibility */
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Slightly stronger shadow for contrast on dark */
+            }
         }
 
     </style>
@@ -825,10 +902,10 @@
             <!-- Header -->
             <div class="header">
                 <div class="capybobba-mascot">
-                    <!-- Imagen para modo claro (visible por defecto) -->
+                    <!-- Image for light mode (visible by default) -->
                     <img id="logoLight" src="https://i.imgur.com/llR0NN0.png" 
                          alt="Capibobba Logo Modo Claro">
-                    <!-- Imagen para modo oscuro (oculta por defecto) -->
+                    <!-- Image for dark mode (hidden by default) -->
                     <img id="logoDark" src="https://i.imgur.com/i7psA3z.png" 
                          alt="Capibobba Logo Modo Oscuro">
                 </div>
@@ -836,14 +913,14 @@
                 <div class="tagline">¡Dale un abrazo a tu bebida favorita! 🧸💕</div>
             </div>
             
-            <!-- Divisor decorativo -->
+            <!-- Decorative divider -->
             <div class="kawaii-divider">
                 <span class="emoji">🌟</span>
                 <span class="emoji">✨</span>
                 <span class="emoji">🌟</span>
             </div>
             
-            <!-- Sección de Frappés base agua -->
+            <!-- Water-based Frappes section -->
             <div class="menu-section">
                 <div class="section-header">
                     <div class="section-title">🍹✨ Frappés mágicos base agua - 16oz ✨🍹</div>
@@ -852,7 +929,7 @@
                         Refrescantes, frutales y muuuy kawaii 💖<br>
                         Ideal para días soleados 🌞
                     </div>
-                    <!-- Leyenda para click en sabores -->
+                    <!-- Legend for clicking on flavors -->
                     <div class="click-legend">da click en los sabores para ver una imagen de la boba</div>
                 </div>
                 
@@ -889,20 +966,20 @@
                 </div>
             </div>
             
-            <!-- Divisor decorativo -->
+            <!-- Decorative divider -->
             <div class="kawaii-divider">
                 <span class="emoji">🌈</span>
                 <span class="emoji">🧋</span>
                 <span class="emoji">🌈</span>
             </div>
             
-            <!-- Sección de Frappés base leche -->
+            <!-- Milk-based Frappes section -->
             <div class="menu-section">
                 <div class="section-header">
                     <div class="section-title">🍼💫 Frappés mágicos base leche - 16oz 💫🍼</div>
                     <div class="price-banner">$75 (Cremositos, dulces y súper abrazables 🤍)</div>
                     <div class="section-description">¡Una nube cremosa con sabor! 🧋🐰</div>
-                    <!-- Leyenda para click en sabores -->
+                    <!-- Legend for clicking on flavors -->
                     <div class="click-legend">da click en los sabores para ver una imagen de la boba</div>
                 </div>
                 
@@ -944,7 +1021,7 @@
                 </div>
             </div>
             
-            <!-- Sección de bebidas calientes -->
+            <!-- Hot drinks section -->
             <div class="menu-section hot-drinks">
                 <div class="section-header">
                     <div class="section-title">☕🌸 Bebidas Calientitas - 12oz 🌸☕</div>
@@ -954,13 +1031,47 @@
                         ☁️ Tu bebida favorita calientita, reconfortante y adorable 💕
                     </div>
                 </div>
-                <!-- Botón para ver la imagen de bebidas calientes -->
+                <!-- Button to view hot drinks image -->
                 <button id="viewHotDrinksButton" class="hot-drinks-button">
                     Ver Bebidas Calientes ☕💖
                 </button>
             </div>
+
+            <!-- Decorative divider for the new section -->
+            <div class="kawaii-divider">
+                <span class="emoji">💖</span>
+                <span class="emoji">✨</span>
+                <span class="emoji">🎉</span>
+            </div>
+
+            <!-- New Promotions and News Section -->
+            <div class="menu-section promotions-section">
+                <div class="section-header">
+                    <div class="section-title">🌟 Novedades Kawaii y Promociones Exclusivas 🌟</div>
+                    <div class="section-description">
+                        ¡No te pierdas las últimas sorpresas y ofertas más tiernas de Capibobba! ✨
+                    </div>
+                </div>
+                
+                <!-- Seasonal Frappe with ID for click event -->
+                <div class="promotion-item" id="fresasConCremaPromotion">
+                    <div class="promotion-item-title">🍓🥛 Frappé de Temporada: "Fresas con Crema" 🍓🥛</div>
+                    <div class="promotion-item-description">
+                        ¡El clásico favorito de la abuela, pero en versión kawaii! Disfruta de la dulzura de la fresa natural combinada con la cremosidad más suave. ¡Un abrazo de fresas y amor en cada sorbo! Disponible solo por tiempo limitado. 💖✨
+                    </div>
+                </div>
+
+                <div class="promotion-item">
+                    <div class="promotion-item-title">🎁 Descuento por Primer Pedido 🎁</div>
+                    <div class="promotion-item-description">
+                        ¡Bienvenido a la familia Capibobba! Obtén un 10% de descuento en tu primer pedido usando el código: **KAWAII10** al hacer tu encargo por WhatsApp. 🥳
+                    </div>
+                </div>
+
+                <!-- "Topping del Mes" has been removed here -->
+            </div>
             
-            <!-- Sección de Toppings -->
+            <!-- Toppings section -->
             <div class="menu-section toppings-section">
                 <div class="section-header">
                     <div class="section-title">🌈🧋 ¡Hazla tuya! Personaliza tu bebida 🧋🌈</div>
@@ -991,7 +1102,7 @@
                 </div>
             </div>
             
-            <!-- Sección de cómo ordenar -->
+            <!-- How to order section -->
             <div class="order-section">
                 <div class="order-content">
                     <div class="order-title">✨🧸 CÓMO ORDENAR TU BEBIDA KAWAII 🧸✨</div>
@@ -1018,7 +1129,7 @@
                 </div>
             </div>
             
-            <!-- Mensaje final -->
+            <!-- Final message -->
             <div class="final-message">
                 <div>
                     > Todos nuestros frappés son servidos con mucho cariño y los llevamos a la puerta de tu hogar velozmente 💕<br>
@@ -1032,7 +1143,7 @@
         </div>
     </div>
 
-    <!-- Visor de Imágenes de Sabor (Overlay) -->
+    <!-- Flavor Image Viewer (Overlay) -->
     <div id="flavorImageOverlay" class="flavor-image-overlay">
         <div class="flavor-image-content">
             <img id="flavorImage" src="" alt="Sabor de Frappé">
@@ -1040,22 +1151,38 @@
         </div>
     </div>
 
-    <!-- Visor de Imágenes de Bebidas Calientes (Nuevo Overlay) -->
+    <!-- Hot Drinks Image Viewer (New Overlay) -->
     <div id="hotDrinksImageOverlay" class="hot-drinks-image-overlay">
         <div class="hot-drinks-image-content">
             <!-- Image of your hot drinks. IMPORTANT: Change this! -->
-            <img id="hotDrinksImage" src="https://i.imgur.com/EtT387b.jpeg" alt="Bebidas Calientes">
-            <div class="hot-drinks-image-name">Nuestras Bebidas Calientes</div>
+            <img id="hotDrinksImage" src="https://i.imgur.com/EtT387b.jpeg" alt="Bebidas Calientes" 
+                 onerror="this.onerror=null; this.src='https://placehold.co/300x300/FF69B4/FFF?text=%E2%98%95'; console.error('Error al cargar la imagen de bebidas calientes. URL: ' + this.src);">
+            <div class="hot-drinks-name">Nuestras Bebidas Calientes</div>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // --- Lógica para el cambio de logos de modo claro/oscuro (via CSS) ---
-            // No hay JavaScript aquí, ya que el cambio se maneja completamente con CSS @media prefers-color-scheme
-            // Los elementos #logoLight y #logoDark se gestionan por CSS.
+            // --- Logic for light/dark mode logo change (via CSS) ---
+            // #logoLight and #logoDark elements are managed by CSS, not directly by JavaScript.
+            // This function only ensures that the initial logo state is correct when the page loads
+            // in case the browser does not immediately apply prefers-color-scheme.
+            function setInitialLogoTheme() {
+                const logoLight = document.getElementById('logoLight');
+                const logoDark = document.getElementById('logoDark');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-            // --- Lógica existente para imágenes de sabores y bebidas calientes ---
+                if (prefersDark) {
+                    logoLight.style.opacity = '0';
+                    logoDark.style.opacity = '1';
+                } else {
+                    logoLight.style.opacity = '1';
+                    logoDark.style.opacity = '0';
+                }
+            }
+            setInitialLogoTheme(); // Initial call on load
+
+            // --- Existing logic for flavor and hot drinks images ---
             const flavorItems = document.querySelectorAll('.flavor-item');
             const flavorImageOverlay = document.getElementById('flavorImageOverlay');
             const flavorImage = document.getElementById('flavorImage');
@@ -1065,10 +1192,10 @@
             const hotDrinksImageOverlay = document.getElementById('hotDrinksImageOverlay');
             const hotDrinksImage = document.getElementById('hotDrinksImage');
             
-            // Define la URL para la imagen de bebidas calientes.
+            // Define the URL for the hot drinks image.
             const hotDrinksImageUrl = "https://i.imgur.com/EtT387b.jpeg";
 
-            // Diccionario de URLs de imágenes para cada sabor
+            // Dictionary of image URLs for each flavor
             const flavorImages = {
                 "Litchi": "https://i.imgur.com/Pu7yFxo.jpeg", 
                 "Fresa": "https://i.imgur.com/UMxtB2o.jpeg",
@@ -1083,10 +1210,10 @@
                 "Cookies & Cream": "https://i.imgur.com/0e402nf.jpeg",
                 "Crema Irlandesa": "https://placehold.co/300x300/B0C4DE/FFF?text=Crema+Irlandesa", 
                 "Matcha": "https://i.imgur.com/6QIRLrZ.jpeg",
-                // Añade más sabores con sus imágenes aquí
+                // Add more flavors with their images here
             };
 
-            // Agrega el evento de clic a cada elemento de sabor
+            // Add click event to each flavor item
             flavorItems.forEach(item => {
                 item.addEventListener('click', function() {
                     const flavorName = this.querySelector('.flavor-name').textContent;
@@ -1098,18 +1225,28 @@
                 });
             });
 
-            // Agrega el evento de clic al botón de bebidas calientes
+            // --- Logic for the Strawberry with Cream promotion ---
+            const fresasConCremaPromotion = document.getElementById('fresasConCremaPromotion');
+            if (fresasConCremaPromotion) { // Ensure the element exists before adding the listener
+                fresasConCremaPromotion.addEventListener('click', function() {
+                    flavorImage.src = "https://i.imgur.com/m2Fc29F.jpeg";
+                    flavorImageName.textContent = "Frappé de Temporada: Fresas con Crema";
+                    flavorImageOverlay.classList.add('show');
+                });
+            }
+
+            // Add click event to the hot drinks button
             viewHotDrinksButton.addEventListener('click', function() {
                 hotDrinksImage.src = hotDrinksImageUrl; 
                 hotDrinksImageOverlay.classList.add('show'); 
             });
 
-            // Cierra el overlay de sabores al hacer clic en cualquier parte de él
+            // Close flavor overlay on click anywhere on it
             flavorImageOverlay.addEventListener('click', function() {
                 flavorImageOverlay.classList.remove('show'); 
             });
 
-            // Cierra el overlay de bebidas calientes al hacer clic en cualquier parte de él
+            // Close hot drinks overlay on click anywhere on it
             hotDrinksImageOverlay.addEventListener('click', function() {
                 hotDrinksImageOverlay.classList.remove('show'); 
             });
