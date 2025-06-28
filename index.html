@@ -123,27 +123,27 @@
         }
         
         /* Mascotas capibara del logo */
-        .capybara-mascot {
+        .capybobba-mascot {
             width: 250px; 
             height: 250px; 
             margin: 0 auto 0;
             position: relative;
             overflow: hidden;
-            background: white;
+            background: white; /* Fondo blanco por defecto para modo claro */
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 150px; /* Tamaño del emoji de capibara si la imagen no carga */
         }
         
-        .capybara-mascot img {
+        .capybobba-mascot img {
             width: 100%;
             height: 100%;
             object-fit: contain; /* Ajusta la imagen dentro del contenedor */
         }
         
         /* Corazón flotante en la mascota */
-        .capybara-mascot::after {
+        .capybobba-mascot::after {
             content: '💕';
             position: absolute;
             font-size: 65px; 
@@ -623,13 +623,13 @@
                 font-size: 30px;
             }
             
-            .capybara-mascot {
+            .capybobba-mascot {
                 width: 200px;
                 height: 200px;
                 font-size: 120px;
             }
 
-            .capybara-mascot::after {
+            .capybobba-mascot::after {
                 font-size: 50px;
                 top: -15px;
                 right: -15px;
@@ -724,27 +724,24 @@
         <div class="content-wrapper">
             <!-- Header -->
             <div class="header">
-                <div class="capybara-mascot">
-                    <!-- Image of Capibobba Logo, with emoji fallback.
-                         src will be set by JavaScript based on theme. -->
-                    <img id="capybobbaLogo" 
-                         data-logo-light="https://i.imgur.com/llR0NN0.png" 
-                         data-logo-dark="https://i.imgur.com/i7psA3z.png" 
+                <div class="capybobba-mascot">
+                    <!-- Imagen del logo de Capibobba, estática para modo claro -->
+                    <img src="https://i.imgur.com/llR0NN0.png" 
                          alt="Capibobba Logo" 
-                         onerror="this.onerror=null; this.src=''; this.style.display='none'; this.parentElement.style.display='flex'; this.parentElement.innerHTML='🐹'; console.error('Error al cargar la imagen del logo. Se muestra emoji de fallback.');">
+                         onerror="this.onerror=null; this.src=''; this.style.display='none'; this.parentElement.style.display='flex'; this.parentElement.innerHTML='🐹';">
                 </div>
                 <h1 class="main-title">MENÚ CAPIBOBBA</h1>
                 <div class="tagline">¡Dale un abrazo a tu bebida favorita! 🧸💕</div>
             </div>
             
-            <!-- Decorative divider -->
+            <!-- Divisor decorativo -->
             <div class="kawaii-divider">
                 <span class="emoji">🌟</span>
                 <span class="emoji">✨</span>
                 <span class="emoji">🌟</span>
             </div>
             
-            <!-- Water-based Frappes Section -->
+            <!-- Sección de Frappés base agua -->
             <div class="menu-section">
                 <div class="section-header">
                     <div class="section-title">🍹✨ Frappés mágicos base agua - 16oz ✨🍹</div>
@@ -753,7 +750,7 @@
                         Refrescantes, frutales y muuuy kawaii 💖<br>
                         Ideal para días soleados 🌞
                     </div>
-                    <!-- Legend for flavor clicks -->
+                    <!-- Leyenda para click en sabores -->
                     <div class="click-legend">da click en los sabores para ver una imagen de la boba</div>
                 </div>
                 
@@ -790,7 +787,7 @@
                 </div>
             </div>
             
-            <!-- Decorative divider -->
+            <!-- Divisor decorativo -->
             <div class="kawaii-divider">
                 <span class="emoji">🌈</span>
                 <span class="emoji">🧋</span>
@@ -803,7 +800,7 @@
                     <div class="section-title">🍼💫 Frappés mágicos base leche - 16oz 💫🍼</div>
                     <div class="price-banner">$75 (Cremositos, dulces y súper abrazables 🤍)</div>
                     <div class="section-description">¡Una nube cremosa con sabor! 🧋🐰</div>
-                    <!-- Legend for flavor clicks -->
+                    <!-- Leyenda para click en sabores -->
                     <div class="click-legend">da click en los sabores para ver una imagen de la boba</div>
                 </div>
                 
@@ -845,7 +842,7 @@
                 </div>
             </div>
             
-            <!-- Hot Drinks Section -->
+            <!-- Sección de bebidas calientes -->
             <div class="menu-section hot-drinks">
                 <div class="section-header">
                     <div class="section-title">☕🌸 Bebidas Calientitas - 12oz 🌸☕</div>
@@ -855,13 +852,13 @@
                         ☁️ Tu bebida favorita calientita, reconfortante y adorable 💕
                     </div>
                 </div>
-                <!-- Button to view hot drinks image -->
+                <!-- Botón para ver la imagen de bebidas calientes -->
                 <button id="viewHotDrinksButton" class="hot-drinks-button">
                     Ver Bebidas Calientes ☕💖
                 </button>
             </div>
             
-            <!-- Toppings Section -->
+            <!-- Sección de Toppings -->
             <div class="menu-section toppings-section">
                 <div class="section-header">
                     <div class="section-title">🌈🧋 ¡Hazla tuya! Personaliza tu bebida 🧋🌈</div>
@@ -892,7 +889,7 @@
                 </div>
             </div>
             
-            <!-- Order Section -->
+            <!-- Sección de cómo ordenar -->
             <div class="order-section">
                 <div class="order-content">
                     <div class="order-title">✨🧸 CÓMO ORDENAR TU BEBIDA KAWAII 🧸✨</div>
@@ -919,7 +916,7 @@
                 </div>
             </div>
             
-            <!-- Final Message -->
+            <!-- Mensaje final -->
             <div class="final-message">
                 <div>
                     > Todos nuestros frappés son servidos con mucho cariño y los llevamos a la puerta de tu hogar velozmente 💕<br>
@@ -933,7 +930,7 @@
         </div>
     </div>
 
-    <!-- Flavor Image Viewer (Overlay) -->
+    <!-- Visor de Imágenes de Sabor (Overlay) -->
     <div id="flavorImageOverlay" class="flavor-image-overlay">
         <div class="flavor-image-content">
             <img id="flavorImage" src="" alt="Sabor de Frappé">
@@ -941,7 +938,7 @@
         </div>
     </div>
 
-    <!-- Hot Drinks Image Viewer (New Overlay) -->
+    <!-- Visor de Imágenes de Bebidas Calientes (Nuevo Overlay) -->
     <div id="hotDrinksImageOverlay" class="hot-drinks-image-overlay">
         <div class="hot-drinks-image-content">
             <!-- Image of your hot drinks. IMPORTANT: Change this! -->
@@ -952,35 +949,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // --- Logo de Capibobba adaptable a modo oscuro/claro ---
-            const capybobbaLogo = document.getElementById('capybobbaLogo');
-            const lightLogoUrl = capybobbaLogo.dataset.logoLight;
-            const darkLogoUrl = capybobbaLogo.dataset.logoDark;
-
-            // Media query para detectar el modo oscuro del sistema
-            const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-            // Función para actualizar la imagen del logo
-            function updateLogoBasedOnTheme(e) {
-                if (e.matches) { // Si el modo oscuro está activo
-                    capybobbaLogo.src = darkLogoUrl;
-                    console.log('Modo oscuro detectado. Logo cargado:', darkLogoUrl);
-                } else { // Si el modo claro está activo
-                    capybobbaLogo.src = lightLogoUrl;
-                    console.log('Modo claro detectado. Logo cargado:', lightLogoUrl);
-                }
-            }
-
-            // Establecer el logo inicial al cargar la página
-            updateLogoBasedOnTheme(darkModeMediaQuery);
-
-            // Escuchar cambios en la preferencia del sistema (para cuando el usuario lo cambie en su dispositivo)
-            // Usamos addListener por mayor compatibilidad, aunque addEventListener es más moderno
-            darkModeMediaQuery.addListener(updateLogoBasedOnTheme); 
-            // Para navegadores más modernos, también se podría usar:
-            // darkModeMediaQuery.addEventListener('change', updateLogoBasedOnTheme);
-
-
             // --- Lógica existente para imágenes de sabores y bebidas calientes ---
             const flavorItems = document.querySelectorAll('.flavor-item');
             const flavorImageOverlay = document.getElementById('flavorImageOverlay');
