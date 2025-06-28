@@ -22,11 +22,12 @@
             max-width: 1080px; /* Ancho máximo para el contenido principal */
             height: auto;
             margin: 0 auto; /* Centra el contenido */
-            /* Degradado de fondo para un toque kawaii */
+            /* Degradado de fondo para un toque kawaii (Modo Claro por defecto) */
             background: linear-gradient(180deg, #FFE1E6 0%, #F3E8FF 25%, #E0F2FE 50%, #FFF9E6 75%, #FFE1E6 100%);
             position: relative;
             overflow-x: hidden; /* Evita el scroll horizontal */
             line-height: 1.4;
+            transition: background 0.5s ease-in-out; /* Transición suave para el cambio de fondo */
         }
         
         /* Elementos decorativos flotantes estilo kawaii */
@@ -87,13 +88,14 @@
         
         /* Envoltura del contenido principal */
         .content-wrapper {
-            background: rgba(255, 255, 255, 0.98); /* Fondo blanco semitransparente */
+            background: rgba(255, 255, 255, 0.98); /* Fondo blanco semitransparente (Modo Claro por defecto) */
             border-radius: 30px;
             padding: 35px 25px;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15); /* Sombra suave */
-            border: 4px solid #FFB6C1; /* Borde rosa claro */
+            border: 4px solid #FFB6C1; /* Borde rosa claro (Modo Claro por defecto) */
             position: relative;
             overflow: hidden;
+            transition: background 0.5s ease-in-out, border-color 0.5s ease-in-out; /* Transición suave */
         }
         
         /* Borde superior con efecto arcoíris animado */
@@ -122,24 +124,122 @@
             position: relative;
         }
         
-        /* Mascotas capibara del logo */
+        /* Contenedor de la mascota/logo */
         .capybobba-mascot {
             width: 250px; 
             height: 250px; 
             margin: 0 auto 0;
             position: relative;
             overflow: hidden;
-            background: white; /* Fondo blanco por defecto para modo claro */
-            display: flex;
+            background: none; /* Sin fondo fijo para que los logos se muestren sin interferencia */
+            display: flex; /* Para centrar el posible emoji de fallback si no carga ninguna imagen */
             align-items: center;
             justify-content: center;
-            font-size: 150px; /* Tamaño del emoji de capibara si la imagen no carga */
+            font-size: 150px; /* Tamaño del emoji de capibara si las imágenes no cargan */
         }
-        
+
+        /* Estilos base para las imágenes de logo */
         .capybobba-mascot img {
             width: 100%;
             height: 100%;
             object-fit: contain; /* Ajusta la imagen dentro del contenedor */
+            position: absolute; /* Para superponerlas y controlar la visibilidad */
+            top: 0;
+            left: 0;
+            transition: opacity 0.3s ease-in-out; /* Transición suave al cambiar de logo */
+        }
+
+        /* Por defecto (Modo Claro), muestra el logo claro y oculta el oscuro */
+        #logoLight {
+            opacity: 1; 
+            z-index: 2; /* Asegura que esté encima */
+        }
+
+        #logoDark {
+            opacity: 0;
+            z-index: 1; /* Estará debajo del logo claro por defecto */
+        }
+        
+        /* Regla de media query para Modo Oscuro */
+        @media (prefers-color-scheme: dark) {
+            /* Cambia el fondo del body a un tono oscuro */
+            body {
+                background: linear-gradient(180deg, #333333 0%, #1a1a1a 100%);
+            }
+            /* Ajusta el fondo y borde del contenedor principal para modo oscuro */
+            .content-wrapper {
+                background: rgba(45, 45, 45, 0.98); /* Fondo oscuro semitransparente */
+                border-color: #9370DB; /* Borde violeta para contrastar */
+            }
+
+            /* En modo oscuro, oculta el logo claro y muestra el oscuro */
+            #logoLight {
+                opacity: 0;
+            }
+            #logoDark {
+                opacity: 1;
+            }
+
+            /* También puedes ajustar colores de texto generales si es necesario para el modo oscuro */
+            .main-title, .tagline, .section-title, .flavor-name, .flavor-description, .topping-name, .topping-description, .whatsapp-text, .whatsapp-number, .whatsapp-click-legend, .order-step, .final-message {
+                /* Asegura que los textos sean legibles en fondos oscuros */
+                color: #F0F0F0; /* Blanco suave */
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra para mejor legibilidad */
+            }
+
+            /* Ajuste de degradado para el título principal en modo oscuro */
+            .main-title {
+                background: linear-gradient(135deg, #FFB6C1, #87CEEB, #DDA0DD); /* Degradado más claro */
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+            /* Ajuste para el tagline */
+            .tagline {
+                color: #DDA0DD; /* Tono lila para contraste */
+            }
+            /* Ajuste para los títulos de sección */
+            .section-title {
+                color: #87CEEB; /* Tono azul claro para contraste */
+            }
+            /* Ajuste de descripciones y leyendas en modo oscuro */
+            .section-description, .click-legend, .flavor-description, .topping-description {
+                color: #B0B0B0; /* Gris claro para legibilidad */
+            }
+            /* Ajuste de fondo de las secciones en modo oscuro */
+            .menu-section {
+                background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+                border-color: #9370DB;
+            }
+            .flavor-item {
+                background: #3a3a3a;
+                border-color: #9370DB;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            }
+            .flavor-item:hover {
+                border-color: #87CEEB;
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            }
+            .hot-drinks {
+                background: linear-gradient(135deg, #444444, #555555);
+                border-color: #87CEEB;
+            }
+            .toppings-section {
+                background: linear-gradient(135deg, #2c2c2c, #3c3c3c);
+                border-color: #87CEEB;
+            }
+            .topping-item {
+                background: rgba(60, 60, 60, 0.9);
+                border-color: #87CEEB;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            }
+            .order-steps {
+                background: rgba(80, 80, 80, 0.15);
+                border-color: rgba(255, 255, 255, 0.3);
+            }
+            .order-step {
+                color: #E0E0E0;
+            }
         }
         
         /* Corazón flotante en la mascota */
@@ -150,7 +250,7 @@
             top: -20px;      
             right: -20px;    
             animation: float 2s ease-in-out infinite; /* Animación de flotación */
-            z-index: 2;
+            z-index: 3; /* Asegura que esté por encima de los logos */
         }
         
         /* Animación de flotación */
@@ -725,10 +825,12 @@
             <!-- Header -->
             <div class="header">
                 <div class="capybobba-mascot">
-                    <!-- Imagen del logo de Capibobba, estática para modo claro -->
-                    <img src="https://i.imgur.com/llR0NN0.png" 
-                         alt="Capibobba Logo" 
-                         onerror="this.onerror=null; this.src=''; this.style.display='none'; this.parentElement.style.display='flex'; this.parentElement.innerHTML='🐹';">
+                    <!-- Imagen para modo claro (visible por defecto) -->
+                    <img id="logoLight" src="https://i.imgur.com/llR0NN0.png" 
+                         alt="Capibobba Logo Modo Claro">
+                    <!-- Imagen para modo oscuro (oculta por defecto) -->
+                    <img id="logoDark" src="https://i.imgur.com/i7psA3z.png" 
+                         alt="Capibobba Logo Modo Oscuro">
                 </div>
                 <h1 class="main-title">MENÚ CAPIBOBBA</h1>
                 <div class="tagline">¡Dale un abrazo a tu bebida favorita! 🧸💕</div>
@@ -794,7 +896,7 @@
                 <span class="emoji">🌈</span>
             </div>
             
-            <!-- Milk-based Frappes Section -->
+            <!-- Sección de Frappés base leche -->
             <div class="menu-section">
                 <div class="section-header">
                     <div class="section-title">🍼💫 Frappés mágicos base leche - 16oz 💫🍼</div>
@@ -949,6 +1051,10 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // --- Lógica para el cambio de logos de modo claro/oscuro (via CSS) ---
+            // No hay JavaScript aquí, ya que el cambio se maneja completamente con CSS @media prefers-color-scheme
+            // Los elementos #logoLight y #logoDark se gestionan por CSS.
+
             // --- Lógica existente para imágenes de sabores y bebidas calientes ---
             const flavorItems = document.querySelectorAll('.flavor-item');
             const flavorImageOverlay = document.getElementById('flavorImageOverlay');
