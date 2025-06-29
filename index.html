@@ -172,7 +172,7 @@
                 border-color: #9370DB; /* Purple border for contrast */
             }
 
-            /* In dark mode, hides the light logo and shows the dark one */
+            /* In dark mode, oculta el logo claro y muestra el oscuro */
             #logoLight {
                 opacity: 0;
             }
@@ -406,7 +406,11 @@
             transition: all 0.3s ease; /* Smooth transition for hover */
             position: relative;
             overflow: hidden;
-            cursor: pointer;
+            /* Changed to flexbox to align name, description and button */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Pushes button to bottom */
+            cursor: pointer; /* Keep cursor for image display click */
         }
         
         /* Glow effect on hover */
@@ -444,42 +448,41 @@
             color: #8B4513;
             line-height: 1.4;
             font-weight: 600;
+            margin-bottom: 15px; /* Space before the button */
+        }
+
+        /* "Add to Cart" button style for drinks */
+        .add-drink-to-cart-button {
+            background: linear-gradient(45deg, #9370DB, #87CEEB); /* Purple to light blue gradient */
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            padding: 10px 15px;
+            border-radius: 15px;
+            border: 2px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: fit-content; /* Adjust width to content */
+            align-self: center; /* Center the button in flex container */
+            margin-top: auto; /* Push button to the bottom if content is uneven */
+            display: flex; /* For icon and text alignment */
+            align-items: center;
+            gap: 8px;
+        }
+
+        .add-drink-to-cart-button:hover {
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #87CEEB, #9370DB); /* Invert gradient on hover */
         }
         
         /* Hot drinks section */
         .hot-drinks {
             background: linear-gradient(135deg, #FFF8DC, #F0E68C); /* Soft yellow background */
             border: 3px solid #DDA0DD; /* Lilac border */
-            display: flex; /* Use flexbox to center the button */
-            flex-direction: column;
-            align-items: center;
         }
 
-        /* Style for the view hot drinks button */
-        .hot-drinks-button {
-            background: linear-gradient(45deg, #FF6347, #FF4500); /* Orange-red gradient */
-            color: white;
-            font-size: 22px;
-            font-weight: 800;
-            padding: 15px 30px;
-            border-radius: 20px;
-            border: 3px solid white;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 20px; /* Top space */
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .hot-drinks-button:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(45deg, #FF4500, #FF6347); /* Invert gradient on hover */
-        }
-        
         /* Toppings section */
         .toppings-section {
             background: linear-gradient(135deg, #E6E6FA, #F0F8FF); /* Soft light blue background */
@@ -493,7 +496,7 @@
             margin-bottom: 25px;
         }
         
-        /* Topping price */
+        /* Price for topping item */
         .topping-price {
             background: linear-gradient(135deg, #32CD32, #00CED1); /* Green to blue gradient */
             color: white;
@@ -506,7 +509,7 @@
             margin: 0 10px;
         }
         
-        /* Individual topping item */
+        /* Individual topping item (now for display only, added via modal) */
         .topping-item {
             background: rgba(255, 255, 255, 0.9);
             border-radius: 18px;
@@ -515,6 +518,7 @@
             border: 2px solid #DDA0DD;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            /* Removed flexbox stuff here as buttons are gone from main topping list */
         }
         
         .topping-item:hover {
@@ -532,8 +536,9 @@
         .topping-description {
             font-size: 16px;
             color: #8B4513;
-            line-height: 1.4;
             font-weight: 600;
+            line-height: 1.4;
+            /* Removed margin-bottom here as no button below */
         }
         
         /* Styles for the Promotions and News section */
@@ -573,6 +578,171 @@
             line-height: 1.4;
             font-weight: 600;
         }
+
+        /* --- Shopping Cart Section Styles --- */
+        .shopping-cart-section {
+            margin-top: 45px;
+            margin-bottom: 45px;
+            background: linear-gradient(135deg, #E0F2FE, #F3E8FF); /* Light blue to light purple */
+            border-radius: 25px;
+            padding: 30px 25px;
+            border: 3px solid #87CEEB; /* Light blue border */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .shopping-cart-section .section-title {
+            color: #007BFF; /* Blue for cart title */
+            margin-bottom: 20px;
+        }
+
+        .cart-items-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            max-height: 250px; /* Limit height for scrollable area */
+            overflow-y: auto; /* Enable vertical scrolling */
+            border: 1px dashed #B0C4DE; /* Light blue dashed border */
+            border-radius: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.7); /* Slightly transparent background */
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start; /* Align items to start, useful for multiline topping lists */
+            padding: 10px 0;
+            border-bottom: 1px solid #E0E0E0;
+            font-size: 17px;
+            font-weight: 600;
+            color: #333;
+            flex-direction: column; /* Stack name/toppings and price/remove vertically initially */
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-main-info {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 5px;
+        }
+
+        .item-quantity {
+            font-weight: 800;
+            color: #FF69B4; /* Pink for quantity */
+            margin-right: 10px;
+            min-width: 30px; /* Ensure space for quantity */
+            text-align: right;
+        }
+
+        .item-name {
+            flex-grow: 1; /* Allows name to take available space */
+            text-align: left;
+        }
+
+        .item-details {
+            width: 100%; /* Take full width below main info */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 40px; /* Indent to align with item name */
+        }
+
+        .item-toppings {
+            font-size: 14px;
+            color: #8B4513; /* Brownish for toppings */
+            text-align: left;
+            margin-top: 5px;
+            flex-grow: 1;
+        }
+
+        .item-price {
+            font-weight: 800;
+            color: #32CD32; /* Green for price */
+            margin-left: 10px;
+            white-space: nowrap; /* Prevent price from wrapping */
+        }
+
+        .remove-item-button {
+            background: #FF6347; /* Orange-red for remove button */
+            color: white;
+            border: none;
+            border-radius: 50%; /* Circular button */
+            width: 28px;
+            height: 28px;
+            font-size: 16px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0; /* Prevent shrinking */
+        }
+
+        .remove-item-button:hover {
+            background: #FF4500;
+            transform: scale(1.05);
+        }
+
+        .cart-total {
+            font-size: 24px;
+            font-weight: 900;
+            color: #FF1493; /* Strong pink for total */
+            margin-top: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-actions {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .cart-action-button {
+            background: linear-gradient(45deg, #FFD700, #FFA500); /* Gold to Orange */
+            color: white;
+            font-size: 20px;
+            font-weight: 800;
+            padding: 15px 25px;
+            border-radius: 20px;
+            border: 3px solid white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .cart-action-button.clear-cart {
+            background: linear-gradient(45deg, #FF69B4, #DDA0DD); /* Pink to Lilac */
+        }
+        .cart-action-button.order-whatsapp-button {
+            background: linear-gradient(45deg, #25D366, #128C7E); /* WhatsApp green */
+        }
+        
+        .cart-action-button:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+        .cart-action-button.clear-cart:hover {
+            background: linear-gradient(45deg, #DDA0DD, #FF69B4);
+        }
+        .cart-action-button.order-whatsapp-button:hover {
+            background: linear-gradient(45deg, #128C7E, #25D366);
+        }
+        /* --- End Shopping Cart Section Styles --- */
+
 
         /* Order section */
         .order-section {
@@ -614,7 +784,7 @@
             line-height: 1.2;
         }
         
-        /* WhatsApp section */
+        /* WhatsApp section (this section now mainly shows the number and steps) */
         .whatsapp-section {
             margin: 30px 0;
         }
@@ -626,13 +796,13 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
         
-        /* Styles for the WhatsApp link */
+        /* Estilos para el enlace de WhatsApp (now only used for the raw number display) */
         .whatsapp-link {
             text-decoration: none;
             color: white;
         }
 
-        /* WhatsApp number */
+        /* WhatsApp number (no longer a button) */
         .whatsapp-number {
             background: #25D366; /* WhatsApp Green */
             color: white;
@@ -645,9 +815,9 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
             border: 4px solid white;
             letter-spacing: 1px;
-            animation: pulse 2s infinite; /* Pulsing animation */
+            /* Removed pulse animation from here as the main order button will have it */
             
-            /* Use flexbox to organize the number and legend */
+            /* Usar flexbox para organizar el número y la leyenda */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -655,13 +825,13 @@
             line-height: 1; /* Adjust line-height so the legend doesn't have too much space */
         }
 
-        /* Style for the new legend inside the WhatsApp button */
+        /* Style for the new legend inside the WhatsApp number block */
         .whatsapp-click-legend {
             font-size: 14px; /* Smaller font */
             font-weight: 600; /* Semi-bold */
             color: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
-            margin-top: 5px; /* Space between number and legend */
-            text-shadow: none; /* Remove text shadow if inherited from parent */
+            margin-top: 5px; /* Space between the number and the legend */
+            text-shadow: none; /* Remove shadow if inherited from parent */
         }
         
         @keyframes pulse {
@@ -771,13 +941,13 @@
                 padding: 15px 20px;
             }
             
+            /* Adjusted WhatsApp number display for mobile as it's no longer the main order button */
             .whatsapp-number {
-                font-size: 28px;
-                padding: 20px 25px;
+                font-size: 24px;
+                padding: 15px 20px;
             }
-
-            .whatsapp-number .whatsapp-click-legend {
-                font-size: 12px; /* Smaller on mobile */
+            .whatsapp-click-legend {
+                font-size: 10px; /* Even smaller for legend */
             }
             
             .order-title {
@@ -796,10 +966,23 @@
                 right: -15px;
             }
 
-            .flavor-image-content, .hot-drinks-image-content {
-                width: 90%; /* Ensures the image container is not too large */
+            .flavor-image-content, .hot-drinks-image-content, .topping-selection-content {
+                width: 90%; /* Ensures the container is not too large */
                 max-width: 300px;
                 padding: 20px;
+            }
+
+            .add-drink-to-cart-button, .cart-action-button {
+                font-size: 16px;
+                padding: 10px 15px;
+            }
+            .cart-action-button {
+                width: 100%; /* Full width buttons on small screens */
+            }
+
+            .add-topping-button {
+                font-size: 14px;
+                padding: 8px 12px;
             }
         }
         
@@ -815,7 +998,7 @@
         }
 
         /* --- Styles for flavor image viewer (overlay) --- */
-        .flavor-image-overlay, .hot-drinks-image-overlay {
+        .flavor-image-overlay, .hot-drinks-image-overlay, .topping-selection-overlay {
             position: fixed; /* Fixed on screen */
             top: 0;
             left: 0;
@@ -831,12 +1014,12 @@
             transition: opacity 0.3s ease-in-out; /* Smooth transition for showing/hiding */
         }
 
-        .flavor-image-overlay.show, .hot-drinks-image-overlay.show {
+        .flavor-image-overlay.show, .hot-drinks-image-overlay.show, .topping-selection-overlay.show {
             opacity: 1; /* Shows the overlay */
             pointer-events: auto; /* Allows interaction when visible */
         }
 
-        .flavor-image-content, .hot-drinks-image-content {
+        .flavor-image-content, .hot-drinks-image-content, .topping-selection-content {
             background: rgba(255, 255, 255, 0.95); /* Almost opaque white background */
             border-radius: 20px;
             padding: 30px;
@@ -850,9 +1033,11 @@
             transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Transition for scaling and opacity */
         }
 
-        .flavor-image-overlay.show .flavor-image-content, .hot-drinks-image-overlay.show .hot-drinks-image-content {
+        .flavor-image-overlay.show .flavor-image-content, 
+        .hot-drinks-image-overlay.show .hot-drinks-image-content,
+        .topping-selection-overlay.show .topping-selection-content {
             transform: scale(1); /* Normal scale when showing */
-            opacity: 1; /* Transitions to full opacity when showing */
+            opacity: 1; /* Transiciona a opacidad completa al mostrar */
         }
 
         .flavor-image-content img, .hot-drinks-image-content img {
@@ -872,8 +1057,8 @@
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
 
-        /* NEW/ADJUSTED: Style for the hot drinks image name */
-        .hot-drinks-name { /* This class exists in HTML and now has styling */
+        /* Style for the hot drinks image name */
+        .hot-drinks-name {
             font-size: 28px;
             font-weight: 800;
             color: #FF1493; /* Strong pink, matching flavor names */
@@ -887,6 +1072,135 @@
                 text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Slightly stronger shadow for contrast on dark */
             }
         }
+
+        /* --- Topping Selection Modal Styles --- */
+        .topping-selection-content .section-title {
+            color: #9370DB; /* Purple for topping modal title */
+        }
+
+        .current-drink-name-modal {
+            font-size: 22px;
+            font-weight: 700;
+            color: #FF69B4; /* Pink for current drink name */
+            margin-bottom: 20px;
+        }
+
+        .toppings-modal-grid {
+            display: grid;
+            gap: 15px;
+            margin-top: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 10px;
+            border: 1px dashed #DDA0DD;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .topping-modal-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #F9F0FF; /* Very light purple */
+            border-radius: 12px;
+            padding: 12px 15px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+        }
+        .topping-modal-item.selected {
+            border: 2px solid #9370DB; /* Highlight selected toppings */
+            background: #E6E6FA; /* Slightly darker background */
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .topping-modal-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #9370DB;
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .topping-modal-price {
+            font-size: 16px;
+            font-weight: 600;
+            color: #32CD32;
+            margin-left: 10px;
+            white-space: nowrap;
+        }
+
+        .add-topping-button {
+            background: linear-gradient(45deg, #00CED1, #87CEEB); /* Teal to light blue */
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 8px 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .add-topping-button.remove {
+            background: linear-gradient(45deg, #FF6347, #FF4500); /* Orange-red */
+        }
+
+        .add-topping-button:hover {
+            transform: scale(1.03);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .topping-selection-actions {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .topping-selection-actions button {
+            font-size: 18px;
+            padding: 12px 20px;
+            border-radius: 18px;
+            border: 2px solid white;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .topping-selection-actions button:hover {
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        #confirmToppingsButton {
+            background: linear-gradient(45deg, #25D366, #128C7E); /* Green for confirm */
+        }
+        #confirmToppingsButton:hover {
+            background: linear-gradient(45deg, #128C7E, #25D366);
+        }
+
+        #noToppingsButton {
+            background: linear-gradient(45deg, #FFA500, #FFD700); /* Orange for no toppings */
+        }
+        #noToppingsButton:hover {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+        }
+
+        #cancelToppingsButton {
+            background: linear-gradient(45deg, #FF69B4, #FF1493); /* Pink for cancel */
+        }
+        #cancelToppingsButton:hover {
+            background: linear-gradient(45deg, #FF1493, #FF69B4);
+        }
+        /* --- End Topping Selection Modal Styles --- */
 
     </style>
 </head>
@@ -920,7 +1234,7 @@
                 <span class="emoji">🌟</span>
             </div>
             
-            <!-- Water-based Frappes section -->
+            <!-- Sección de Frappés base agua -->
             <div class="menu-section">
                 <div class="section-header">
                     <div class="section-title">🍹✨ Frappés mágicos base agua - 16oz ✨🍹</div>
@@ -929,39 +1243,45 @@
                         Refrescantes, frutales y muuuy kawaii 💖<br>
                         Ideal para días soleados 🌞
                     </div>
-                    <!-- Legend for clicking on flavors -->
+                    <!-- Leyenda para click en sabores (mantengo para la imagen, pero el pedido es por botón) -->
                     <div class="click-legend">da click en los sabores para ver una imagen de la boba</div>
                 </div>
                 
                 <div class="flavor-grid">
-                    <div class="flavor-item">
+                    <div class="flavor-item" data-name="Frappé Litchi (Agua)" data-price="75">
                         <div class="flavor-name">Litchi</div>
                         <div class="flavor-description">Dulce y exótico como un abrazo frutal de nube ☁️💕 (¡pruébalo si no lo conoces!)</div>
+                        <button class="add-drink-to-cart-button">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item">
+                    <div class="flavor-item" data-name="Frappé Fresa (Agua)" data-price="75">
                         <div class="flavor-name">Fresa</div>
                         <div class="flavor-description">El clásico más tierno 🍓💖 ¡como una caricia de fresita!</div>
+                        <button class="add-drink-to-cart-button">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item">
+                    <div class="flavor-item" data-name="Frappé Blueberry (Agua)" data-price="75">
                         <div class="flavor-name">Blueberry</div>
                         <div class="flavor-description">Dulzura encantadora con un toque de magia azul 💙🫐</div>
+                        <button class="add-drink-to-cart-button">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item">
+                    <div class="flavor-item" data-name="Frappé Mango (Agua)" data-price="75">
                         <div class="flavor-name">Mango</div>
                         <div class="flavor-description">Tropical y juguetón 🥭☀️ ¡Pura alegría líquida!</div>
+                        <button class="add-drink-to-cart-button">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item">
+                    <div class="flavor-item" data-name="Frappé Piña Colada (Agua)" data-price="75">
                         <div class="flavor-name">Piña colada</div>
                         <div class="flavor-description">Vacaciones kawaii en cada sorbo 🍍🥥 ¡fresca y coqueta!</div>
+                        <button class="add-drink-to-cart-button">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item">
+                    <div class="flavor-item" data-name="Frappé Maracuyá (Agua)" data-price="75">
                         <div class="flavor-name">Maracuyá</div>
                         <div class="flavor-description">Ácida y divertida, perfecta para los más atrevidos 💛✨</div>
+                        <button class="add-drink-to-cart-button">Añadir 💖</button>
                     </div>
                 </div>
             </div>
@@ -973,68 +1293,123 @@
                 <span class="emoji">🌈</span>
             </div>
             
-            <!-- Milk-based Frappes section -->
+            <!-- Sección de Frappés base leche -->
             <div class="menu-section">
                 <div class="section-header">
                     <div class="section-title">🍼💫 Frappés mágicos base leche - 16oz 💫🍼</div>
                     <div class="price-banner">$75 (Cremositos, dulces y súper abrazables 🤍)</div>
                     <div class="section-description">¡Una nube cremosa con sabor! 🧋🐰</div>
-                    <!-- Legend for clicking on flavors -->
+                    <!-- Leyenda para click en sabores (mantengo para la imagen, pero el pedido es por botón) -->
                     <div class="click-legend">da click en los sabores para ver una imagen de la boba</div>
                 </div>
                 
                 <div class="flavor-grid">
-                    <div class="flavor-item">
+                    <div class="flavor-item" data-name="Frappé Taro (Leche)" data-price="75">
                         <div class="flavor-name">Taro</div>
                         <div class="flavor-description">Cremoso y delicado  🌰💜 (¡tu nuevo favorito si no lo conoces!)</div>
+                        <button class="add-drink-to-cart-button">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item">
+                    <div class="flavor-item" data-name="Frappé Mazapán (Leche)" data-price="75">
                         <div class="flavor-name">Mazapán</div>
                         <div class="flavor-description">Sabor a infancia mexicana 🎠💕 ¡un apapacho de cacahuate!</div>
+                        <button class="add-drink-to-cart-button">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item">
+                    <div class="flavor-item" data-name="Frappé Chai (Leche)" data-price="75">
                         <div class="flavor-name">Chai</div>
                         <div class="flavor-description">Especiado y cálido ☕✨ ¡ideal para días nublados!</div>
+                        <button class="add-drink-to-cart-button">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item">
+                    <div class="flavor-item" data-name="Frappé Mocha (Leche)" data-price="75">
                         <div class="flavor-name">Mocha</div>
                         <div class="flavor-description">Café y chocolate en perfecta armonía 🍫☕💞</div>
+                        <button class="add-drink-to-cart-button">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item">
+                    <div class="flavor-item" data-name="Frappé Cookies & Cream (Leche)" data-price="75">
                         <div class="flavor-name">Cookies & Cream</div>
                         <div class="flavor-description">Como beber una galleta con leche 🍪🥛 ¡ñam!</div>
+                        <button class="add-drink-to-cart-button">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item">
+                    <div class="flavor-item" data-name="Frappé Crema Irlandesa (Leche)" data-price="75">
                         <div class="flavor-name">Crema Irlandesa</div>
                         <div class="flavor-description">Cremosa y misteriosa 🍮✨ (sin alcohol)</div>
+                        <button class="add-drink-to-cart-button">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item">
+                    <div class="flavor-item" data-name="Frappé Matcha (Leche)" data-price="75">
                         <div class="flavor-name">Matcha</div>
                         <div class="flavor-description">Té verde japonés con energía kawaii 💚🌿 ¡pura paz zen!</div>
+                        <button class="add-drink-to-cart-button">Añadir 💖</button>
                     </div>
                 </div>
             </div>
             
-            <!-- Hot drinks section -->
+            <!-- Sección de bebidas calientes - AHORA CON SUS PROPIOS SABORES -->
             <div class="menu-section hot-drinks">
                 <div class="section-header">
                     <div class="section-title">☕🌸 Bebidas Calientitas - 12oz 🌸☕</div>
                     <div class="price-banner">$60 – Ideal para esos días de frío o lluvia ☔🌧️</div>
                     <div class="section-description">
-                        (Disponibles solo en sabores base leche)<br><br>
-                        ☁️ Tu bebida favorita calientita, reconfortante y adorable 💕
+                        ¡Calientitas, reconfortantes y adorables para abrazar tu día! 💕
+                    </div>
+                    <div class="click-legend">da click en los sabores para ver una imagen de la bebida</div>
+                </div>
+                
+                <div class="flavor-grid">
+                    <!-- Nuevo sabor: Chocolate Caliente -->
+                    <div class="flavor-item" data-name="Chocolate Caliente" data-price="60">
+                        <div class="flavor-name">Chocolate Caliente</div>
+                        <div class="flavor-description">El abrazo más dulce y cálido en una taza 🍫☕💖</div>
+                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    </div>
+                    
+                    <!-- Sabores base leche como bebidas calientes -->
+                    <div class="flavor-item" data-name="Taro Caliente" data-price="60">
+                        <div class="flavor-name">Taro Caliente</div>
+                        <div class="flavor-description">Cremoso y delicado, perfecto para el frío 🌰💜</div>
+                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    </div>
+                    
+                    <div class="flavor-item" data-name="Mazapán Caliente" data-price="60">
+                        <div class="flavor-name">Mazapán Caliente</div>
+                        <div class="flavor-description">Sabor a infancia mexicana, ahora calientito 🎠💕</div>
+                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    </div>
+                    
+                    <div class="flavor-item" data-name="Chai Caliente" data-price="60">
+                        <div class="flavor-name">Chai Caliente</div>
+                        <div class="flavor-description">Especiado y reconfortante, un clásico invernal ✨☕</div>
+                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    </div>
+                    
+                    <div class="flavor-item" data-name="Mocha Caliente" data-price="60">
+                        <div class="flavor-name">Mocha Caliente</div>
+                        <div class="flavor-description">La combinación perfecta de café y chocolate, caliente y delicioso ☕🍫</div>
+                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    </div>
+                    
+                    <div class="flavor-item" data-name="Cookies & Cream Caliente" data-price="60">
+                        <div class="flavor-name">Cookies & Cream Caliente</div>
+                        <div class="flavor-description">Como beber una galleta con leche, pero calientita 🍪🥛</div>
+                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    </div>
+                    
+                    <div class="flavor-item" data-name="Crema Irlandesa Caliente" data-price="60">
+                        <div class="flavor-name">Crema Irlandesa Caliente</div>
+                        <div class="flavor-description">Cremosa y misteriosa, para una tarde acogedora 🍮✨</div>
+                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    </div>
+                    
+                    <div class="flavor-item" data-name="Matcha Caliente" data-price="60">
+                        <div class="flavor-name">Matcha Caliente</div>
+                        <div class="flavor-description">Té verde japonés con energía zen, calientito y reconfortante 💚🌿</div>
+                        <button class="add-drink-to-cart-button">Añadir 💖</button>
                     </div>
                 </div>
-                <!-- Button to view hot drinks image -->
-                <button id="viewHotDrinksButton" class="hot-drinks-button">
-                    Ver Bebidas Calientes ☕💖
-                </button>
             </div>
 
             <!-- Decorative divider for the new section -->
@@ -1044,7 +1419,7 @@
                 <span class="emoji">🎉</span>
             </div>
 
-            <!-- New Promotions and News Section -->
+            <!-- Nueva Sección de Promociones y Novedades -->
             <div class="menu-section promotions-section">
                 <div class="section-header">
                     <div class="section-title">🌟 Novedades Kawaii y Promociones Exclusivas 🌟</div>
@@ -1053,12 +1428,15 @@
                     </div>
                 </div>
                 
-                <!-- Seasonal Frappe with ID for click event -->
-                <div class="promotion-item" id="fresasConCremaPromotion">
+                <!-- Frappé de Temporada con ID para el evento click -->
+                <!-- PRECIO ACTUALIZADO A $75 y texto del botón cambiado -->
+                <div class="promotion-item" id="fresasConCremaPromotion" data-name="Frappé Fresas con Crema (Temporada)" data-price="75">
                     <div class="promotion-item-title">🍓🥛 Frappé de Temporada: "Fresas con Crema" 🍓🥛</div>
                     <div class="promotion-item-description">
-                        ¡El clásico favorito de la abuela, pero en versión kawaii! Disfruta de la dulzura de la fresa natural combinada con la cremosidad más suave. ¡Un abrazo de fresas y amor en cada sorbo! Disponible solo por tiempo limitado. 💖✨
+                        ¡El clásico favorito de la abuela, pero en versión kawaii! Disfruta de la dulzura de la fresa natural combinada con la cremosidad más suave. ¡Un abrazo de fresas y amor en cada sorbo! Disponible solo por tiempo limitado.💖✨
                     </div>
+                    <!-- Se ha añadido un estilo inline para centrar el botón aquí -->
+                    <button class="add-drink-to-cart-button" style="margin-top: 15px; margin: 15px auto 0;">Añadir 💖</button>
                 </div>
 
                 <div class="promotion-item">
@@ -1067,11 +1445,9 @@
                         ¡Bienvenido a la familia Capibobba! Obtén un 10% de descuento en tu primer pedido usando el código: **KAWAII10** al hacer tu encargo por WhatsApp. 🥳
                     </div>
                 </div>
-
-                <!-- "Topping del Mes" has been removed here -->
             </div>
             
-            <!-- Toppings section -->
+            <!-- Sección de Toppings (now for display only, added via modal) -->
             <div class="menu-section toppings-section">
                 <div class="section-header">
                     <div class="section-title">🌈🧋 ¡Hazla tuya! Personaliza tu bebida 🧋🌈</div>
@@ -1079,51 +1455,88 @@
                         <span style="font-size: 24px; font-weight: 800;">💖 Toppings kawaii</span>
                         <span class="topping-price">+$10 cada uno</span>
                     </div>
+                    <div class="section-description">
+                        Selecciona estos toppings después de elegir tu bebida. ¡No se pueden añadir solos al carrito!
+                    </div>
                 </div>
                 
                 <div class="topping-item">
                     <div class="topping-name">💥 Perlas explosivas de frutos rojos</div>
                     <div class="topping-description">Dulces mini-explosiones de amor ❤️🫧</div>
+                    <!-- <button class="add-to-cart-button">Añadir 💖</button> --> <!-- Removed direct add -->
                 </div>
                 
                 <div class="topping-item">
                     <div class="topping-name">🍏 Perlas explosivas de manzana verde</div>
                     <div class="topping-description">¡Explosión y frescura en cada sorbo! 🍏✨</div>
+                    <!-- <button class="add-to-cart-button">Añadir 💖</button> --> <!-- Removed direct add -->
                 </div>
                 
                 <div class="topping-item">
                     <div class="topping-name">🤍 Perlas explosivas de litchi</div>
                     <div class="topping-description">Delicadas, frutales y muuuy adorables 🍡💖</div>
+                    <!-- <button class="add-to-cart-button">Añadir 💖</button> --> <!-- Removed direct add -->
                 </div>
                 
                 <div class="topping-item">
                     <div class="topping-name">🌈 Jelly arcoiris</div>
                     <div class="topping-description">Suavecitos, coloridos y súper divertidos 🐻🌈</div>
+                    <!-- <button class="add-to-cart-button">Añadir 💖</button> --> <!-- Removed direct add -->
                 </div>
             </div>
+
+            <!-- Decorative divider -->
+            <div class="kawaii-divider">
+                <span class="emoji">✨</span>
+                <span class="emoji">🛒</span>
+                <span class="emoji">✨</span>
+            </div>
+
+            <!-- --- Shopping Cart Section --- -->
+            <div class="menu-section shopping-cart-section">
+                <div class="section-header">
+                    <div class="section-title">💖 Tu Carrito Kawaii 💖</div>
+                </div>
+                <ul id="cartItemsList" class="cart-items-list">
+                    <!-- Cart items will be dynamically added here -->
+                    <li style="text-align: center; color: #6b7280;">¡Tu carrito está vacío, añade algo delicioso! 💖</li>
+                </ul>
+                <div id="cartTotal" class="cart-total">Total: $0</div>
+
+                <div class="cart-actions">
+                    <button id="clearCartButton" class="cart-action-button clear-cart">
+                        Vaciar Carrito 🗑️
+                    </button>
+                    <button id="orderWhatsAppButton" class="cart-action-button order-whatsapp-button">
+                        Pedir por WhatsApp 📱
+                    </button>
+                </div>
+            </div>
+            <!-- --- End Shopping Cart Section --- -->
             
-            <!-- How to order section -->
+            <!-- Sección de cómo ordenar (ahora con el número al final) -->
             <div class="order-section">
                 <div class="order-content">
                     <div class="order-title">✨🧸 CÓMO ORDENAR TU BEBIDA KAWAII 🧸✨</div>
                     
-                    <div class="whatsapp-section">
-                        <div class="whatsapp-text">Mándanos WhatsApp al</div>
-                        <a href="https://wa.me/5217712794633" class="whatsapp-link">
-                            <div class="whatsapp-number">
-                                7712794633
-                                <!-- New legend below the WhatsApp number -->
-                                <span class="whatsapp-click-legend">da click para mandarnos mensaje YA!</span>
-                            </div>
-                        </a>
-                    </div>
-                    
                     <div class="order-steps">
-                        <div class="order-step">1. Elige tu base: Agua o Leche</div>
-                        <div class="order-step">2. Escoge tu sabor favorito 🍓🍫🍵</div>
-                        <div class="order-step">3. Agrega tus toppings kawaii 🌈🧋</div>
+                        <div class="order-step">1. Elige tu bebida (frappé o caliente) y agrégala al carrito.</div>
+                        <div class="order-step">2. Si deseas, selecciona toppings para esa bebida en la ventana emergente.</div>
+                        <div class="order-step">3. Repite para cada bebida que quieras.</div>
                         <div class="order-step">
-                            4. Recibe tu bebida y toma muchas fotos! Y etiqueta a <a href="https://www.facebook.com/share/195krrAWVG/" target="_blank" style="color: inherit; text-decoration: underline;">@Capibobba</a>, mándanos tu post y gana un descuento en tu siguiente pedido. 📸💕
+                            4. Cuando estés listo, haz clic en "Pedir por WhatsApp" para enviar tu orden automáticamente.
+                        </div>
+                        <div class="order-step">
+                            5. Recibe tu bebida y toma muchas fotos! Y etiqueta a <a href="https://www.facebook.com/share/195krrAWVG/" target="_blank" style="color: inherit; text-decoration: underline;">@Capibobba</a>, mándanos tu post y gana un descuento en tu siguiente pedido. 📸💕
+                        </div>
+                    </div>
+
+                    <!-- Sección de WhatsApp (movida al final de las instrucciones) -->
+                    <div class="whatsapp-section">
+                        <div class="whatsapp-text">Nuestro número de contacto:</div>
+                        <div class="whatsapp-number">
+                            7712794633
+                            <span class="whatsapp-click-legend">¡También puedes pedir dando click en "Pedir por WhatsApp" arriba!</span>
                         </div>
                     </div>
                 </div>
@@ -1143,7 +1556,7 @@
         </div>
     </div>
 
-    <!-- Flavor Image Viewer (Overlay) -->
+    <!-- Visor de Imágenes de Sabor (Overlay) -->
     <div id="flavorImageOverlay" class="flavor-image-overlay">
         <div class="flavor-image-content">
             <img id="flavorImage" src="" alt="Sabor de Frappé">
@@ -1151,22 +1564,35 @@
         </div>
     </div>
 
-    <!-- Hot Drinks Image Viewer (New Overlay) -->
-    <div id="hotDrinksImageOverlay" class="hot-drinks-image-overlay">
-        <div class="hot-drinks-image-content">
-            <!-- Image of your hot drinks. IMPORTANT: Change this! -->
-            <img id="hotDrinksImage" src="https://i.imgur.com/EtT387b.jpeg" alt="Bebidas Calientes" 
-                 onerror="this.onerror=null; this.src='https://placehold.co/300x300/FF69B4/FFF?text=%E2%98%95'; console.error('Error al cargar la imagen de bebidas calientes. URL: ' + this.src);">
-            <div class="hot-drinks-name">Nuestras Bebidas Calientes</div>
+    <!-- The old hot drinks image overlay is no longer needed, keeping its ID for historical reference but hiding it -->
+    <div id="hotDrinksImageOverlay" style="display: none;"></div>
+
+    <!-- Topping Selection Modal (NEW) -->
+    <div id="toppingSelectionOverlay" class="topping-selection-overlay">
+        <div class="topping-selection-content">
+            <div class="section-header">
+                <div class="section-title">¡Personaliza tu <span id="toppingDrinkName" class="current-drink-name-modal"></span>!</div>
+                <p>Selecciona los toppings que deseas añadir a esta bebida:</p>
+            </div>
+            <div id="toppingsModalGrid" class="toppings-modal-grid">
+                <!-- Toppings will be dynamically loaded here by JS -->
+            </div>
+            <div class="topping-selection-actions">
+                <button id="confirmToppingsButton">Confirmar Selección ✅</button>
+                <button id="noToppingsButton">Sin Toppings 🚫</button>
+                <button id="cancelToppingsButton">Cancelar ❌</button>
+            </div>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // --- Logic for light/dark mode logo change (via CSS) ---
-            // #logoLight and #logoDark elements are managed by CSS, not directly by JavaScript.
-            // This function only ensures that the initial logo state is correct when the page loads
-            // in case the browser does not immediately apply prefers-color-scheme.
+            // --- Helper to generate unique IDs ---
+            function generateUniqueId() {
+                return 'item-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+            }
+
+            // --- Theme Logo Logic ---
             function setInitialLogoTheme() {
                 const logoLight = document.getElementById('logoLight');
                 const logoDark = document.getElementById('logoDark');
@@ -1180,26 +1606,21 @@
                     logoDark.style.opacity = '0';
                 }
             }
-            setInitialLogoTheme(); // Initial call on load
+            setInitialLogoTheme();
 
-            // --- Existing logic for flavor and hot drinks images ---
+            // --- Image Viewer Logic ---
             const flavorItems = document.querySelectorAll('.flavor-item');
             const flavorImageOverlay = document.getElementById('flavorImageOverlay');
             const flavorImage = document.getElementById('flavorImage');
             const flavorImageName = document.getElementById('flavorImageName');
-
-            const viewHotDrinksButton = document.getElementById('viewHotDrinksButton');
-            const hotDrinksImageOverlay = document.getElementById('hotDrinksImageOverlay');
-            const hotDrinksImage = document.getElementById('hotDrinksImage');
             
-            // Define the URL for the hot drinks image.
-            const hotDrinksImageUrl = "https://i.imgur.com/EtT387b.jpeg";
+            // Define all flavor images, including hot drinks. Using a generic hot drinks image for now.
+            const genericHotDrinksImage = "https://i.imgur.com/EtT387b.jpeg";
 
-            // Diccionario de URLs de imágenes para cada sabor
             const flavorImages = {
                 "Litchi": "https://i.imgur.com/Pu7yFxo.jpeg", 
                 "Fresa": "https://i.imgur.com/UMxtB2o.jpeg",
-                "Blueberry": "https://i.imgur.com/XMfisGw.jpeg", /* UPDATED IMAGE URL HERE */
+                "Blueberry": "https://i.imgur.com/XMfisGw.jpeg",
                 "Mango": "https://i.imgur.com/VGEGSkT.jpeg",
                 "Piña colada": "https://i.imgur.com/U6LUnZt.jpeg",
                 "Maracuyá": "https://i.imgur.com/hrULvVp.jpeg",
@@ -1210,46 +1631,384 @@
                 "Cookies & Cream": "https://i.imgur.com/0e402nf.jpeg",
                 "Crema Irlandesa": "https://i.imgur.com/fJocyJw.jpeg",
                 "Matcha": "https://i.imgur.com/6QIRLrZ.jpeg",
-                // Add more flavors with their images here
+                // New images for hot drinks (all point to the generic hot drinks image for now)
+                "Chocolate Caliente": genericHotDrinksImage,
+                "Taro Caliente": genericHotDrinksImage,
+                "Mazapán Caliente": genericHotDrinksImage,
+                "Chai Caliente": genericHotDrinksImage,
+                "Mocha Caliente": genericHotDrinksImage,
+                "Cookies & Cream Caliente": genericHotDrinksImage,
+                "Crema Irlandesa Caliente": genericHotDrinksImage,
+                "Matcha Caliente": genericHotDrinksImage,
+                // Image for seasonal promotion
+                "Frappé Fresas con Crema (Temporada)": "https://i.imgur.com/m2Fc29F.jpeg"
             };
 
-            // Add click event to each flavor item
             flavorItems.forEach(item => {
-                item.addEventListener('click', function() {
+                // Keep the click for image display
+                item.addEventListener('click', function(event) {
+                    // Prevent button click from triggering image overlay if clicked directly on button
+                    if (event.target.tagName === 'BUTTON') {
+                        return; 
+                    }
                     const flavorName = this.querySelector('.flavor-name').textContent;
+                    // Use a fallback placeholder if the image URL is not found
                     const imageUrl = flavorImages[flavorName] || 'https://placehold.co/300x300/CCCCCC/FFF?text=Imagen+no+disponible'; 
-
                     flavorImage.src = imageUrl;
                     flavorImageName.textContent = flavorName;
                     flavorImageOverlay.classList.add('show'); 
                 });
             });
 
-            // --- Logic for the Strawberry with Cream promotion ---
+            flavorImageOverlay.addEventListener('click', function() {
+                flavorImageOverlay.classList.remove('show'); 
+            });
+
+            // --- Promotions Logic (Updated to use add-drink-to-cart-button) ---
             const fresasConCremaPromotion = document.getElementById('fresasConCremaPromotion');
-            if (fresasConCremaPromotion) { // Ensure the element exists before adding the listener
-                fresasConCremaPromotion.addEventListener('click', function() {
-                    flavorImage.src = "https://i.imgur.com/m2Fc29F.jpeg";
+            if (fresasConCremaPromotion) {
+                // Keep image display on promotion item click (not the button)
+                fresasConCremaPromotion.addEventListener('click', function(event) {
+                    if (event.target.tagName === 'BUTTON') {
+                        return;
+                    }
+                    // Specific image for the seasonal frappé
+                    flavorImage.src = flavorImages["Frappé Fresas con Crema (Temporada)"] || 'https://placehold.co/300x300/CCCCCC/FFF?text=Imagen+no+disponible';
                     flavorImageName.textContent = "Frappé de Temporada: Fresas con Crema";
                     flavorImageOverlay.classList.add('show');
                 });
             }
 
-            // Add click event to the hot drinks button
-            viewHotDrinksButton.addEventListener('click', function() {
-                hotDrinksImage.src = hotDrinksImageUrl; 
-                hotDrinksImageOverlay.classList.add('show'); 
+            // --- Shopping Cart & Topping Selection Logic ---
+            let cart = []; // Stores selected items: { id, name, basePrice, selectedToppings: [{ name, price }] }
+            let currentDrinkBeingCustomized = null; // Holds the drink object while toppings are being selected
+
+            const cartItemsList = document.getElementById('cartItemsList');
+            const cartTotalElement = document.getElementById('cartTotal');
+            const clearCartButton = document.getElementById('clearCartButton');
+            const orderWhatsAppButton = document.getElementById('orderWhatsAppButton');
+            // Select ALL buttons with this class, including new hot drink buttons
+            const addDrinkToCartButtons = document.querySelectorAll('.add-drink-to-cart-button');
+
+            // Topping Modal Elements
+            const toppingSelectionOverlay = document.getElementById('toppingSelectionOverlay');
+            const toppingDrinkNameElement = document.getElementById('toppingDrinkName');
+            const toppingsModalGrid = document.getElementById('toppingsModalGrid');
+            const confirmToppingsButton = document.getElementById('confirmToppingsButton');
+            const noToppingsButton = document.getElementById('noToppingsButton');
+            const cancelToppingsButton = document.getElementById('cancelToppingsButton');
+
+            // Define available toppings (matching data from HTML, but easier to manage here)
+            const availableToppings = [
+                { name: "Perlas explosivas de frutos rojos", price: 10 },
+                { name: "Perlas explosivas de manzana verde", price: 10 },
+                { name: "Perlas explosivas de litchi", price: 10 },
+                { name: "Jelly arcoiris", price: 10 }
+            ];
+
+            // Function to open the topping selection modal
+            function openToppingSelectionModal(drinkName, drinkPrice) {
+                currentDrinkBeingCustomized = {
+                    id: generateUniqueId(), // Assign a temporary ID
+                    name: drinkName,
+                    basePrice: drinkPrice,
+                    selectedToppings: []
+                };
+
+                toppingDrinkNameElement.textContent = drinkName;
+                toppingsModalGrid.innerHTML = ''; // Clear previous toppings
+
+                // Populate toppings in the modal
+                availableToppings.forEach(topping => {
+                    const toppingItemDiv = document.createElement('div');
+                    toppingItemDiv.className = 'topping-modal-item';
+                    toppingItemDiv.dataset.name = topping.name;
+                    toppingItemDiv.dataset.price = topping.price;
+
+                    const isSelected = currentDrinkBeingCustomized.selectedToppings.some(t => t.name === topping.name);
+                    if (isSelected) {
+                        toppingItemDiv.classList.add('selected');
+                    }
+
+                    toppingItemDiv.innerHTML = `
+                        <span class="topping-modal-name">${topping.name}</span>
+                        <span class="topping-modal-price">+$${topping.price}</span>
+                        <button class="add-topping-button ${isSelected ? 'remove' : ''}" 
+                                data-action="${isSelected ? 'remove' : 'add'}">
+                            ${isSelected ? 'Quitar ➖' : 'Añadir ✨'}
+                        </button>
+                    `;
+                    toppingsModalGrid.appendChild(toppingItemDiv);
+                });
+
+                // Attach event listeners for topping buttons in the modal
+                toppingsModalGrid.querySelectorAll('.add-topping-button').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const toppingItemDiv = this.closest('.topping-modal-item');
+                        const toppingName = toppingItemDiv.dataset.name;
+                        const toppingPrice = parseFloat(toppingItemDiv.dataset.price);
+
+                        const action = this.dataset.action;
+
+                        if (action === 'add') {
+                            currentDrinkBeingCustomized.selectedToppings.push({ name: toppingName, price: toppingPrice });
+                            toppingItemDiv.classList.add('selected');
+                            this.textContent = 'Quitar ➖';
+                            this.dataset.action = 'remove';
+                            this.classList.add('remove');
+                        } else {
+                            currentDrinkBeingCustomized.selectedToppings = currentDrinkBeingCustomized.selectedToppings.filter(t => t.name !== toppingName);
+                            toppingItemDiv.classList.remove('selected');
+                            this.textContent = 'Añadir ✨';
+                            this.dataset.action = 'add';
+                            this.classList.remove('remove');
+                        }
+                    });
+                });
+
+                toppingSelectionOverlay.classList.add('show');
+            }
+
+            // Function to add the customized drink to the main cart
+            function addCustomizedDrinkToCart() {
+                if (currentDrinkBeingCustomized) {
+                    // Calculate total price for this specific drink instance
+                    let itemTotalPrice = currentDrinkBeingCustomized.basePrice;
+                    currentDrinkBeingCustomized.selectedToppings.forEach(t => {
+                        itemTotalPrice += t.price;
+                    });
+                    currentDrinkBeingCustomized.itemTotalPrice = itemTotalPrice;
+
+                    // Add to the main cart
+                    cart.push({ ...currentDrinkBeingCustomized }); // Push a copy
+                    currentDrinkBeingCustomized = null; // Clear the temporary drink
+                    toppingSelectionOverlay.classList.remove('show'); // Hide modal
+                    updateCartDisplay();
+                }
+            }
+
+            // Event Listeners for "Add Drink to Cart" buttons
+            addDrinkToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemElement = this.closest('[data-name][data-price]');
+                    const name = itemElement.dataset.name;
+                    const price = parseFloat(itemElement.dataset.price);
+                    openToppingSelectionModal(name, price);
+                });
             });
 
-            // Close flavor overlay on click anywhere on it
-            flavorImageOverlay.addEventListener('click', function() {
-                flavorImageOverlay.classList.remove('show'); 
+            // Event Listeners for Topping Modal Buttons
+            confirmToppingsButton.addEventListener('click', addCustomizedDrinkToCart);
+            noToppingsButton.addEventListener('click', function() {
+                // If "No Toppings" is clicked, ensure selectedToppings is empty and add to cart
+                if (currentDrinkBeingCustomized) {
+                    currentDrinkBeingCustomized.selectedToppings = [];
+                    addCustomizedDrinkToCart();
+                }
+            });
+            cancelToppingsButton.addEventListener('click', function() {
+                currentDrinkBeingCustomized = null; // Discard current selection
+                toppingSelectionOverlay.classList.remove('show'); // Hide modal
             });
 
-            // Close hot drinks overlay on click anywhere on it
-            hotDrinksImageOverlay.addEventListener('click', function() {
-                hotDrinksImageOverlay.classList.remove('show'); 
-            });
+            // Function to clear the entire cart
+            function clearCart() {
+                console.log("clearCart() function called."); // Debugging
+                console.log("Cart before clearing:", JSON.stringify(cart)); // Debugging: show cart state before
+                cart = []; // Clears the cart array
+                console.log("Cart after clearing:", JSON.stringify(cart)); // Debugging: show cart state after
+                updateCartDisplay(); // Updates the UI
+                console.log("Cart display updated after clearing."); // Debugging
+            }
+
+
+            // Function to update the cart display in the HTML
+            function updateCartDisplay() {
+                cartItemsList.innerHTML = ''; // Clear current display
+                let total = 0;
+
+                // Group identical items for display
+                const groupedCart = {};
+                cart.forEach(item => {
+                    // Create a unique key for grouping (drink name + sorted topping names)
+                    const toppingNames = item.selectedToppings.map(t => t.name).sort().join(', ');
+                    const key = `${item.name}|${toppingNames}`;
+
+                    if (groupedCart[key]) {
+                        groupedCart[key].quantity++;
+                    } else {
+                        groupedCart[key] = {
+                            // Only copy necessary display properties for the grouped item
+                            name: item.name,
+                            selectedToppings: item.selectedToppings,
+                            quantity: 1,
+                            // Recalculate total price for this specific instance (base + toppings)
+                            totalItemPrice: item.basePrice + item.selectedToppings.reduce((sum, t) => sum + t.price, 0),
+                            // Store the original ID to allow removing one instance at a time
+                            originalIds: [item.id]
+                        };
+                    }
+                });
+
+                const sortedGroupedItems = Object.values(groupedCart).sort((a, b) => a.name.localeCompare(b.name));
+
+                if (sortedGroupedItems.length === 0) {
+                    cartItemsList.innerHTML = '<li style="text-align: center; color: #6b7280;">¡Tu carrito está vacío, añade algo delicioso! 💖</li>';
+                } else {
+                    sortedGroupedItems.forEach(item => {
+                        const li = document.createElement('li');
+                        li.className = 'cart-item';
+
+                        let toppingsText = '';
+                        if (item.selectedToppings && item.selectedToppings.length > 0) {
+                            toppingsText = `(+ ${item.selectedToppings.map(t => t.name).join(', ')})`;
+                        }
+
+                        li.innerHTML = `
+                            <div class="item-main-info">
+                                <span class="item-quantity">${item.quantity}x</span> 
+                                <span class="item-name">${item.name}</span>
+                            </div>
+                            <div class="item-details">
+                                <span class="item-toppings">${toppingsText}</span>
+                                <span class="item-price">$${item.totalItemPrice * item.quantity}</span>
+                                <button class="remove-item-button" data-key="${item.name}|${item.selectedToppings.map(t => t.name).sort().join(', ')}">➖</button>
+                            </div>
+                        `;
+                        // The data-key refers to the grouped key, which will allow us to find the original item to remove
+                        cartItemsList.appendChild(li);
+                        total += item.totalItemPrice * item.quantity;
+                    });
+                }
+
+                cartTotalElement.textContent = `Total: $${total}`;
+
+                // Re-attach event listeners for dynamically created remove buttons
+                cartItemsList.querySelectorAll('.remove-item-button').forEach(button => {
+                    button.addEventListener('click', (event) => {
+                        const itemKeyToRemove = event.target.dataset.key; // Get the unique key for the grouped item
+                        
+                        // Find the corresponding item in the original cart array and remove ONE instance
+                        // We need to match by name and toppings to remove one instance of the displayed grouped item
+                        const [itemName, toppingNamesString] = itemKeyToRemove.split('|');
+                        const toppingsToMatch = toppingNamesString.split(', ').filter(Boolean); // Handle empty topping string
+
+                        const indexToRemove = cart.findIndex(cartItem => 
+                            cartItem.name === itemName &&
+                            cartItem.selectedToppings.length === toppingsToMatch.length &&
+                            // Check if all selected toppings match
+                            cartItem.selectedToppings.every(t => toppingsToMatch.includes(t.name)) &&
+                            // And importantly, that all toppings to match are present in the item's toppings
+                            toppingsToMatch.every(tName => cartItem.selectedToppings.some(st => st.name === tName))
+                        );
+
+                        if (indexToRemove > -1) {
+                            cart.splice(indexToRemove, 1);
+                        }
+                        updateCartDisplay();
+                    });
+                });
+            }
+
+            // Function to generate the WhatsApp message
+            function generateWhatsAppMessage() {
+                console.log("Attempting to generate WhatsApp message...");
+
+                if (cart.length === 0) {
+                    orderWhatsAppButton.textContent = "¡Carrito Vacío! Añade algo 🚫";
+                    orderWhatsAppButton.style.background = "#FF6347";
+                    setTimeout(() => {
+                        orderWhatsAppButton.textContent = "Pedir por WhatsApp 📱";
+                        orderWhatsAppButton.style.background = "linear-gradient(45deg, #25D366, #128C7E)";
+                    }, 2000);
+                    console.warn("Cart is empty. Cannot generate WhatsApp message.");
+                    return;
+                }
+
+                let message = "¡Hola! Me gustaría hacer el siguiente pedido de Capibobba:\n\n";
+                let finalTotal = 0;
+
+                // Group items for the WhatsApp message for clarity
+                const groupedForWhatsApp = {};
+                cart.forEach(item => {
+                    const toppingNames = item.selectedToppings.map(t => t.name).sort().join(', ');
+                    const key = `${item.name}|${toppingNames}`;
+
+                    if (groupedForWhatsApp[key]) {
+                        groupedForWhatsApp[key].quantity++;
+                        groupedForWhatsApp[key].totalPricePerItem += item.basePrice + item.selectedToppings.reduce((sum, t) => sum + t.price, 0);
+                    } else {
+                        groupedForWhatsApp[key] = {
+                            name: item.name,
+                            basePrice: item.basePrice,
+                            selectedToppings: item.selectedToppings,
+                            quantity: 1,
+                            totalPricePerItem: item.basePrice + item.selectedToppings.reduce((sum, t) => sum + t.price, 0)
+                        };
+                    }
+                });
+
+                let itemNumber = 1;
+                Object.values(groupedForWhatsApp).forEach(item => {
+                    let toppingsDetail = '';
+                    if (item.selectedToppings && item.selectedToppings.length > 0) {
+                        toppingsDetail = ` con ${item.selectedToppings.map(t => t.name).join(', ')}`;
+                    }
+                    message += `${itemNumber}. ${item.quantity}x ${item.name}${toppingsDetail} ($${item.totalPricePerItem * item.quantity})\n`;
+                    finalTotal += item.totalPricePerItem * item.quantity;
+                    itemNumber++;
+                });
+
+                message += `\nTotal del pedido: $${finalTotal}`;
+                message += `\n\n¡Estoy emocionado/a por mis bebidas kawaii! 💖`;
+                // Removed the "If some milk-based drink is 'hot', you can specify it here" instruction
+                // as now hot drinks have their own explicit names.
+
+                const whatsappNumber = "5217712794633";
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+                console.log("WhatsApp URL to open:", whatsappUrl);
+
+                // Attempt to open the window
+                const newWindow = window.open(whatsappUrl, '_blank');
+
+                // Check if the window was blocked by a pop-up blocker
+                if (newWindow === null || typeof newWindow === 'undefined' || newWindow.closed) {
+                    console.error("Popup blocked or window could not be opened.");
+                    // Provide visual feedback to the user
+                    orderWhatsAppButton.textContent = "Pop-up bloqueado. ¡Revisa tu navegador! ⚠️";
+                    orderWhatsAppButton.style.background = "#FF6347"; // Red color for error
+                    setTimeout(() => {
+                        orderWhatsAppButton.textContent = "Pedir por WhatsApp 📱";
+                        orderWhatsAppButton.style.background = "linear-gradient(45deg, #25D366, #128C7E)"; // Revert to green
+                    }, 4000); // Give user more time to see the message
+                } else {
+                    console.log("WhatsApp window opened successfully.");
+                }
+            }
+
+            // --- Corrected Event Listener Attachments ---
+            // Check if clearCartButton is found, and then attach listener
+            if (clearCartButton) {
+                clearCartButton.addEventListener('click', function() {
+                    console.log("Clear Cart button clicked."); // More specific debug for click
+                    clearCart();
+                });
+            } else {
+                console.error("Error: clearCartButton not found!");
+            }
+
+            // Check if orderWhatsAppButton is found, and then attach listener
+            if (orderWhatsAppButton) {
+                orderWhatsAppButton.addEventListener('click', generateWhatsAppMessage);
+            } else {
+                console.error("Error: orderWhatsAppButton not found!");
+            }
+            // --- End Corrected Event Listener Attachments ---
+
+            // Initial display update when page loads
+            updateCartDisplay();
         });
     </script>
 </body>
