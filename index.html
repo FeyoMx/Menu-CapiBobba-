@@ -1290,6 +1290,13 @@
                         <div class="flavor-description">Ácida y divertida, perfecta para los más atrevidos 💛✨</div>
                         <button class="add-drink-to-cart-button">Añadir 💖</button>
                     </div>
+
+                    <!-- Nuevo sabor: Guanábana -->
+                    <div class="flavor-item" data-name="Frappé Guanábana (Agua)" data-price="75">
+                        <div class="flavor-name">Guanábana</div>
+                        <div class="flavor-description">Exótica y refrescante, con un dulzor suave y cremoso 💚✨</div>
+                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    </div>
                 </div>
             </section>
             
@@ -1311,6 +1318,13 @@
                 </div>
                 
                 <div class="flavor-grid">
+                    <!-- Nuevo sabor: Chocolate Mexicano (MOVido al principio) -->
+                    <div class="flavor-item" data-name="Frappé Chocolate Mexicano (Leche)" data-price="75">
+                        <div class="flavor-name">Chocolate Mexicano</div>
+                        <div class="flavor-description">El toque tradicional de cacao con canela y un secreto de la abuela 🍫🌶️✨</div>
+                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    </div>
+
                     <div class="flavor-item" data-name="Frappé Taro (Leche)" data-price="75">
                         <div class="flavor-name">Taro</div>
                         <div class="flavor-description">Cremoso y delicado  🌰💜 (¡tu nuevo favorito si no lo conoces!)</div>
@@ -1594,12 +1608,12 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // --- Helper to generate unique IDs ---
+            // Helper function to generate unique IDs
             function generateUniqueId() {
                 return 'item-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
             }
 
-            // --- Theme Logo Logic ---
+            // Logic for theme-based logo display
             function setInitialLogoTheme() {
                 const logoLight = document.getElementById('logoLight');
                 const logoDark = document.getElementById('logoDark');
@@ -1615,13 +1629,13 @@
             }
             setInitialLogoTheme();
 
-            // --- Image Viewer Logic ---
+            // Image viewer logic for flavor items
             const flavorItems = document.querySelectorAll('.flavor-item');
             const flavorImageOverlay = document.getElementById('flavorImageOverlay');
             const flavorImage = document.getElementById('flavorImage');
             const flavorImageName = document.getElementById('flavorImageName');
             
-            // Define all flavor images, including hot drinks. Using a generic hot drinks image for now.
+            // Define all flavor images. Using a generic hot drinks image for now.
             const genericHotDrinksImage = "https://i.imgur.com/EtT387b.jpeg";
 
             const flavorImages = {
@@ -1631,6 +1645,8 @@
                 "Mango": "https://i.imgur.com/VGEGSkT.jpeg",
                 "Piña colada": "https://i.imgur.com/U6LUnZt.jpeg",
                 "Maracuyá": "https://i.imgur.com/hrULvVp.jpeg",
+                "Guanábana": "https://placehold.co/300x300/E0F2FE/555555?text=Guanabana", // Placeholder for Guanábana
+                "Chocolate Mexicano": "https://placehold.co/300x300/8B4513/FFFFFF?text=Choco+Mexicano", // Placeholder for Chocolate Mexicano
                 "Taro": "https://i.imgur.com/lVQgAzR.jpeg", 
                 "Mazapán": "https://i.imgur.com/jrELu9J.jpeg",
                 "Chai": "https://i.imgur.com/wRIJ7AO.jpeg", 
@@ -1638,7 +1654,7 @@
                 "Cookies & Cream": "https://i.imgur.com/0e402nf.jpeg",
                 "Crema Irlandesa": "https://i.imgur.com/fJocyJw.jpeg",
                 "Matcha": "https://i.imgur.com/6QIRLrZ.jpeg",
-                // New images for hot drinks (all point to the generic hot drinks image for now)
+                // Images for hot drinks (all point to the generic hot drinks image for now)
                 "Chocolate Caliente": genericHotDrinksImage,
                 "Taro Caliente": genericHotDrinksImage,
                 "Mazapán Caliente": genericHotDrinksImage,
@@ -1660,14 +1676,13 @@
                     }
                     const flavorName = this.querySelector('.flavor-name').textContent;
                     // Use a fallback placeholder if the image URL is not found
-                    const imageUrl = flavorImages[flavorName] || 'https://placehold.co/300x300/CCCCCC/FFF?text=Imagen+no+disponible'; 
+                    const imageUrl = flavorImages[flavorName] || 'https://placehold.co/300x300/CCCCCC/FFF?text=Image+not+available'; 
                     flavorImage.src = imageUrl;
-                    // --- Sugerencia 4: Manejo de errores de imagen más robusto para flavorImage ---
+                    // Robust image error handling for flavorImage
                     flavorImage.onerror = function() { 
-                        this.src = 'https://placehold.co/300x300/FF6347/FFFFFF?text=Error+al+cargar'; // Red placeholder
-                        this.alt = 'Error al cargar imagen'; // Update alt text
+                        this.src = 'https://placehold.co/300x300/FF6347/FFFFFF?text=Error+Loading'; // Red placeholder
+                        this.alt = 'Error loading image'; // Update alt text
                     };
-                    // --- Fin Sugerencia 4 ---
                     flavorImageName.textContent = flavorName;
                     flavorImageOverlay.classList.add('show'); 
                 });
@@ -1677,7 +1692,7 @@
                 flavorImageOverlay.classList.remove('show'); 
             });
 
-            // --- Promotions Logic (Updated to use add-drink-to-cart-button) ---
+            // Promotions Logic (Updated to use add-drink-to-cart-button)
             const fresasConCremaPromotion = document.getElementById('fresasConCremaPromotion');
             if (fresasConCremaPromotion) {
                 // Keep image display on promotion item click (not the button)
@@ -1686,22 +1701,21 @@
                         return;
                     }
                     // Specific image for the seasonal frappé
-                    flavorImage.src = flavorImages["Frappé Fresas con Crema (Temporada)"] || 'https://placehold.co/300x300/CCCCCC/FFF?text=Imagen+no+disponible';
-                    // --- Sugerencia 4: Manejo de errores de imagen más robusto para flavorImage ---
+                    flavorImage.src = flavorImages["Frappé Fresas con Crema (Temporada)"] || 'https://placehold.co/300x300/CCCCCC/FFF?text=Image+not+available';
+                    // Robust image error handling for flavorImage
                     flavorImage.onerror = function() { 
-                        this.src = 'https://placehold.co/300x300/FF6347/FFFFFF?text=Error+al+cargar'; // Red placeholder
-                        this.alt = 'Error al cargar imagen'; // Update alt text
+                        this.src = 'https://placehold.co/300x300/FF6347/FFFFFF?text=Error+Loading'; // Red placeholder
+                        this.alt = 'Error loading image'; // Update alt text
                     };
-                    // --- Fin Sugerencia 4 ---
                     flavorImageName.textContent = "Frappé de Temporada: Fresas con Crema";
                     flavorImageOverlay.classList.add('show');
                 });
             }
 
-            // --- Shopping Cart & Topping Selection Logic ---
+            // Shopping Cart & Topping Selection Logic
             let cart = []; // Stores selected items: { id, name, basePrice, selectedToppings: [{ name, price }] }
             let currentDrinkBeingCustomized = null; // Holds the drink object while toppings are being selected
-            let lastClickedAddButton = null; // --- Sugerencia 2: Para referencia al botón que fue clicado ---
+            let lastClickedAddButton = null; // Reference to the button that was clicked
 
             const cartItemsList = document.getElementById('cartItemsList');
             const cartTotalElement = document.getElementById('cartTotal');
@@ -1727,14 +1741,14 @@
             ];
 
             // Function to open the topping selection modal
-            function openToppingSelectionModal(drinkName, drinkPrice, clickedButton) { // --- Sugerencia 2: Añadido clickedButton ---
+            function openToppingSelectionModal(drinkName, drinkPrice, clickedButton) {
                 currentDrinkBeingCustomized = {
                     id: generateUniqueId(), // Assign a temporary ID
                     name: drinkName,
                     basePrice: drinkPrice,
                     selectedToppings: []
                 };
-                lastClickedAddButton = clickedButton; // --- Sugerencia 2: Guardar referencia al botón ---
+                lastClickedAddButton = clickedButton; // Store reference to the button
 
                 toppingDrinkNameElement.textContent = drinkName;
                 toppingsModalGrid.innerHTML = ''; // Clear previous toppings
@@ -1806,24 +1820,21 @@
                     toppingSelectionOverlay.classList.remove('show'); // Hide modal
                     updateCartDisplay();
 
-                    // --- Sugerencia 2: Feedback visual en el botón de añadir ---
+                    // Visual feedback on the add button
                     if (lastClickedAddButton) {
-                        const originalText = 'Añadir 💖'; // Define el texto original
-                        const originalBackground = lastClickedAddButton.style.background || ''; // Guarda el background original
+                        const originalText = 'Añadir 💖';
+                        const originalBackground = lastClickedAddButton.style.background || '';
 
                         lastClickedAddButton.textContent = '¡Añadido! ✅';
-                        lastClickedAddButton.classList.add('added-feedback'); // Aplica la clase de feedback
-                        // No es necesario modificar el background directamente aquí si ya está manejado por la clase `added-feedback` y su `transition: none;`
-
+                        lastClickedAddButton.classList.add('added-feedback');
+                        
                         setTimeout(() => {
                             lastClickedAddButton.textContent = originalText;
-                            lastClickedAddButton.classList.remove('added-feedback'); // Remueve la clase
-                            // Para asegurarse de que el gradiente original se restaure después de quitar la clase
+                            lastClickedAddButton.classList.remove('added-feedback');
                             lastClickedAddButton.style.background = originalBackground; 
-                        }, 1000); // Muestra el feedback por 1 segundo
-                        lastClickedAddButton = null; // Limpia la referencia
+                        }, 1000);
+                        lastClickedAddButton = null; 
                     }
-                    // --- Fin Sugerencia 2 ---
                 }
             }
 
@@ -1833,7 +1844,7 @@
                     const itemElement = this.closest('[data-name][data-price]');
                     const name = itemElement.dataset.name;
                     const price = parseFloat(itemElement.dataset.price);
-                    openToppingSelectionModal(name, price, this); // --- Sugerencia 2: Pasa el botón clickeado ---
+                    openToppingSelectionModal(name, price, this); // Pass the clicked button
                 });
             });
 
@@ -1849,7 +1860,7 @@
             cancelToppingsButton.addEventListener('click', function() {
                 currentDrinkBeingCustomized = null; // Discard current selection
                 toppingSelectionOverlay.classList.remove('show'); // Hide modal
-                if (lastClickedAddButton) { // --- Sugerencia 2: Resetear el botón si se cancela ---
+                if (lastClickedAddButton) { // Reset the button if canceled
                     lastClickedAddButton.textContent = 'Añadir 💖';
                     lastClickedAddButton.classList.remove('added-feedback');
                     lastClickedAddButton.style.background = ''; // Revert to original background (from CSS)
@@ -1859,21 +1870,20 @@
 
             // Function to clear the entire cart
             function clearCart() {
-                console.log("clearCart() function called."); // Debugging
-                console.log("Cart before clearing:", JSON.stringify(cart)); // Debugging: show cart state before
+                console.log("clearCart() function called.");
+                console.log("Cart before clearing:", JSON.stringify(cart));
                 cart = []; // Clears the cart array
-                console.log("Cart after clearing:", JSON.stringify(cart)); // Debugging: show cart state after
+                console.log("Cart after clearing:", JSON.stringify(cart));
                 updateCartDisplay(); // Updates the UI
-                console.log("Cart display updated after clearing."); // Debugging
+                console.log("Cart display updated after clearing.");
 
-                // --- INICIO DE LA CORRECCIÓN DEL BUG: Resetear todos los botones de añadir ---
+                // Reset all add buttons
                 addDrinkToCartButtons.forEach(button => {
                     button.textContent = 'Añadir 💖';
                     button.classList.remove('added-feedback');
-                    button.style.background = ''; // Vuelve al background definido en CSS
+                    button.style.background = ''; // Revert to original background defined in CSS
                 });
-                lastClickedAddButton = null; // Asegurarse de que la referencia también se limpie
-                // --- FIN DE LA CORRECCIÓN DEL BUG ---
+                lastClickedAddButton = null; // Ensure the reference is also cleared
             }
 
 
@@ -1964,9 +1974,8 @@
                     });
                 });
 
-                // --- Sugerencia 3: Desplazar el carrito al final ---
+                // Scroll the cart to the bottom
                 cartItemsList.scrollTop = cartItemsList.scrollHeight;
-                // --- Fin Sugerencia 3 ---
             }
 
             // Function to generate the WhatsApp message
@@ -2047,11 +2056,11 @@
                 }
             }
 
-            // --- Corrected Event Listener Attachments ---
+            // Corrected Event Listener Attachments
             // Check if clearCartButton is found, and then attach listener
             if (clearCartButton) {
                 clearCartButton.addEventListener('click', function() {
-                    console.log("Clear Cart button clicked."); // More specific debug for click
+                    console.log("Clear Cart button clicked.");
                     clearCart();
                 });
             } else {
@@ -2064,7 +2073,7 @@
             } else {
                 console.error("Error: orderWhatsAppButton not found!");
             }
-            // --- End Corrected Event Listener Attachments ---
+            // End Corrected Event Listener Attachments
 
             // Initial display update when page loads
             updateCartDisplay();
