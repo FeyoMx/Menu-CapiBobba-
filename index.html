@@ -1297,6 +1297,13 @@
                         <div class="flavor-description">Exótica y refrescante, con un dulzor suave y cremoso 💚✨</div>
                         <button class="add-drink-to-cart-button">Añadir 💖</button>
                     </div>
+
+                    <!-- Nuevo sabor: Sandía -->
+                    <div class="flavor-item" data-name="Frappé Sandía (Agua)" data-price="75">
+                        <div class="flavor-name">Sandía</div>
+                        <div class="flavor-description">Refrescante y dulce, el sabor del verano en cada sorbo 🍉☀️</div>
+                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    </div>
                 </div>
             </section>
             
@@ -1548,7 +1555,7 @@
                             4. Cuando estés listo, haz clic en "Pedir por WhatsApp" para enviar tu orden automáticamente.
                         </div>
                         <div class="order-step">
-                            5. Recibe tu bebida y toma muchas fotos! Y etiqueta a <a href="https://www.facebook.com/share/195krrAWVG/" target="_blank" style="color: inherit; text-decoration: underline;">@Capibobba</a>, mándanos tu post y gana un descuento en tu siguiente pedido. 📸💕
+                            5. Recibe tu bebida y toma muchas fotos! Y etiqueta a <a href="https://www.facebook.com/share/195krrAWVG/" target="_blank" style="color: inherit; text-decoration: underline;">@Capibobba</a>, mándanos tu post y gana un <strong>$10 de descuento</strong> en tu siguiente pedido. 📸💕
                         </div>
                     </div>
 
@@ -1646,6 +1653,7 @@
                 "Piña colada": "https://i.imgur.com/U6LUnZt.jpeg",
                 "Maracuyá": "https://i.imgur.com/hrULvVp.jpeg",
                 "Guanábana": "https://placehold.co/300x300/E0F2FE/555555?text=Guanabana", // Placeholder for Guanábana
+                "Sandía": "https://placehold.co/300x300/FF69B4/FFFFFF?text=Sandia", // Placeholder para Sandía
                 "Chocolate Mexicano": "https://placehold.co/300x300/8B4513/FFFFFF?text=Choco+Mexicano", // Placeholder for Chocolate Mexicano
                 "Taro": "https://i.imgur.com/lVQgAzR.jpeg", 
                 "Mazapán": "https://i.imgur.com/jrELu9J.jpeg",
@@ -1895,7 +1903,6 @@
                 // Group identical items for display
                 const groupedCart = {};
                 cart.forEach(item => {
-                    // Create a unique key for grouping (drink name + sorted topping names)
                     const toppingNames = item.selectedToppings.map(t => t.name).sort().join(', ');
                     const key = `${item.name}|${toppingNames}`;
 
