@@ -1491,25 +1491,21 @@
                 <div class="topping-item">
                     <div class="topping-name">💥 Perlas explosivas de frutos rojos</div>
                     <div class="topping-description">Dulces mini-explosiones de amor ❤️🫧</div>
-                    <!-- <button class="add-to-cart-button">Añadir 💖</button> --> <!-- Removed direct add -->
                 </div>
                 
                 <div class="topping-item">
                     <div class="topping-name">🍏 Perlas explosivas de manzana verde</div>
                     <div class="topping-description">¡Explosión y frescura en cada sorbo! 🍏✨</div>
-                    <!-- <button class="add-to-cart-button">Añadir 💖</button> --> <!-- Removed direct add -->
                 </div>
                 
                 <div class="topping-item">
                     <div class="topping-name">🤍 Perlas explosivas de litchi</div>
                     <div class="topping-description">Delicadas, frutales y muuuy adorables 🍡💖</div>
-                    <!-- <button class="add-to-cart-button">Añadir 💖</button> --> <!-- Removed direct add -->
                 </div>
                 
                 <div class="topping-item">
                     <div class="topping-name">🌈 Jelly arcoiris</div>
                     <div class="topping-description">Suavecitos, coloridos y súper divertidos 🐻🌈</div>
-                    <!-- <button class="add-to-cart-button">Añadir 💖</button> --> <!-- Removed direct add -->
                 </div>
             </section>
 
@@ -1592,9 +1588,6 @@
         </div>
     </div>
 
-    <!-- The old hot drinks image overlay is no longer needed, keeping its ID for historical reference but hiding it -->
-    <div id="hotDrinksImageOverlay" style="display: none;"></div>
-
     <!-- Topping Selection Modal (NEW) -->
     <div id="toppingSelectionOverlay" class="topping-selection-overlay">
         <div class="topping-selection-content">
@@ -1626,12 +1619,14 @@
                 const logoDark = document.getElementById('logoDark');
                 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-                if (prefersDark) {
-                    logoLight.style.opacity = '0';
-                    logoDark.style.opacity = '1';
-                } else {
-                    logoLight.style.opacity = '1';
-                    logoDark.style.opacity = '0';
+                if (logoLight && logoDark) { // Ensure elements exist before trying to access
+                    if (prefersDark) {
+                        logoLight.style.opacity = '0';
+                        logoDark.style.opacity = '1';
+                    } else {
+                        logoLight.style.opacity = '1';
+                        logoDark.style.opacity = '0';
+                    }
                 }
             }
             setInitialLogoTheme();
@@ -1653,7 +1648,7 @@
                 "Piña colada": "https://i.imgur.com/U6LUnZt.jpeg",
                 "Maracuyá": "https://i.imgur.com/hrULvVp.jpeg",
                 "Guanábana": "https://placehold.co/300x300/E0F2FE/555555?text=Guanabana", // Placeholder for Guanábana
-                "Sandía": "https://placehold.co/300x300/FF69B4/FFFFFF?text=Sandia", // Placeholder para Sandía
+                "Sandía": "https://i.imgur.com/FwsLeZz.jpeg", // UPDATED IMAGE FOR SANDÍA
                 "Chocolate Mexicano": "https://placehold.co/300x300/8B4513/FFFFFF?text=Choco+Mexicano", // Placeholder for Chocolate Mexicano
                 "Taro": "https://i.imgur.com/epvVrkT.jpeg", // Updated image URL for Taro
                 "Mazapán": "https://i.imgur.com/jrELu9J.jpeg",
@@ -1685,20 +1680,28 @@
                     const flavorName = this.querySelector('.flavor-name').textContent;
                     // Use a fallback placeholder if the image URL is not found
                     const imageUrl = flavorImages[flavorName] || 'https://placehold.co/300x300/CCCCCC/FFF?text=Image+not+available'; 
-                    flavorImage.src = imageUrl;
-                    // Robust image error handling for flavorImage
-                    flavorImage.onerror = function() { 
-                        this.src = 'https://placehold.co/300x300/FF6347/FFFFFF?text=Error+Loading'; // Red placeholder
-                        this.alt = 'Error loading image'; // Update alt text
-                    };
-                    flavorImageName.textContent = flavorName;
-                    flavorImageOverlay.classList.add('show'); 
+                    if (flavorImage) { // Check if flavorImage element exists
+                        flavorImage.src = imageUrl;
+                        // Robust image error handling for flavorImage
+                        flavorImage.onerror = function() { 
+                            this.src = 'https://placehold.co/300x300/FF6347/FFFFFF?text=Error+Loading'; // Red placeholder
+                            this.alt = 'Error loading image'; // Update alt text
+                        };
+                    }
+                    if (flavorImageName) { // Check if flavorImageName element exists
+                        flavorImageName.textContent = flavorName;
+                    }
+                    if (flavorImageOverlay) { // Check if flavorImageOverlay element exists
+                        flavorImageOverlay.classList.add('show'); 
+                    }
                 });
             });
 
-            flavorImageOverlay.addEventListener('click', function() {
-                flavorImageOverlay.classList.remove('show'); 
-            });
+            if (flavorImageOverlay) { // Check if flavorImageOverlay element exists
+                flavorImageOverlay.addEventListener('click', function() {
+                    flavorImageOverlay.classList.remove('show'); 
+                });
+            }
 
             // Promotions Logic (Updated to use add-drink-to-cart-button)
             const fresasConCremaPromotion = document.getElementById('fresasConCremaPromotion');
@@ -1709,14 +1712,20 @@
                         return;
                     }
                     // Specific image for the seasonal frappé
-                    flavorImage.src = flavorImages["Frappé Fresas con Crema (Temporada)"] || 'https://placehold.co/300x300/CCCCCC/FFF?text=Image+not+available';
-                    // Robust image error handling for flavorImage
-                    flavorImage.onerror = function() { 
-                        this.src = 'https://placehold.co/300x300/FF6347/FFFFFF?text=Error+Loading'; // Red placeholder
-                        this.alt = 'Error loading image'; // Update alt text
-                    };
-                    flavorImageName.textContent = "Frappé de Temporada: Fresas con Crema";
-                    flavorImageOverlay.classList.add('show');
+                    if (flavorImage) {
+                        flavorImage.src = flavorImages["Frappé Fresas con Crema (Temporada)"] || 'https://placehold.co/300x300/CCCCCC/FFF?text=Image+not+available';
+                        // Robust image error handling for flavorImage
+                        flavorImage.onerror = function() { 
+                            this.src = 'https://placehold.co/300x300/FF6347/FFFFFF?text=Error+Loading'; // Red placeholder
+                            this.alt = 'Error loading image'; // Update alt text
+                        };
+                    }
+                    if (flavorImageName) {
+                        flavorImageName.textContent = "Frappé de Temporada: Fresas con Crema";
+                    }
+                    if (flavorImageOverlay) {
+                        flavorImageOverlay.classList.add('show');
+                    }
                 });
             }
 
@@ -1758,58 +1767,64 @@
                 };
                 lastClickedAddButton = clickedButton; // Store reference to the button
 
-                toppingDrinkNameElement.textContent = drinkName;
-                toppingsModalGrid.innerHTML = ''; // Clear previous toppings
+                if (toppingDrinkNameElement) { // Check if element exists
+                    toppingDrinkNameElement.textContent = drinkName;
+                }
+                if (toppingsModalGrid) { // Check if element exists
+                    toppingsModalGrid.innerHTML = ''; // Clear previous toppings
 
-                // Populate toppings in the modal
-                availableToppings.forEach(topping => {
-                    const toppingItemDiv = document.createElement('div');
-                    toppingItemDiv.className = 'topping-modal-item';
-                    toppingItemDiv.dataset.name = topping.name;
-                    toppingItemDiv.dataset.price = topping.price;
+                    // Populate toppings in the modal
+                    availableToppings.forEach(topping => {
+                        const toppingItemDiv = document.createElement('div');
+                        toppingItemDiv.className = 'topping-modal-item';
+                        toppingItemDiv.dataset.name = topping.name;
+                        toppingItemDiv.dataset.price = topping.price;
 
-                    const isSelected = currentDrinkBeingCustomized.selectedToppings.some(t => t.name === topping.name);
-                    if (isSelected) {
-                        toppingItemDiv.classList.add('selected');
-                    }
-
-                    toppingItemDiv.innerHTML = `
-                        <span class="topping-modal-name">${topping.name}</span>
-                        <span class="topping-modal-price">+$${topping.price}</span>
-                        <button class="add-topping-button ${isSelected ? 'remove' : ''}" 
-                                data-action="${isSelected ? 'remove' : 'add'}">
-                            ${isSelected ? 'Quitar ➖' : 'Añadir ✨'}
-                        </button>
-                    `;
-                    toppingsModalGrid.appendChild(toppingItemDiv);
-                });
-
-                // Attach event listeners for topping buttons in the modal
-                toppingsModalGrid.querySelectorAll('.add-topping-button').forEach(button => {
-                    button.addEventListener('click', function() {
-                        const toppingItemDiv = this.closest('.topping-modal-item');
-                        const toppingName = toppingItemDiv.dataset.name;
-                        const toppingPrice = parseFloat(toppingItemDiv.dataset.price);
-
-                        const action = this.dataset.action;
-
-                        if (action === 'add') {
-                            currentDrinkBeingCustomized.selectedToppings.push({ name: toppingName, price: toppingPrice });
+                        const isSelected = currentDrinkBeingCustomized.selectedToppings.some(t => t.name === topping.name);
+                        if (isSelected) {
                             toppingItemDiv.classList.add('selected');
-                            this.textContent = 'Quitar ➖';
-                            this.dataset.action = 'remove';
-                            this.classList.add('remove');
-                        } else {
-                            currentDrinkBeingCustomized.selectedToppings = currentDrinkBeingCustomized.selectedToppings.filter(t => t.name !== toppingName);
-                            toppingItemDiv.classList.remove('selected');
-                            this.textContent = 'Añadir ✨';
-                            this.dataset.action = 'add';
-                            this.classList.remove('remove');
                         }
-                    });
-                });
 
-                toppingSelectionOverlay.classList.add('show');
+                        toppingItemDiv.innerHTML = `
+                            <span class="topping-modal-name">${topping.name}</span>
+                            <span class="topping-modal-price">+$${topping.price}</span>
+                            <button class="add-topping-button ${isSelected ? 'remove' : ''}" 
+                                    data-action="${isSelected ? 'remove' : 'add'}">
+                                ${isSelected ? 'Quitar ➖' : 'Añadir ✨'}
+                            </button>
+                        `;
+                        toppingsModalGrid.appendChild(toppingItemDiv);
+                    });
+
+                    // Attach event listeners for topping buttons in the modal
+                    toppingsModalGrid.querySelectorAll('.add-topping-button').forEach(button => {
+                        button.addEventListener('click', function() {
+                            const toppingItemDiv = this.closest('.topping-modal-item');
+                            const toppingName = toppingItemDiv.dataset.name;
+                            const toppingPrice = parseFloat(toppingItemDiv.dataset.price);
+
+                            const action = this.dataset.action;
+
+                            if (action === 'add') {
+                                currentDrinkBeingCustomized.selectedToppings.push({ name: toppingName, price: toppingPrice });
+                                toppingItemDiv.classList.add('selected');
+                                this.textContent = 'Quitar ➖';
+                                this.dataset.action = 'remove';
+                                this.classList.add('remove');
+                            } else {
+                                currentDrinkBeingCustomized.selectedToppings = currentDrinkBeingCustomized.selectedToppings.filter(t => t.name !== toppingName);
+                                toppingItemDiv.classList.remove('selected');
+                                this.textContent = 'Añadir ✨';
+                                this.dataset.action = 'add';
+                                this.classList.remove('remove');
+                            }
+                        });
+                    });
+                }
+
+                if (toppingSelectionOverlay) { // Check if element exists
+                    toppingSelectionOverlay.classList.add('show');
+                }
             }
 
             // Function to add the customized drink to the main cart
@@ -1825,7 +1840,9 @@
                     // Add to the main cart
                     cart.push({ ...currentDrinkBeingCustomized }); // Push a copy
                     currentDrinkBeingCustomized = null; // Clear the temporary drink
-                    toppingSelectionOverlay.classList.remove('show'); // Hide modal
+                    if (toppingSelectionOverlay) { // Check if element exists
+                        toppingSelectionOverlay.classList.remove('show'); // Hide modal
+                    }
                     updateCartDisplay();
 
                     // Visual feedback on the add button
@@ -1850,31 +1867,41 @@
             addDrinkToCartButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const itemElement = this.closest('[data-name][data-price]');
-                    const name = itemElement.dataset.name;
-                    const price = parseFloat(itemElement.dataset.price);
-                    openToppingSelectionModal(name, price, this); // Pass the clicked button
+                    if (itemElement) { // Ensure itemElement exists
+                        const name = itemElement.dataset.name;
+                        const price = parseFloat(itemElement.dataset.price);
+                        openToppingSelectionModal(name, price, this); // Pass the clicked button
+                    }
                 });
             });
 
             // Event Listeners for Topping Modal Buttons
-            confirmToppingsButton.addEventListener('click', addCustomizedDrinkToCart);
-            noToppingsButton.addEventListener('click', function() {
-                // If "No Toppings" is clicked, ensure selectedToppings is empty and add to cart
-                if (currentDrinkBeingCustomized) {
-                    currentDrinkBeingCustomized.selectedToppings = [];
-                    addCustomizedDrinkToCart();
-                }
-            });
-            cancelToppingsButton.addEventListener('click', function() {
-                currentDrinkBeingCustomized = null; // Discard current selection
-                toppingSelectionOverlay.classList.remove('show'); // Hide modal
-                if (lastClickedAddButton) { // Reset the button if canceled
-                    lastClickedAddButton.textContent = 'Añadir 💖';
-                    lastClickedAddButton.classList.remove('added-feedback');
-                    lastClickedAddButton.style.background = ''; // Revert to original background (from CSS)
-                    lastClickedAddButton = null;
-                }
-            });
+            if (confirmToppingsButton) { // Check if element exists
+                confirmToppingsButton.addEventListener('click', addCustomizedDrinkToCart);
+            }
+            if (noToppingsButton) { // Check if element exists
+                noToppingsButton.addEventListener('click', function() {
+                    // If "No Toppings" is clicked, ensure selectedToppings is empty and add to cart
+                    if (currentDrinkBeingCustomized) {
+                        currentDrinkBeingCustomized.selectedToppings = [];
+                        addCustomizedDrinkToCart();
+                    }
+                });
+            }
+            if (cancelToppingsButton) { // Check if element exists
+                cancelToppingsButton.addEventListener('click', function() {
+                    currentDrinkBeingCustomized = null; // Discard current selection
+                    if (toppingSelectionOverlay) { // Check if element exists
+                        toppingSelectionOverlay.classList.remove('show'); // Hide modal
+                    }
+                    if (lastClickedAddButton) { // Reset the button if canceled
+                        lastClickedAddButton.textContent = 'Añadir 💖';
+                        lastClickedAddButton.classList.remove('added-feedback');
+                        lastClickedAddButton.style.background = ''; // Revert to original background (from CSS)
+                        lastClickedAddButton = null;
+                    }
+                });
+            }
 
             // Function to clear the entire cart
             function clearCart() {
@@ -1897,6 +1924,10 @@
 
             // Function to update the cart display in the HTML
             function updateCartDisplay() {
+                if (!cartItemsList || !cartTotalElement) { // Ensure elements exist
+                    console.error("Cart display elements not found.");
+                    return;
+                }
                 cartItemsList.innerHTML = ''; // Clear current display
                 let total = 0;
 
@@ -1990,12 +2021,14 @@
                 console.log("Attempting to generate WhatsApp message...");
 
                 if (cart.length === 0) {
-                    orderWhatsAppButton.textContent = "¡Carrito Vacío! Añade algo 🚫";
-                    orderWhatsAppButton.style.background = "#FF6347";
-                    setTimeout(() => {
-                        orderWhatsAppButton.textContent = "Pedir por WhatsApp 📱";
-                        orderWhatsAppButton.style.background = "linear-gradient(45deg, #25D366, #128C7E)";
-                    }, 2000);
+                    if (orderWhatsAppButton) { // Check if element exists
+                        orderWhatsAppButton.textContent = "¡Carrito Vacío! Añade algo 🚫";
+                        orderWhatsAppButton.style.background = "#FF6347";
+                        setTimeout(() => {
+                            orderWhatsAppButton.textContent = "Pedir por WhatsApp 📱";
+                            orderWhatsAppButton.style.background = "linear-gradient(45deg, #25D366, #128C7E)";
+                        }, 2000);
+                    }
                     console.warn("Cart is empty. Cannot generate WhatsApp message.");
                     return;
                 }
@@ -2052,12 +2085,14 @@
                 if (newWindow === null || typeof newWindow === 'undefined' || newWindow.closed) {
                     console.error("Popup blocked or window could not be opened.");
                     // Provide visual feedback to the user
-                    orderWhatsAppButton.textContent = "Pop-up bloqueado. ¡Revisa tu navegador! ⚠️";
-                    orderWhatsAppButton.style.background = "#FF6347"; // Red color for error
-                    setTimeout(() => {
-                        orderWhatsAppButton.textContent = "Pedir por WhatsApp 📱";
-                        orderWhatsAppButton.style.background = "linear-gradient(45deg, #25D366, #128C7E)"; // Revert to green
-                    }, 4000); // Give user more time to see the message
+                    if (orderWhatsAppButton) { // Check if element exists
+                        orderWhatsAppButton.textContent = "Pop-up bloqueado. ¡Revisa tu navegador! ⚠️";
+                        orderWhatsAppButton.style.background = "#FF6347"; // Red color for error
+                        setTimeout(() => {
+                            orderWhatsAppButton.textContent = "Pedir por WhatsApp 📱";
+                            orderWhatsAppButton.style.background = "linear-gradient(45deg, #25D366, #128C7E)"; // Revert to green
+                        }, 4000); // Give user more time to see the message
+                    }
                 } else {
                     console.log("WhatsApp window opened successfully.");
                 }
