@@ -160,6 +160,16 @@ document.addEventListener('DOMContentLoaded', function() {
             description: "Té verde japonés con energía kawaii 💚🌿 ¡pura paz zen!",
             imageUrl: "https://i.imgur.com/6QIRLrZ.jpeg"
         },
+        // --- NUEVO: Producto de Temporada "Fresas con Crema" ---
+        {
+            type: "milk-based-frappe", // O un tipo "promotion" si se gestionan de forma diferente
+            name: "Frappé Fresas con Crema (Temporada)",
+            displayName: "Fresas con Crema",
+            price: 75,
+            description: "¡El clásico favorito de la abuela, pero en versión kawaii! Dulzura de fresa natural y cremosidad suave. 🍓🥛💖✨",
+            imageUrl: "https://i.imgur.com/m2Fc29F.jpeg" // Reemplaza con la URL real de tu imagen
+        },
+        // --- FIN NUEVO ---
         // Bebidas Calientes (usarán una imagen genérica si no se especifica una individual)
         {
             type: "hot-drink",
@@ -336,6 +346,12 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("Product grids cleared.");
 
         productsData.forEach((product, index) => {
+            // Solo renderiza productos que no sean la promoción de Fresas con Crema,
+            // ya que esa es estática en el HTML.
+            if (product.name === "Frappé Fresas con Crema (Temporada)") {
+                return; // Salta este producto, ya está en el HTML
+            }
+
             const flavorItemDiv = document.createElement('div');
             flavorItemDiv.className = `flavor-item animate-on-scroll`; // Add animate class
             flavorItemDiv.dataset.name = product.name; // Use full name for internal logic
@@ -376,9 +392,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         console.log("Products appended to grids.");
 
-        // After rendering, re-select all add buttons for cart logic
-        setupAddToCartButtons(); // Call here after elements are in DOM
-        console.log("setupAddToCartButtons called.");
         // Re-initialize Intersection Observer for new elements
         setupIntersectionObserver();
         console.log("setupIntersectionObserver called.");
@@ -387,8 +400,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Call renderProducts as soon as DOM is ready
     renderProducts();
     console.log("renderProducts function executed.");
-
-    // --- END DYNAMIC PRODUCT RENDERING ---
 
 
     // Close modals when clicking on the overlay or the close button
@@ -533,6 +544,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to set up event listeners for add to cart buttons
     function setupAddToCartButtons() {
+        // Selecciona TODOS los botones de añadir al carrito, tanto dinámicos como estáticos
         addDrinkToCartButtons = document.querySelectorAll('.add-drink-to-cart-button');
         console.log("Found addDrinkToCartButtons:", addDrinkToCartButtons.length);
         addDrinkToCartButtons.forEach(button => {
@@ -831,6 +843,12 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("New Intersection Observer setup and observing elements.");
     }
 
+    // Llama a setupAddToCartButtons aquí para asegurarte de que tanto los botones dinámicos como los estáticos
+    // (como el de Fresas con Crema) tengan sus listeners adjuntos al cargar la página.
+    setupAddToCartButtons();
+    console.log("setupAddToCartButtons called after initial render and for static elements.");
+
+
     // Logic for the cart to follow the scroll
     // Las declaraciones de cartSummaryElement y shoppingCartSection ya están arriba, no se redeclaran aquí.
     if (cartSummaryElement) {
@@ -872,14 +890,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (fresasConCremaPromotion) {
         fresasConCremaPromotion.addEventListener('click', function(event) {
             if (event.target.tagName === 'BUTTON') {
-                return;
+                return; // Si se hace clic en el botón, la lógica del botón lo manejará
             }
-            // Find the product data for this specific promotion
+            // Encuentra los datos del producto para esta promoción específica
             const promoProduct = productsData.find(p => p.name === "Frappé Fresas con Crema (Temporada)");
             if (promoProduct) {
                 openFlavorImageModal(promoProduct.displayName, promoProduct.imageUrl);
             } else {
-                console.error("Promotion product data not found for 'Frappé Fresas con Crema (Temporada)'.");
+                console.error("Promotion product data not found for 'Frappé Fresas con Crema (Temporada)'. This should not happen if data is correctly loaded.");
             }
         });
         fresasConCremaPromotion.addEventListener('keydown', function(event) {
