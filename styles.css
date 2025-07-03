@@ -37,17 +37,6 @@ body {
     z-index: 0; /* Asegura que esté en el fondo */
 }
 
-.bubble {
-    position: absolute;
-    display: block;
-    list-style: none;
-    background: rgba(255, 255, 255, 0.2); /* Burbujas blancas semi-transparentes */
-    animation: animateBubbles 25s linear infinite;
-    bottom: -150px; /* Empiezan fuera de la pantalla */
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
 .bubble:nth-child(1) { left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
 .bubble:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
 .bubble:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
@@ -495,10 +484,11 @@ body {
     box-shadow: 0 0.3125rem 0.9375rem rgba(0, 0, 0, 0.2); /* 5px 15px */
     cursor: pointer;
     transition: all 0.3s ease;
-    width: fit-content;
-    align-self: center;
-    margin-top: auto;
-    display: flex;
+    width: fit-content; /* Ajusta el ancho al contenido */
+    align-self: center; /* Centra el botón en flex container (eje cruzado) */
+    margin: 0 auto; /* ¡NUEVO! Centra horizontalmente el botón */
+    margin-top: auto; /* Empuja el botón hacia abajo si el contenido es desigual */
+    display: flex; /* Para alineación de icono y texto */
     align-items: center;
     gap: 0.5rem; /* 8px */
 }
@@ -1211,14 +1201,9 @@ body {
 }
 
 /* Retrasos para animaciones secuenciales */
-.flavor-grid .flavor-item:nth-child(1) { transition-delay: 0.1s; }
-.flavor-grid .flavor-item:nth-child(2) { transition-delay: 0.2s; }
-.flavor-grid .flavor-item:nth-child(3) { transition-delay: 0.3s; }
-.flavor-grid .flavor-item:nth-child(4) { transition-delay: 0.4s; }
-.flavor-grid .flavor-item:nth-child(5) { transition-delay: 0.5s; }
-.flavor-grid .flavor-item:nth-child(6) { transition-delay: 0.6s; }
-.flavor-grid .flavor-item:nth-child(7) { transition-delay: 0.7s; }
-.flavor-grid .flavor-item:nth-child(8) { transition-delay: 0.8s; }
+/* Estos se aplicarán dinámicamente en JS para los elementos generados */
+/* .flavor-grid .flavor-item:nth-child(1) { transition-delay: 0.1s; } */
+/* ... y así sucesivamente ... */
 
 .topping-item:nth-child(1) { transition-delay: 0.1s; }
 .topping-item:nth-child(2) { transition-delay: 0.2s; }
