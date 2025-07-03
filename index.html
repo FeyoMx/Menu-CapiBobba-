@@ -4,1492 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MENÚ CAPIBOBBA - WhatsApp Optimized</title>
-    <style>
-        /* Importa las fuentes Nunito y Balsamiq Sans de Google Fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Balsamiq+Sans:wght@700&display=swap');
-        
-        /* Reseteo básico de CSS */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        /* Estilos generales del cuerpo de la página */
-        body {
-            font-family: 'Nunito', sans-serif;
-            width: 100%; /* Ensures it occupies the full available width */
-            max-width: 1080px; /* Maximum width for the main content */
-            height: auto;
-            margin: 0 auto; /* Centers the content */
-            /* Background gradient for a kawaii touch (Light Mode by default) */
-            background: linear-gradient(180deg, #FFE1E6 0%, #F3E8FF 25%, #E0F2FE 50%, #FFF9E6 75%, #FFE1E6 100%);
-            position: relative;
-            overflow-x: hidden; /* Prevents horizontal scrolling */
-            line-height: 1.4;
-            transition: background 0.5s ease-in-out; /* Smooth transition for background change */
-        }
-        
-        /* --- NUEVO: Burbujas de fondo animadas --- */
-        .bubbles-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none; /* Para que no interfiera con clics */
-            overflow: hidden;
-            z-index: 0; /* Asegura que esté en el fondo */
-        }
-
-        .bubble {
-            position: absolute;
-            display: block;
-            list-style: none;
-            background: rgba(255, 255, 255, 0.2); /* Burbujas blancas semi-transparentes */
-            animation: animateBubbles 25s linear infinite;
-            bottom: -150px; /* Empiezan fuera de la pantalla */
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
-        .bubble:nth-child(1) {
-            left: 25%;
-            width: 80px;
-            height: 80px;
-            animation-delay: 0s;
-        }
-        .bubble:nth-child(2) {
-            left: 10%;
-            width: 20px;
-            height: 20px;
-            animation-delay: 2s;
-            animation-duration: 12s;
-        }
-        .bubble:nth-child(3) {
-            left: 70%;
-            width: 20px;
-            height: 20px;
-            animation-delay: 4s;
-        }
-        .bubble:nth-child(4) {
-            left: 40%;
-            width: 60px;
-            height: 60px;
-            animation-delay: 0s;
-            animation-duration: 18s;
-        }
-        .bubble:nth-child(5) {
-            left: 65%;
-            width: 20px;
-            height: 20px;
-            animation-delay: 0s;
-            animation-duration: 10s;
-        }
-        .bubble:nth-child(6) {
-            left: 75%;
-            width: 110px;
-            height: 110px;
-            animation-delay: 3s;
-        }
-        .bubble:nth-child(7) {
-            left: 35%;
-            width: 150px;
-            height: 150px;
-            animation-delay: 7s;
-        }
-        .bubble:nth-child(8) {
-            left: 50%;
-            width: 25px;
-            height: 25px;
-            animation-delay: 15s;
-            animation-duration: 45s;
-        }
-        .bubble:nth-child(9) {
-            left: 20%;
-            width: 15px;
-            height: 15px;
-            animation-delay: 2s;
-            animation-duration: 35s;
-        }
-        .bubble:nth-child(10) {
-            left: 85%;
-            width: 150px;
-            height: 150px;
-            animation-delay: 0s;
-            animation-duration: 11s;
-        }
-
-        @keyframes animateBubbles {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0.2;
-                border-radius: 0;
-            }
-            100% {
-                transform: translateY(-1000px) rotate(720deg);
-                opacity: 0;
-                border-radius: 50%;
-            }
-        }
-        /* --- FIN NUEVO: Burbujas de fondo animadas --- */
-
-        /* Decorative floating kawaii elements */
-        .kawaii-decoration {
-            position: absolute;
-            z-index: 1;
-            opacity: 0.4;
-        }
-        
-        /* Bubble tea cup decoration */
-        .bubble-tea-cup {
-            width: 80px;
-            height: 100px;
-            background: linear-gradient(45deg, #FFB6C1, #DDA0DD);
-            border-radius: 15px 15px 25px 25px;
-            top: 5%;
-            right: 8%;
-        }
-        
-        .bubble-tea-cup::before {
-            content: '🧋'; /* Bubble tea emoji */
-            position: absolute;
-            font-size: 50px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        
-        /* Floating capybaras */
-        .capybara-float-1 {
-            top: 25%;
-            left: 5%;
-            font-size: 60px;
-            transform: rotate(-15deg);
-        }
-        
-        .capybara-float-2 {
-            top: 55%;
-            right: 10%;
-            font-size: 50px;
-            transform: rotate(20deg);
-        }
-        
-        .heart-float {
-            top: 75%;
-            left: 8%;
-            font-size: 40px;
-            color: #FF69B4;
-        }
-        
-        /* Main menu container */
-        .menu-container {
-            position: relative;
-            z-index: 2;
-            padding: 25px 20px;
-            min-height: 100vh;
-        }
-        
-        /* Main content wrapper */
-        .content-wrapper {
-            background: rgba(255, 255, 255, 0.98); /* Semi-transparent white background (Light Mode by default) */
-            border-radius: 30px;
-            padding: 35px 25px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15); /* Soft shadow */
-            border: 4px solid #FFB6C1; /* Light pink border (Light Mode by default) */
-            position: relative;
-            overflow: hidden;
-            transition: background 0.5s ease-in-out, border-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out; /* Smooth transition */
-        }
-        
-        /* Top border with animated rainbow effect */
-        .content-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 10px;
-            background: linear-gradient(90deg, #FF69B4, #DDA0DD, #87CEEB, #FFD700, #FF69B4);
-            background-size: 200% 100%;
-            animation: rainbow 3s linear infinite;
-        }
-        
-        /* Animation for the rainbow border */
-        @keyframes rainbow {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 200% 50%; }
-        }
-        
-        /* Header section */
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-        }
-        
-        /* Mascot/logo container */
-        .capybobba-mascot {
-            width: 250px; 
-            height: 250px; 
-            margin: 0 auto 0;
-            position: relative;
-            overflow: hidden;
-            background: none; /* No fixed background for logos to show without interference */
-            display: flex; /* To center the possible emoji fallback if no image loads */
-            align-items: center;
-            justify-content: center;
-            font-size: 150px; /* Capybara emoji size if images don't load */
-        }
-
-        /* Base styles for logo images */
-        .capybobba-mascot img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; /* Adjusts the image within the container */
-            position: absolute; /* To overlap and control visibility */
-            top: 0;
-            left: 0;
-            transition: opacity 0.3s ease-in-out; /* Smooth transition when changing logo */
-        }
-
-        /* By default (Light Mode), shows the light logo and hides the dark one */
-        #logoLight {
-            opacity: 1; 
-            z-index: 2; /* Ensures it's on top */
-        }
-
-        #logoDark {
-            opacity: 0;
-            z-index: 1; /* Will be below the light logo by default */
-        }
-        
-        /* Media query rule for Dark Mode */
-        @media (prefers-color-scheme: dark) {
-            /* Changes body background to a dark tone */
-            body {
-                background: linear-gradient(180deg, #333333 0%, #1a1a1a 100%);
-            }
-            /* Adjusts background and border of the main container for dark mode */
-            .content-wrapper {
-                background: rgba(45, 45, 45, 0.98); /* Semi-transparent dark background */
-                border-color: #9370DB; /* Purple border for contrast */
-            }
-
-            /* In dark mode, oculta el logo claro y muestra el oscuro */
-            #logoLight {
-                opacity: 0;
-            }
-            #logoDark {
-                opacity: 1;
-            }
-
-            /* You can also adjust general text colors if necessary for dark mode */
-            .main-title, .tagline, .section-title, .flavor-name, .flavor-description, .topping-name, .topping-description, .whatsapp-text, .whatsapp-number, .whatsapp-click-legend, .order-step, .final-message, .promotion-item-title, .promotion-item-description {
-                /* Ensures texts are readable on dark backgrounds */
-                color: #F0F0F0; /* Soft white */
-                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Shadow for better readability */
-                transition: color 0.5s ease-in-out, text-shadow 0.5s ease-in-out; /* TRANSICIÓN AÑADIDA */
-            }
-
-            /* Gradient adjustment for the main title in dark mode */
-            .main-title {
-                background: linear-gradient(135deg, #FFB6C1, #87CEEB, #DDA0DD); /* Lighter gradient */
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-            }
-            /* Adjustment for the tagline */
-            .tagline {
-                color: #DDA0DD; /* Lilac tone for contrast */
-            }
-            /* Adjustment for section titles */
-            .section-title {
-                color: #87CEEB; /* Light blue tone for contrast */
-            }
-            /* Adjustment for descriptions and legends in dark mode */
-            .section-description, .click-legend, .flavor-description, .topping-description {
-                color: #B0B0B0; /* Light gray for readability */
-            }
-            /* Adjustment of section background in dark mode */
-            .menu-section {
-                background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
-                border-color: #9370DB;
-            }
-            .flavor-item {
-                background: #3a3a3a;
-                border-color: #9370DB;
-                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            }
-            .flavor-item:hover {
-                border-color: #87CEEB;
-                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            }
-            .hot-drinks {
-                background: linear-gradient(135deg, #444444, #555555);
-                border-color: #87CEEB;
-            }
-            .toppings-section {
-                background: linear-gradient(135deg, #2c2c2c, #3c3c3c);
-                border-color: #87CEEB;
-            }
-            .topping-item {
-                background: rgba(60, 60, 60, 0.9);
-                border-color: #87CEEB;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            }
-            .topping-item:hover {
-                border-color: #87CEEB;
-                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* Ajuste de sombra */
-            }
-            .order-steps {
-                background: rgba(80, 80, 80, 0.15);
-                border-color: rgba(255, 255, 255, 0.3);
-            }
-            .order-step {
-                color: #E0E0E0;
-            }
-
-            /* New styles for promotions in dark mode */
-            .promotions-section {
-                background: linear-gradient(135deg, #4b2a4b, #6a4a6a); /* Darker background for promotions */
-                border-color: #FFB6C1; /* Light pink border */
-            }
-
-            .promotion-item {
-                background: rgba(80, 80, 80, 0.9); /* Darker background for promotion items */
-                border-color: #DDA0DD; /* Lilac border */
-            }
-
-            .promotion-item:hover {
-                border-color: #FF69B4; /* Strong pink border on hover */
-            }
-
-            .promotion-item-title {
-                color: #FFB6C1; /* Light pink tone for promotion title */
-            }
-
-            .promotion-item-description {
-                color: #E0E0E0; /* Light text for promotion description */
-            }
-
-            /* --- NUEVO: Ajuste de burbujas en Dark Mode --- */
-            .bubble {
-                background: rgba(255, 255, 255, 0.08); /* Más sutil en modo oscuro */
-                box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-            }
-            /* --- FIN NUEVO: Ajuste de burbujas en Dark Mode --- */
-
-            /* --- NUEVO: Ajuste de carrito en Dark Mode --- */
-            .cart-summary {
-                background: rgba(45, 45, 45, 0.8);
-                border-color: #9370DB;
-            }
-            .cart-item-count {
-                color: #F0F0F0;
-            }
-            /* --- FIN NUEVO: Ajuste de carrito en Dark Mode --- */
-
-            /* --- NUEVO: Ajuste de divisores en Dark Mode --- */
-            .kawaii-divider .emoji {
-                text-shadow: 0 0 8px rgba(0, 0, 0, 0.7); /* Sombra más oscura */
-            }
-            /* --- FIN NUEVO: Ajuste de divisores en Dark Mode --- */
-        }
-        
-        /* Floating heart on the mascot */
-        .capybobba-mascot::after {
-            content: '💕';
-            position: absolute;
-            font-size: 65px; 
-            top: -20px;      
-            right: -20px;    
-            animation: float 2s ease-in-out infinite; /* Floating animation */
-            z-index: 3; /* Ensures it's on top of logos */
-        }
-        
-        /* Floating animation */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        /* Main menu title */
-        .main-title {
-            font-family: 'Balsamiq Sans', cursive; /* FUENTE CAMBIADA */
-            font-size: 58px; /* TAMAÑO LIGERAMENTE MÁS GRANDE */
-            font-weight: 900; /* SE MANTIENE EL PESO */
-            background: linear-gradient(135deg, #FF1493, #9370DB, #00CED1); /* Text color gradient */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2); /* SOMBRA MÁS PRONUNCIADA */
-            letter-spacing: 1px; /* ESPACIADO SUTIL */
-            /* --- ELIMINADO: Animación de glitch --- */
-            /* Se eliminaron las reglas de animación de glitch para este elemento */
-        }
-        
-        /* Subtitle/slogan */
-        .tagline {
-            font-size: 26px;
-            font-weight: 700;
-            color: #FF69B4; /* Cherry pink */
-            margin-bottom: 25px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Menu section style */
-        .menu-section {
-            margin-bottom: 45px;
-            background: linear-gradient(135deg, #FFF8F0, #F0F8FF); /* Soft background */
-            border-radius: 25px;
-            padding: 30px 25px;
-            border: 3px solid #FFB6C1;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-            /* --- NUEVO: Animación de fondo sutil para secciones --- */
-            background-size: 200% 200%; /* Permite que el degradado se mueva */
-            animation: backgroundPan 15s ease infinite alternate; /* Animación de paneo */
-            /* --- FIN NUEVO: Animación de fondo sutil para secciones --- */
-            transition: background 0.5s ease-in-out, border-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out; /* TRANSICIÓN AÑADIDA */
-        }
-
-        /* --- NUEVO: Animación de paneo de fondo --- */
-        @keyframes backgroundPan {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
-        /* --- FIN NUEVO: Animación de paneo de fondo --- */
-        
-        /* Animated border for sections */
-        .menu-section::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #FFB6C1, #DDA0DD, #87CEEB, #FFD700);
-            border-radius: 25px;
-            z-index: -1;
-            animation: borderGlow 3s linear infinite; /* Border glow animation */
-        }
-        
-        /* Border glow animation */
-        @keyframes borderGlow {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
-        }
-        
-        /* Section header */
-        .section-header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-        
-        /* Section title */
-        .section-title {
-            font-family: 'Nunito', sans-serif; /* Mantiene Nunito para subtítulos */
-            font-size: 32px; /* TAMAÑO LIGERAMENTE MÁS GRANDE */
-            font-weight: 900; /* MÁS AUDAZ */
-            color: #FF1493; /* Strong pink */
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            line-height: 1.2;
-        }
-        
-        /* Price banner */
-        .price-banner {
-            background: linear-gradient(135deg, #FFD700, #FFA500, #FF6347); /* Orange to red gradient */
-            color: white;
-            font-size: 26px;
-            font-weight: 800;
-            padding: 18px 25px;
-            border-radius: 20px;
-            margin: 20px auto;
-            display: inline-block;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-            border: 3px solid white;
-            max-width: fit-content;
-        }
-        
-        /* Section description */
-        .section-description {
-            font-size: 18px;
-            color: #8B4513; /* Dark brown */
-            font-weight: 600;
-            text-align: center;
-            margin-bottom: 25px;
-            line-height: 1.5;
-        }
-
-        /* Legend for clicking on flavors */
-        .click-legend {
-            font-size: 14px; /* Smaller font */
-            color: #8B4513;
-            text-align: center;
-            margin-bottom: 15px; /* Space before the flavor grid */
-            font-style: italic;
-            font-weight: 600;
-        }
-        
-        /* Flavor items in the grid */
-        .flavor-grid {
-            display: grid;
-            gap: 20px; /* Space between elements */
-            margin-top: 25px;
-        }
-        
-        /* Individual flavor item */
-        .flavor-item {
-            background: white;
-            border-radius: 20px;
-            padding: 22px 20px;
-            border: 3px solid #FFB6C1;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease; /* Smooth transition for hover */
-            position: relative;
-            overflow: hidden;
-            /* Changed to flexbox to align name, description and button */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between; /* Pushes button to bottom */
-            cursor: pointer; /* Keep cursor for image display click */
-            z-index: 1; /* Para que el brillo esté por encima de otros elementos */
-        }
-        
-        /* Glow effect on hover */
-        .flavor-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 182, 193, 0.4), transparent); /* LIGERAMENTE MÁS OPACo */
-            transition: left 0.5s ease-in-out; /* TRANSICIÓN MÁS SUAVE */
-            z-index: -1;
-        }
-        
-        .flavor-item:hover::before {
-            left: 100%;
-        }
-
-        /* --- NUEVO: Efecto de brillo radial en hover --- */
-        .flavor-item::after { /* Usamos ::after para un segundo pseudo-elemento */
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.4), transparent 70%);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: width 0.4s ease-out, height 0.4s ease-out, opacity 0.4s ease-out;
-            z-index: -1; /* Detrás del contenido, pero por encima del fondo del item */
-        }
-
-        .flavor-item:hover::after {
-            width: 200%; /* Cubre el item */
-            height: 200%;
-            opacity: 1;
-        }
-        /* --- FIN NUEVO: Efecto de brillo radial en hover --- */
-        
-        .flavor-item:hover {
-            transform: translateY(-8px); /* Lift on hover */
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            border-color: #FF69B4;
-        }
-        
-        .flavor-name {
-            font-size: 22px;
-            font-weight: 800;
-            color: #FF1493;
-            margin-bottom: 12px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-        }
-        
-        .flavor-description {
-            font-size: 17px;
-            color: #8B4513;
-            line-height: 1.4;
-            font-weight: 600;
-            margin-bottom: 15px; /* Space before the button */
-        }
-
-        /* "Add to Cart" button style for drinks */
-        .add-drink-to-cart-button {
-            background: linear-gradient(45deg, #9370DB, #87CEEB); /* Purple to light blue gradient */
-            color: white;
-            font-size: 18px;
-            font-weight: 700;
-            padding: 10px 15px;
-            border-radius: 15px;
-            border: 2px solid white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: fit-content; /* Adjust width to content */
-            align-self: center; /* Center the button in flex container */
-            margin-top: auto; /* Push button to the bottom if content is uneven */
-            display: flex; /* For icon and text alignment */
-            align-items: center;
-            gap: 8px;
-        }
-
-        .add-drink-to-cart-button:hover {
-            transform: translateY(-3px) scale(1.01);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(45deg, #87CEEB, #9370DB); /* Invert gradient on hover */
-        }
-
-        /* Styles for the "Added!" feedback state */
-        .add-drink-to-cart-button.added-feedback {
-            background: linear-gradient(45deg, #4CAF50, #8BC34A); /* Lighter green */
-            transition: none; /* No transition for this state change */
-            transform: none; /* No transform during feedback */
-            box-shadow: none; /* No shadow during feedback */
-        }
-        
-        /* Hot drinks section */
-        .hot-drinks {
-            background: linear-gradient(135deg, #FFF8DC, #F0E68C); /* Soft yellow background */
-            border: 3px solid #DDA0DD; /* Lilac border */
-        }
-
-        /* Toppings section */
-        .toppings-section {
-            background: linear-gradient(135deg, #E6E6FA, #F0F8FF); /* Soft light blue background */
-            border: 3px solid #9370DB; /* Purple border */
-        }
-        
-        /* Toppings title */
-        .toppings-title {
-            color: #9370DB; /* Purple */
-            text-align: center;
-            margin-bottom: 25px;
-        }
-        
-        /* Price for topping item */
-        .topping-price {
-            background: linear-gradient(135deg, #32CD32, #00CED1); /* Green to blue gradient */
-            color: white;
-            padding: 10px 20px;
-            border-radius: 15px;
-            font-weight: 800;
-            font-size: 20px;
-            display: inline-block;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            margin: 0 10px;
-        }
-        
-        /* Individual topping item (now for display only, added via modal) */
-        .topping-item {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 18px;
-            padding: 18px 20px;
-            margin-bottom: 18px;
-            border: 2px solid #DDA0DD;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            /* Removed flexbox stuff here as buttons are gone from main topping list */
-        }
-        
-        .topping-item:hover {
-            transform: translateX(10px); /* Slide on hover */
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-        
-        .topping-name {
-            font-size: 20px;
-            font-weight: 800;
-            color: #9370DB;
-            margin-bottom: 10px;
-        }
-        
-        .topping-description {
-            font-size: 16px;
-            color: #8B4513;
-            line-height: 1.4;
-            /* Removed margin-bottom here as no button below */
-        }
-        
-        /* Styles for the Promotions and News section */
-        .promotions-section {
-            background: linear-gradient(135deg, #FFC0CB, #ADD8E6); /* Light pink to light blue */
-            border: 3px solid #FF69B4; /* Strong pink border */
-        }
-
-        .promotion-item {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            padding: 22px 20px;
-            margin-bottom: 18px;
-            border: 3px solid #FFB6C1;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer; /* Added cursor to indicate it's clickable */
-        }
-
-        .promotion-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-            border-color: #FF1493;
-        }
-
-        .promotion-item-title {
-            font-size: 24px;
-            font-weight: 800;
-            color: #FF1493; /* Strong pink */
-            margin-bottom: 10px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-        }
-
-        .promotion-item-description {
-            font-size: 17px;
-            color: #8B4513;
-            line-height: 1.4;
-            font-weight: 600;
-        }
-
-        /* --- Shopping Cart Section Styles --- */
-        .shopping-cart-section {
-            margin-top: 45px;
-            margin-bottom: 45px;
-            background: linear-gradient(135deg, #E0F2FE, #F3E8FF); /* Light blue to light purple */
-            border-radius: 25px;
-            padding: 30px 25px;
-            border: 3px solid #87CEEB; /* Light blue border */
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-            transition: background 0.5s ease-in-out, border-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out; /* TRANSICIÓN AÑADIDA */
-        }
-
-        .shopping-cart-section .section-title {
-            color: #007BFF; /* Blue for cart title */
-            margin-bottom: 20px;
-        }
-
-        .cart-items-list {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0;
-            max-height: 250px; /* Limit height for scrollable area */
-            overflow-y: auto; /* Enable vertical scrolling */
-            border: 1px dashed #B0C4DE; /* Light blue dashed border */
-            border-radius: 10px;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.7); /* Slightly transparent background */
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start; /* Align items to start, useful for multiline topping lists */
-            padding: 10px 0;
-            border-bottom: 1px solid #E0E0E0;
-            font-size: 17px;
-            font-weight: 600;
-            color: #333;
-            flex-direction: column; /* Stack name/toppings and price/remove vertically initially */
-        }
-
-        .cart-item:last-child {
-            border-bottom: none;
-        }
-
-        .item-main-info {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            margin-bottom: 5px;
-        }
-
-        .item-quantity {
-            font-weight: 800;
-            color: #FF69B4; /* Pink for quantity */
-            margin-right: 10px;
-            min-width: 30px; /* Ensure space for quantity */
-            text-align: right;
-        }
-
-        .item-name {
-            flex-grow: 1; /* Allows name to take available space */
-            text-align: left;
-        }
-
-        .item-details {
-            width: 100%; /* Take full width below main info */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-left: 40px; /* Indent to align with item name */
-        }
-
-        .item-toppings {
-            font-size: 14px;
-            color: #8B4513; /* Brownish for toppings */
-            text-align: left;
-            margin-top: 5px;
-            flex-grow: 1;
-        }
-
-        .item-price {
-            font-weight: 800;
-            color: #32CD32; /* Green for price */
-            margin-left: 10px;
-            white-space: nowrap; /* Prevent price from wrapping */
-        }
-
-        .remove-item-button {
-            background: #FF6347; /* Orange-red for remove button */
-            color: white;
-            border: none;
-            border-radius: 50%; /* Circular button */
-            width: 28px;
-            height: 28px;
-            font-size: 16px;
-            font-weight: 900;
-            cursor: pointer;
-            transition: background 0.2s ease;
-            margin-left: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0; /* Prevent shrinking */
-        }
-
-        .remove-item-button:hover {
-            background: #FF4500;
-            transform: scale(1.05);
-        }
-
-        .cart-total {
-            font-size: 24px;
-            font-weight: 900;
-            color: #FF1493; /* Strong pink for total */
-            margin-top: 20px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-        }
-
-        .cart-actions {
-            margin-top: 30px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .cart-action-button {
-            background: linear-gradient(45deg, #FFD700, #FFA500); /* Gold to Orange */
-            color: white;
-            font-size: 20px;
-            font-weight: 800;
-            padding: 15px 25px;
-            border-radius: 20px;
-            border: 3px solid white;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .cart-action-button.clear-cart {
-            background: linear-gradient(45deg, #FF69B4, #DDA0DD); /* Pink to Lilac */
-        }
-        .cart-action-button.order-whatsapp-button {
-            background: linear-gradient(45deg, #25D366, #128C7E); /* WhatsApp green */
-        }
-        
-        .cart-action-button:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
-        }
-        .cart-action-button.clear-cart:hover {
-            background: linear-gradient(45deg, #DDA0DD, #FF69B4);
-        }
-        .cart-action-button.order-whatsapp-button:hover {
-            background: linear-gradient(45deg, #128C7E, #25D366);
-        }
-        /* --- End Shopping Cart Section Styles --- */
-
-
-        /* Order section */
-        .order-section {
-            background: linear-gradient(135deg, #FF69B4, #9370DB, #00CED1); /* Multicolor gradient */
-            color: white;
-            text-align: center;
-            border-radius: 30px;
-            padding: 40px 30px;
-            margin-top: 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-            border: 4px solid white;
-            position: relative;
-            overflow: hidden;
-            transition: background 0.5s ease-in-out, border-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out; /* TRANSICIÓN AÑADIDA */
-        }
-        
-        /* Bubble pattern background for the order section */
-        .order-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.3"/><circle cx="80" cy="40" r="1.5" fill="white" opacity="0.4"/><circle cx="40" cy="70" r="1" fill="white" opacity="0.3"/><circle cx="70" cy="80" r="2.5" fill="white" opacity="0.2"/></svg>');
-            z-index: 1;
-        }
-        
-        .order-content {
-            position: relative;
-            z-index: 2;
-        }
-        
-        /* Order section title */
-        .order-title {
-            font-size: 36px;
-            font-weight: 900;
-            margin-bottom: 25px;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
-            line-height: 1.2;
-        }
-        
-        /* WhatsApp section (this section now mainly shows the number and steps) */
-        .whatsapp-section {
-            margin: 30px 0;
-        }
-        
-        .whatsapp-text {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* Estilos para el enlace de WhatsApp (now only used for the raw number display) */
-        .whatsapp-link {
-            text-decoration: none;
-            color: white;
-        }
-
-        /* WhatsApp number (no longer a button) */
-        .whatsapp-number {
-            background: #25D366; /* WhatsApp Green */
-            color: white;
-            font-size: 32px;
-            font-weight: 900;
-            padding: 25px 30px;
-            border-radius: 25px;
-            display: inline-block;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-            border: 4px solid white;
-            letter-spacing: 1px;
-            /* Removed pulse animation from here as the main order button will have it */
-            
-            /* Usar flexbox para organizar el número y la leyenda */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            line-height: 1; /* Adjust line-height so the legend doesn't have too much space */
-        }
-
-        /* Style for the new legend inside the WhatsApp number block */
-        .whatsapp-click-legend {
-            font-size: 14px; /* Smaller font */
-            font-weight: 600; /* Semi-bold */
-            color: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
-            margin-top: 5px; /* Space between the number and the legend */
-            text-shadow: none; /* Remove shadow if inherited from parent */
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        /* Order steps */
-        .order-steps {
-            background: rgba(255, 255, 255, 0.15); /* Semi-transparent background */
-            border-radius: 20px;
-            padding: 25px;
-            margin: 30px auto;
-            max-width: 650px;
-            backdrop-filter: blur(10px); /* Blur effect */
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .order-step {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 18px;
-            text-align: left;
-            padding-left: 15px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-            line-height: 1.4;
-        }
-        
-        .order-step:last-child {
-            margin-bottom: 0;
-        }
-        
-        /* Final message */
-        .final-message {
-            background: linear-gradient(135deg, #FFD700, #FFA500, #FF6347);
-            color: white;
-            text-align: center;
-            padding: 35px 25px;
-            border-radius: 25px;
-            margin-top: 35px;
-            font-size: 19px;
-            font-weight: 700;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-            border: 3px solid white;
-            line-height: 1.5;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            transition: background 0.5s ease-in-out, border-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out; /* TRANSICIÓN AÑADIDA */
-        }
-        
-        .final-message .highlight {
-            font-size: 22px;
-            font-weight: 800;
-            display: block;
-            margin-top: 20px;
-        }
-        
-        /* Dividers with animated emojis */
-        .kawaii-divider {
-            text-align: center;
-            margin: 40px 0;
-            font-size: 30px;
-        }
-        
-        .kawaii-divider .emoji {
-            display: inline-block;
-            margin: 0 15px;
-            animation: bounce 2s infinite, sparkleColor 4s infinite alternate; /* COMBINA ANIMACIONES */
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.7); /* AÑADE UN BRILLO */
-        }
-
-        /* --- NUEVO: Animación de color para emojis divisores --- */
-        @keyframes sparkleColor {
-            0% { color: #FFD700; } /* Dorado */
-            25% { color: #FF69B4; } /* Rosa */
-            50% { color: #87CEEB; } /* Azul claro */
-            75% { color: #DDA0DD; } /* Lila */
-            100% { color: #FFD700; }
-        }
-        /* --- FIN NUEVO: Animación de color para emojis divisores --- */
-        
-        .kawaii-divider .emoji:nth-child(2) {
-            animation-delay: 0.3s;
-        }
-        
-        .kawaii-divider .emoji:nth-child(3) {
-            animation-delay: 0.6s;
-        }
-        
-        /* Bounce animation */
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-        
-        /* Mobile optimizations */
-        @media (max-width: 768px) {
-            /* Widths are already fluid, they adjust automatically */
-            
-            .menu-container {
-                padding: 15px 10px; /* Smaller padding on mobile */
-            }
-            
-            .content-wrapper {
-                padding: 25px 20px;
-            }
-            
-            .main-title {
-                font-size: 42px; /* Font size reduction for main title */
-            }
-            
-            .section-title {
-                font-size: 26px; /* Font size reduction for section titles */
-            }
-            
-            .price-banner {
-                font-size: 22px;
-                padding: 15px 20px;
-            }
-            
-            /* Adjusted WhatsApp number display for mobile as it's no longer the main order button */
-            .whatsapp-number {
-                font-size: 24px;
-                padding: 15px 20px;
-            }
-            .whatsapp-click-legend {
-                font-size: 10px; /* Even smaller for legend */
-            }
-            
-            .order-title {
-                font-size: 30px;
-            }
-            
-            .capybobba-mascot {
-                width: 200px;
-                height: 200px;
-                font-size: 120px;
-            }
-
-            .capybobba-mascot::after {
-                font-size: 50px;
-                top: -15px;
-                right: -15px;
-            }
-
-            .flavor-image-content, .hot-drinks-image-content, .topping-selection-content {
-                width: 90%; /* Ensures the container is not too large */
-                max-width: 300px;
-                padding: 20px;
-            }
-
-            .add-drink-to-cart-button, .cart-action-button {
-                font-size: 16px;
-                padding: 10px 15px;
-            }
-            .cart-action-button {
-                width: 100%; /* Full width buttons on small screens */
-            }
-
-            .add-topping-button {
-                font-size: 14px;
-                padding: 8px 12px;
-            }
-        }
-        
-        /* Print/screenshot optimizations */
-        @media print {
-            body {
-                background: white; /* White background for printing */
-            }
-            
-            .kawaii-decoration {
-                display: none; /* Hides floating decorations */
-            }
-        }
-
-        /* --- Styles for flavor image viewer (overlay) --- */
-        .flavor-image-overlay, .hot-drinks-image-overlay, .topping-selection-overlay {
-            position: fixed; /* Fixed on screen */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background (LIGERAMENTE MENOS OPACo) */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000; /* Ensures it's on top of everything */
-            opacity: 0; /* Initially hidden */
-            pointer-events: none; /* Not interactable when hidden */
-            transition: opacity 0.3s ease-in-out; /* Smooth transition for showing/hiding */
-            backdrop-filter: blur(8px); /* NUEVO: Efecto de desenfoque en el fondo */
-            -webkit-backdrop-filter: blur(8px); /* NUEVO: Para compatibilidad con Safari */
-        }
-
-        .flavor-image-overlay.show, .hot-drinks-image-overlay.show, .topping-selection-overlay.show {
-            opacity: 1; /* Shows the overlay */
-            pointer-events: auto; /* Allows interaction when visible */
-        }
-
-        .flavor-image-content, .hot-drinks-image-content, .topping-selection-content {
-            background: rgba(255, 255, 255, 0.95); /* Almost opaque white background */
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            border: 4px solid #FF69B4; /* Vibrant pink border */
-            max-width: 400px; 
-            width: 80%; /* Fluid width */
-            transform: scale(0.7); /* NUEVO: Empieza más pequeño */
-            opacity: 0; /* Added for smooth content transition */
-            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s ease-in-out; /* NUEVO: Curva de rebote */
-        }
-
-        .flavor-image-overlay.show .flavor-image-content, 
-        .hot-drinks-image-overlay.show .hot-drinks-image-content,
-        .topping-selection-overlay.show .topping-selection-content {
-            transform: scale(1); /* Normal scale when showing */
-            opacity: 1; /* Transiciona a opacidad completa al mostrar */
-        }
-
-        .flavor-image-content img, .hot-drinks-image-content img {
-            max-width: 100%; /* Ensures the image doesn't overflow */
-            height: auto;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            border: 3px solid #DDA0DD;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            object-fit: contain; /* Shows the complete image without cropping */
-        }
-
-        .flavor-image-name {
-            font-size: 28px;
-            font-weight: 800;
-            color: #FF1493;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Style for the hot drinks image name */
-        .hot-drinks-name {
-            font-size: 28px;
-            font-weight: 800;
-            color: #FF1493; /* Strong pink, matching flavor names */
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow for definition */
-            margin-top: 10px; /* Add some space above the text */
-        }
-        /* Ensure dark mode also adjusts this text color */
-        @media (prefers-color-scheme: dark) {
-            .hot-drinks-name {
-                color: #FFB6C1; /* A light pink for dark mode for better visibility */
-                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Slightly stronger shadow for contrast on dark */
-            }
-        }
-
-        /* --- Topping Selection Modal Styles --- */
-        .topping-selection-content .section-title {
-            color: #9370DB; /* Purple for topping modal title */
-        }
-
-        .current-drink-name-modal {
-            font-size: 22px;
-            font-weight: 700;
-            color: #FF69B4; /* Pink for current drink name */
-            margin-bottom: 20px;
-        }
-
-        .toppings-modal-grid {
-            display: grid;
-            gap: 15px;
-            margin-top: 20px;
-            max-height: 200px;
-            overflow-y: auto;
-            padding: 10px;
-            border: 1px dashed #DDA0DD;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.8);
-        }
-
-        .topping-modal-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #F9F0FF; /* Very light purple */
-            border-radius: 12px;
-            padding: 12px 15px;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-        }
-        .topping-modal-item.selected {
-            border: 2px solid #9370DB; /* Highlight selected toppings */
-            background: #E6E6FA; /* Slightly darker background */
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-        }
-
-        .topping-modal-name {
-            font-size: 18px;
-            font-weight: 700;
-            color: #9370DB;
-            flex-grow: 1;
-            text-align: left;
-        }
-
-        .topping-modal-price {
-            font-size: 16px;
-            font-weight: 600;
-            color: #32CD32;
-            margin-left: 10px;
-            white-space: nowrap;
-        }
-
-        .add-topping-button {
-            background: linear-gradient(45deg, #00CED1, #87CEEB); /* Teal to light blue */
-            color: white;
-            border: none;
-            border-radius: 12px;
-            padding: 8px 12px;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            margin-left: 10px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .add-topping-button.remove {
-            background: linear-gradient(45deg, #FF6347, #FF4500); /* Orange-red */
-        }
-
-        .add-topping-button:hover {
-            transform: scale(1.03);
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-        }
-
-        .topping-selection-actions {
-            margin-top: 30px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .topping-selection-actions button {
-            font-size: 18px;
-            padding: 12px 20px;
-            border-radius: 18px;
-            border: 2px solid white;
-            color: white;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .topping-selection-actions button:hover {
-            transform: translateY(-3px) scale(1.01);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        #confirmToppingsButton {
-            background: linear-gradient(45deg, #25D366, #128C7E); /* Green for confirm */
-        }
-        #confirmToppingsButton:hover {
-            background: linear-gradient(45deg, #128C7E, #25D366);
-        }
-
-        #noToppingsButton {
-            background: linear-gradient(45deg, #FFA500, #FFD700); /* Orange for no toppings */
-        }
-        #noToppingsButton:hover {
-            background: linear-gradient(45deg, #FFD700, #FFA500);
-        }
-
-        #cancelToppingsButton {
-            background: linear-gradient(45deg, #FF69B4, #FF1493); /* Pink for cancel */
-        }
-        #cancelToppingsButton:hover {
-            background: linear-gradient(45deg, #FF1493, #FF69B4);
-        }
-        /* --- End Topping Selection Modal Styles --- */
-
-        /* --- NUEVO: Animaciones de entrada al scroll --- */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px); /* Empieza un poco abajo */
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        /* Variación para un efecto de "deslizamiento" desde la izquierda/derecha */
-        .animate-slide-in-left {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .animate-slide-in-right {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        /* Clase que se añade cuando el elemento es visible */
-        .animate-on-scroll.is-visible,
-        .animate-slide-in-left.is-visible,
-        .animate-slide-in-right.is-visible {
-            opacity: 1;
-            transform: translateY(0) translateX(0);
-        }
-
-        /* Retrasos para animaciones secuenciales (opcional, pero muy efectivo) */
-        .flavor-grid .flavor-item:nth-child(1) { transition-delay: 0.1s; }
-        .flavor-grid .flavor-item:nth-child(2) { transition-delay: 0.2s; }
-        .flavor-grid .flavor-item:nth-child(3) { transition-delay: 0.3s; }
-        .flavor-grid .flavor-item:nth-child(4) { transition-delay: 0.4s; }
-        .flavor-grid .flavor-item:nth-child(5) { transition-delay: 0.5s; }
-        .flavor-grid .flavor-item:nth-child(6) { transition-delay: 0.6s; }
-        .flavor-grid .flavor-item:nth-child(7) { transition-delay: 0.7s; }
-        .flavor-grid .flavor-item:nth-child(8) { transition-delay: 0.8s; }
-
-        .topping-item:nth-child(1) { transition-delay: 0.1s; }
-        .topping-item:nth-child(2) { transition-delay: 0.2s; }
-        .topping-item:nth-child(3) { transition-delay: 0.3s; }
-        .topping-item:nth-child(4) { transition-delay: 0.4s; }
-
-        .promotion-item:nth-child(1) { transition-delay: 0.1s; }
-        .promotion-item:nth-child(2) { transition-delay: 0.2s; }
-        /* --- FIN NUEVO: Animaciones de entrada al scroll --- */
-
-        /* --- NUEVO: Estilos para el resumen del carrito en el header --- */
-        .cart-summary {
-            position: fixed; /* CAMBIADO: Ahora es fijo en el viewport */
-            top: 20px; /* Posición inicial, será ajustada por JS */
-            right: 20px; /* Ajusta según tu diseño */
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 8px 15px;
-            border-radius: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border: 2px solid #FFB6C1;
-            z-index: 10; /* Asegura que esté por encima del contenido */
-            transition: all 0.3s ease; /* Transición para cambios de color/sombra, no para 'top' */
-            cursor: pointer; /* Añadido para indicar que es clickeable */
-        }
-
-        .cart-icon-emoji {
-            font-size: 28px;
-            transition: transform 0.2s ease;
-        }
-
-        .cart-icon-emoji.pulse-animation {
-            animation: pulseCart 0.5s ease-in-out;
-        }
-
-        @keyframes pulseCart {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-
-        .cart-item-count {
-            font-size: 18px;
-            font-weight: 700;
-            color: #FF1493;
-        }
-        /* --- FIN NUEVO: Estilos para el resumen del carrito en el header --- */
-
-    </style>
+    
+    <!-- Enlace al archivo CSS externo -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Precarga de fuentes para mejorar LCP (Largest Contentful Paint) -->
+    <!-- Asegúrate de que estas rutas sean correctas para tus archivos de fuente -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/nunito/v16/XRXV3I6sdovS2ITcM5Xg.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/balsamiqsans/v7/Pujv6yXd6zCj_Lb4S-WJ7hR3.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <!-- Preconnect para Google Fonts, mejora la velocidad de descarga -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
-    <!-- --- NUEVO: Burbujas de fondo animadas --- -->
-    <div class="bubbles-background">
+    <!-- Burbujas de fondo animadas (elementos puramente decorativos) -->
+    <div class="bubbles-background" aria-hidden="true">
         <span class="bubble"></span>
         <span class="bubble"></span>
         <span class="bubble"></span>
@@ -1501,372 +31,363 @@
         <span class="bubble"></span>
         <span class="bubble"></span>
     </div>
-    <!-- --- FIN NUEVO: Burbujas de fondo animadas --- -->
 
-    <!-- Kawaii floating decorations -->
-    <div class="kawaii-decoration bubble-tea-cup"></div>
-    <div class="kawaii-decoration capybara-float-1">🐹</div>
-    <div class="kawaii-decoration capybara-float-2">🐹</div>
-    <div class="kawaii-decoration heart-float">💕</div>
+    <!-- Contenedor principal de decoraciones kawaii flotantes (puramente decorativas) -->
+    <div class="kawaii-decorations-wrapper" aria-hidden="true">
+        <span class="kawaii-decoration bubble-tea-cup">🧋</span>
+        <span class="kawaii-decoration capybara-float-1">🦫</span>
+        <span class="kawaii-decoration capybara-float-2">🦫</span>
+        <span class="kawaii-decoration heart-float">💖</span>
+    </div>
     
-    <div class="menu-container">
-        <div class="content-wrapper">
-            <!-- Header -->
-            <div class="header">
-                <div class="capybobba-mascot">
-                    <!-- Image for light mode (visible by default) -->
-                    <img id="logoLight" src="https://i.imgur.com/llR0NN0.png" 
-                         alt="Capibobba Logo Modo Claro">
-                    <!-- Image for dark mode (hidden by default) -->
-                    <img id="logoDark" src="https://i.imgur.com/i7psA3z.png" 
-                         alt="Capibobba Logo Modo Oscuro">
-                </div>
-                <!-- --- MODIFICADO: Título principal SIN efecto glitch --- -->
-                <h1 class="main-title">MENÚ CAPIBOBBA</h1>
-                <!-- --- FIN MODIFICADO: Título principal SIN efecto glitch --- -->
-                <div class="tagline">¡Dale un abrazo a tu bebida favorita! 🧸💕</div>
-
-                <!-- --- NUEVO: Resumen del carrito en el header --- -->
-                <div class="cart-summary" id="cartSummary">
-                    <span class="cart-icon-emoji" id="cartIconEmoji">🛒</span>
-                    <span class="cart-item-count" id="cartItemCount">0</span>
-                </div>
-                <!-- --- FIN NUEVO: Resumen del carrito en el header --- -->
+    <!-- Contenedor principal de todo el contenido del menú -->
+    <main class="menu-container">
+        <!-- Encabezado principal de la página -->
+        <header class="header">
+            <div class="capybobba-mascot" role="img" aria-label="Capibobba Logo con un corazón flotante">
+                <!-- Imágenes del logo con atributos de rendimiento y accesibilidad -->
+                <img id="logoLight" src="https://i.imgur.com/llR0NN0.png" alt="Capibobba Logo Modo Claro" width="250" height="250" loading="eager">
+                <img id="logoDark" src="https://i.imgur.com/i7psA3z.png" alt="Capibobba Logo Modo Oscuro" width="250" height="250" loading="eager">
             </div>
-            
-            <!-- Decorative divider -->
-            <div class="kawaii-divider">
+            <h1 class="main-title">MENÚ CAPIBOBBA</h1>
+            <p class="tagline">¡Dale un abrazo a tu bebida favorita! 🧸💕</p>
+
+            <!-- Resumen del carrito flotante en el header -->
+            <div class="cart-summary" id="cartSummary" role="status" aria-live="polite" tabindex="0">
+                <span class="cart-icon-emoji" id="cartIconEmoji" aria-hidden="true">🛒</span>
+                <span class="cart-item-count" id="cartItemCount">0</span>
+                <span class="visually-hidden">elementos en el carrito</span>
+            </div>
+        </header>
+        
+        <!-- Contenedor principal del contenido del menú (secciones de productos, promociones, etc.) -->
+        <article class="content-wrapper">
+            <!-- Divisor decorativo -->
+            <div class="kawaii-divider" aria-hidden="true">
                 <span class="emoji">🌟</span>
                 <span class="emoji">✨</span>
                 <span class="emoji">🌟</span>
             </div>
             
             <!-- Sección de Frappés base agua -->
-            <section class="menu-section animate-on-scroll">
-                <div class="section-header">
-                    <div class="section-title">🍹✨ Frappés mágicos base agua - 16oz ✨🍹</div>
+            <section class="menu-section animate-on-scroll" id="water-based-frappes" aria-labelledby="water-frappes-title">
+                <header class="section-header">
+                    <h2 id="water-frappes-title" class="section-title">🍹✨ Frappés mágicos base agua - 16oz ✨🍹</h2>
                     <div class="price-banner">$75 (Incluye hielo ❄️ y ternura)</div>
-                    <div class="section-description">
+                    <p class="section-description">
                         Refrescantes, frutales y muuuy kawaii 💖<br>
                         Ideal para días soleados 🌞
-                    </div>
-                    <!-- Leyenda para click en sabores (mantengo para la imagen, pero el pedido es por botón) -->
-                    <div class="click-legend">da click en los sabores para ver una imagen de la boba</div>
-                </div>
+                    </p>
+                    <p class="click-legend">da click en los sabores para ver una imagen de la boba</p>
+                </header>
                 
                 <div class="flavor-grid">
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Litchi (Agua)" data-price="75">
-                        <div class="flavor-name">Litchi</div>
-                        <div class="flavor-description">Dulce y exótico como un abrazo frutal de nube ☁️💕 (¡pruébalo si no lo conoces!)</div>
-                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    <!-- Cada item de sabor es un div con tabindex para accesibilidad por teclado -->
+                    <div class="flavor-item animate-on-scroll" data-name="Frappé Litchi (Agua)" data-price="75" tabindex="0">
+                        <h3 class="flavor-name">Litchi</h3>
+                        <p class="flavor-description">Dulce y exótico como un abrazo frutal de nube ☁️💕 (¡pruébalo si no lo conoces!)</p>
+                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Litchi al carrito">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Fresa (Agua)" data-price="75">
-                        <div class="flavor-name">Fresa</div>
-                        <div class="flavor-description">El clásico más tierno 🍓💖 ¡como una caricia de fresita!</div>
-                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    <div class="flavor-item animate-on-scroll" data-name="Frappé Fresa (Agua)" data-price="75" tabindex="0">
+                        <h3 class="flavor-name">Fresa</h3>
+                        <p class="flavor-description">El clásico más tierno 🍓💖 ¡como una caricia de fresita!</p>
+                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Fresa al carrito">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Blueberry (Agua)" data-price="75">
-                        <div class="flavor-name">Blueberry</div>
-                        <div class="flavor-description">Dulzura encantadora con un toque de magia azul 💙🫐</div>
-                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    <div class="flavor-item animate-on-scroll" data-name="Frappé Blueberry (Agua)" data-price="75" tabindex="0">
+                        <h3 class="flavor-name">Blueberry</h3>
+                        <p class="flavor-description">Dulzura encantadora con un toque de magia azul 💙🫐</p>
+                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Blueberry al carrito">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Mango (Agua)" data-price="75">
-                        <div class="flavor-name">Mango</div>
-                        <div class="flavor-description">Tropical y juguetón 🥭☀️ ¡Pura alegría líquida!</div>
-                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    <div class="flavor-item animate-on-scroll" data-name="Frappé Mango (Agua)" data-price="75" tabindex="0">
+                        <h3 class="flavor-name">Mango</h3>
+                        <p class="flavor-description">Tropical y juguetón 🥭☀️ ¡Pura alegría líquida!</p>
+                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Mango al carrito">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Piña Colada (Agua)" data-price="75">
-                        <div class="flavor-name">Piña colada</div>
-                        <div class="flavor-description">Vacaciones kawaii en cada sorbo 🍍🥥 ¡fresca y coqueta!</div>
-                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    <div class="flavor-item animate-on-scroll" data-name="Frappé Piña Colada (Agua)" data-price="75" tabindex="0">
+                        <h3 class="flavor-name">Piña colada</h3>
+                        <p class="flavor-description">Vacaciones kawaii en cada sorbo 🍍🥥 ¡fresca y coqueta!</p>
+                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Piña Colada al carrito">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Maracuyá (Agua)" data-price="75">
-                        <div class="flavor-name">Maracuyá</div>
-                        <div class="flavor-description">Ácida y divertida, perfecta para los más atrevidos 💛✨</div>
-                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    <div class="flavor-item animate-on-scroll" data-name="Frappé Maracuyá (Agua)" data-price="75" tabindex="0">
+                        <h3 class="flavor-name">Maracuyá</h3>
+                        <p class="flavor-description">Ácida y divertida, perfecta para los más atrevidos 💛✨</p>
+                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Maracuyá al carrito">Añadir 💖</button>
                     </div>
 
-                    <!-- Nuevo sabor: Guanábana -->
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Guanábana (Agua)" data-price="75">
-                        <div class="flavor-name">Guanábana</div>
-                        <div class="flavor-description">Exótica y refrescante, con un dulzor suave y cremoso 💚✨</div>
-                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    <div class="flavor-item animate-on-scroll" data-name="Frappé Guanábana (Agua)" data-price="75" tabindex="0">
+                        <h3 class="flavor-name">Guanábana</h3>
+                        <p class="flavor-description">Exótica y refrescante, con un dulzor suave y cremoso 💚✨</p>
+                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Guanábana al carrito">Añadir 💖</button>
                     </div>
 
-                    <!-- Nuevo sabor: Sandía -->
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Sandía (Agua)" data-price="75">
-                        <div class="flavor-name">Sandía</div>
-                        <div class="flavor-description">Refrescante y dulce, el sabor del verano en cada sorbo 🍉☀️</div>
-                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    <div class="flavor-item animate-on-scroll" data-name="Frappé Sandía (Agua)" data-price="75" tabindex="0">
+                        <h3 class="flavor-name">Sandía</h3>
+                        <p class="flavor-description">Refrescante y dulce, el sabor del verano en cada sorbo 🍉☀️</p>
+                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Sandía al carrito">Añadir 💖</button>
                     </div>
                 </div>
             </section>
             
-            <!-- Decorative divider -->
-            <div class="kawaii-divider">
+            <!-- Divisor decorativo -->
+            <div class="kawaii-divider" aria-hidden="true">
                 <span class="emoji">🌈</span>
                 <span class="emoji">🧋</span>
                 <span class="emoji">🌈</span>
             </div>
             
             <!-- Sección de Frappés base leche -->
-            <section class="menu-section animate-on-scroll">
-                <div class="section-header">
-                    <div class="section-title">🍼💫 Frappés mágicos base leche - 16oz 💫🍼</div>
+            <section class="menu-section animate-on-scroll" id="milk-based-frappes" aria-labelledby="milk-frappes-title">
+                <header class="section-header">
+                    <h2 id="milk-frappes-title" class="section-title">🍼💫 Frappés mágicos base leche - 16oz 💫🍼</h2>
                     <div class="price-banner">$75 (Cremositos, dulces y súper abrazables 🤍)</div>
-                    <div class="section-description">¡Una nube cremosa con sabor! 🧋🐰</div>
-                    <!-- Leyenda para click en sabores (mantengo para la imagen, pero el pedido es por botón) -->
-                    <div class="click-legend">da click en los sabores para ver una imagen de la boba</div>
-                </div>
+                    <p class="section-description">¡Una nube cremosa con sabor! 🧋🐰</p>
+                    <p class="click-legend">da click en los sabores para ver una imagen de la boba</p>
+                </header>
                 
                 <div class="flavor-grid">
-                    <!-- Nuevo sabor: Chocolate Mexicano (MOVido al principio) -->
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Chocolate Mexicano (Leche)" data-price="75">
-                        <div class="flavor-name">Chocolate Mexicano</div>
-                        <div class="flavor-description">El toque tradicional de cacao con canela y un secreto de la abuela 🍫🌶️✨</div>
-                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    <div class="flavor-item animate-on-scroll" data-name="Frappé Chocolate Mexicano (Leche)" data-price="75" tabindex="0">
+                        <h3 class="flavor-name">Chocolate Mexicano</h3>
+                        <p class="flavor-description">El toque tradicional de cacao con canela y un secreto de la abuela 🍫🌶️✨</p>
+                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Chocolate Mexicano al carrito">Añadir 💖</button>
                     </div>
 
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Taro (Leche)" data-price="75">
-                        <div class="flavor-name">Taro</div>
-                        <div class="flavor-description">Cremoso y delicado  🌰💜 (¡tu nuevo favorito si no lo conoces!)</div>
-                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    <div class="flavor-item animate-on-scroll" data-name="Frappé Taro (Leche)" data-price="75" tabindex="0">
+                        <h3 class="flavor-name">Taro</h3>
+                        <p class="flavor-description">Cremoso y delicado  🌰💜 (¡tu nuevo favorito si no lo conoces!)</p>
+                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Taro al carrito">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Mazapán (Leche)" data-price="75">
-                        <div class="flavor-name">Mazapán</div>
-                        <div class="flavor-description">Sabor a infancia mexicana 🎠💕 ¡un apapacho de cacahuate!</div>
-                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    <div class="flavor-item animate-on-scroll" data-name="Frappé Mazapán (Leche)" data-price="75" tabindex="0">
+                        <h3 class="flavor-name">Mazapán</h3>
+                        <p class="flavor-description">Sabor a infancia mexicana 🎠💕 ¡un apapacho de cacahuate!</p>
+                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Mazapán al carrito">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Chai (Leche)" data-price="75">
-                        <div class="flavor-name">Chai</div>
-                        <div class="flavor-description">Especiado y cálido ☕✨ ¡ideal para días nublados!</div>
-                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    <div class="flavor-item animate-on-scroll" data-name="Frappé Chai (Leche)" data-price="75" tabindex="0">
+                        <h3 class="flavor-name">Chai</h3>
+                        <p class="flavor-description">Especiado y cálido ☕✨ ¡ideal para días nublados!</p>
+                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Chai al carrito">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Mocha (Leche)" data-price="75">
-                        <div class="flavor-name">Mocha</div>
-                        <div class="flavor-description">Café y chocolate en perfecta armonía 🍫☕💞</div>
-                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    <div class="flavor-item animate-on-scroll" data-name="Frappé Mocha (Leche)" data-price="75" tabindex="0">
+                        <h3 class="flavor-name">Mocha</h3>
+                        <p class="flavor-description">Café y chocolate en perfecta armonía 🍫☕💞</p>
+                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Mocha al carrito">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Cookies & Cream (Leche)" data-price="75">
-                        <div class="flavor-name">Cookies & Cream</div>
-                        <div class="flavor-description">Como beber una galleta con leche 🍪🥛 ¡ñam!</div>
-                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    <div class="flavor-item animate-on-scroll" data-name="Frappé Cookies & Cream (Leche)" data-price="75" tabindex="0">
+                        <h3 class="flavor-name">Cookies & Cream</h3>
+                        <p class="flavor-description">Como beber una galleta con leche 🍪🥛 ¡ñam!</p>
+                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Cookies & Cream al carrito">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Crema Irlandesa (Leche)" data-price="75">
-                        <div class="flavor-name">Crema Irlandesa</div>
-                        <div class="flavor-description">Cremosa y misteriosa 🍮✨ (sin alcohol)</div>
-                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    <div class="flavor-item animate-on-scroll" data-name="Frappé Crema Irlandesa (Leche)" data-price="75" tabindex="0">
+                        <h3 class="flavor-name">Crema Irlandesa</h3>
+                        <p class="flavor-description">Cremosa y misteriosa 🍮✨ (sin alcohol)</p>
+                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Crema Irlandesa al carrito">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Matcha (Leche)" data-price="75">
-                        <div class="flavor-name">Matcha</div>
-                        <div class="flavor-description">Té verde japonés con energía kawaii 💚🌿 ¡pura paz zen!</div>
-                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    <div class="flavor-item animate-on-scroll" data-name="Frappé Matcha (Leche)" data-price="75" tabindex="0">
+                        <h3 class="flavor-name">Matcha</h3>
+                        <p class="flavor-description">Té verde japonés con energía kawaii 💚🌿 ¡pura paz zen!</p>
+                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Matcha al carrito">Añadir 💖</button>
                     </div>
                 </div>
             </section>
             
-            <!-- Sección de bebidas calientes - AHORA CON SUS PROPIOS SABORES -->
-            <section class="menu-section hot-drinks animate-on-scroll">
-                <div class="section-header">
-                    <div class="section-title">☕🌸 Bebidas Calientitas - 12oz 🌸☕</div>
+            <!-- Sección de bebidas calientes -->
+            <section class="menu-section hot-drinks animate-on-scroll" id="hot-drinks-section" aria-labelledby="hot-drinks-title">
+                <header class="section-header">
+                    <h2 id="hot-drinks-title" class="section-title">☕🌸 Bebidas Calientitas - 12oz 🌸☕</h2>
                     <div class="price-banner">$60 – Ideal para esos días de frío o lluvia ☔🌧️</div>
-                    <div class="section-description">
+                    <p class="section-description">
                         ¡Calientitas, reconfortantes y adorables para abrazar tu día! 💕
-                    </div>
-                    <div class="click-legend">da click en los sabores para ver una imagen de la bebida</div>
-                </div>
+                    </p>
+                    <p class="click-legend">da click en los sabores para ver una imagen de la bebida</p>
+                </header>
                 
                 <div class="flavor-grid">
-                    <!-- Nuevo sabor: Chocolate Caliente -->
-                    <div class="flavor-item animate-on-scroll" data-name="Chocolate Caliente" data-price="60">
-                        <div class="flavor-name">Chocolate Caliente</div>
-                        <div class="flavor-description">El abrazo más dulce y cálido en una taza 🍫☕💖</div>
-                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    <div class="flavor-item animate-on-scroll" data-name="Chocolate Caliente" data-price="60" tabindex="0">
+                        <h3 class="flavor-name">Chocolate Caliente</h3>
+                        <p class="flavor-description">El abrazo más dulce y cálido en una taza 🍫☕💖</p>
+                        <button class="add-drink-to-cart-button" aria-label="Añadir Chocolate Caliente al carrito">Añadir 💖</button>
                     </div>
                     
-                    <!-- Sabores base leche como bebidas calientes -->
-                    <div class="flavor-item animate-on-scroll" data-name="Taro Caliente" data-price="60">
-                        <div class="flavor-name">Taro Caliente</div>
-                        <div class="flavor-description">Cremoso y delicado, perfecto para el frío 🌰💜</div>
-                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    <div class="flavor-item animate-on-scroll" data-name="Taro Caliente" data-price="60" tabindex="0">
+                        <h3 class="flavor-name">Taro Caliente</h3>
+                        <p class="flavor-description">Cremoso y delicado, perfecto para el frío 🌰💜</p>
+                        <button class="add-drink-to-cart-button" aria-label="Añadir Taro Caliente al carrito">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item animate-on-scroll" data-name="Mazapán Caliente" data-price="60">
-                        <div class="flavor-name">Mazapán Caliente</div>
-                        <div class="flavor-description">Sabor a infancia mexicana, ahora calientito 🎠💕</div>
-                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    <div class="flavor-item animate-on-scroll" data-name="Mazapán Caliente" data-price="60" tabindex="0">
+                        <h3 class="flavor-name">Mazapán Caliente</h3>
+                        <p class="flavor-description">Sabor a infancia mexicana, ahora calientito 🎠💕</p>
+                        <button class="add-drink-to-cart-button" aria-label="Añadir Mazapán Caliente al carrito">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item animate-on-scroll" data-name="Chai Caliente" data-price="60">
-                        <div class="flavor-name">Chai Caliente</div>
-                        <div class="flavor-description">Especiado y reconfortante, un clásico invernal ✨☕</div>
-                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    <div class="flavor-item animate-on-scroll" data-name="Chai Caliente" data-price="60" tabindex="0">
+                        <h3 class="flavor-name">Chai Caliente</h3>
+                        <p class="flavor-description">Especiado y reconfortante, un clásico invernal ✨☕</p>
+                        <button class="add-drink-to-cart-button" aria-label="Añadir Chai Caliente al carrito">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item animate-on-scroll" data-name="Mocha Caliente" data-price="60">
-                        <div class="flavor-name">Mocha Caliente</div>
-                        <div class="flavor-description">La combinación perfecta de café y chocolate, caliente y delicioso ☕🍫</div>
-                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    <div class="flavor-item animate-on-scroll" data-name="Mocha Caliente" data-price="60" tabindex="0">
+                        <h3 class="flavor-name">Mocha Caliente</h3>
+                        <p class="flavor-description">La combinación perfecta de café y chocolate, caliente y delicioso ☕🍫</p>
+                        <button class="add-drink-to-cart-button" aria-label="Añadir Mocha Caliente al carrito">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item animate-on-scroll" data-name="Cookies & Cream Caliente" data-price="60">
-                        <div class="flavor-name">Cookies & Cream Caliente</div>
-                        <div class="flavor-description">Como beber una galleta con leche, pero calientita 🍪🥛</div>
-                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    <div class="flavor-item animate-on-scroll" data-name="Cookies & Cream Caliente" data-price="60" tabindex="0">
+                        <h3 class="flavor-name">Cookies & Cream Caliente</h3>
+                        <p class="flavor-description">Como beber una galleta con leche, pero calientita 🍪🥛</p>
+                        <button class="add-drink-to-cart-button" aria-label="Añadir Cookies & Cream Caliente al carrito">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item animate-on-scroll" data-name="Crema Irlandesa Caliente" data-price="60">
-                        <div class="flavor-name">Crema Irlandesa Caliente</div>
-                        <div class="flavor-description">Cremosa y misteriosa, para una tarde acogedora 🍮✨</div>
-                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    <div class="flavor-item animate-on-scroll" data-name="Crema Irlandesa Caliente" data-price="60" tabindex="0">
+                        <h3 class="flavor-name">Crema Irlandesa Caliente</h3>
+                        <p class="flavor-description">Cremosa y misteriosa, para una tarde acogedora 🍮✨</p>
+                        <button class="add-drink-to-cart-button" aria-label="Añadir Crema Irlandesa Caliente al carrito">Añadir 💖</button>
                     </div>
                     
-                    <div class="flavor-item animate-on-scroll" data-name="Matcha Caliente" data-price="60">
-                        <div class="flavor-name">Matcha Caliente</div>
-                        <div class="flavor-description">Té verde japonés con energía zen, calientito y reconfortante 💚🌿</div>
-                        <button class="add-drink-to-cart-button">Añadir 💖</button>
+                    <div class="flavor-item animate-on-scroll" data-name="Matcha Caliente" data-price="60" tabindex="0">
+                        <h3 class="flavor-name">Matcha Caliente</h3>
+                        <p class="flavor-description">Té verde japonés con energía zen, calientito y reconfortante 💚🌿</p>
+                        <button class="add-drink-to-cart-button" aria-label="Añadir Matcha Caliente al carrito">Añadir 💖</button>
                     </div>
                 </div>
             </section>
 
-            <!-- Decorative divider for the new section -->
-            <div class="kawaii-divider">
+            <!-- Divisor decorativo para la nueva sección -->
+            <div class="kawaii-divider" aria-hidden="true">
                 <span class="emoji">💖</span>
                 <span class="emoji">✨</span>
                 <span class="emoji">🎉</span>
             </div>
 
-            <!-- Nueva Sección de Promociones y Novedades -->
-            <section class="menu-section promotions-section animate-on-scroll">
-                <div class="section-header">
-                    <div class="section-title">🌟 Novedades Kawaii y Promociones Exclusivas 🌟</div>
-                    <div class="section-description">
+            <!-- Sección de Promociones y Novedades -->
+            <section class="menu-section promotions-section animate-on-scroll" id="promotions-news-section" aria-labelledby="promotions-title">
+                <header class="section-header">
+                    <h2 id="promotions-title" class="section-title">🌟 Novedades Kawaii y Promociones Exclusivas 🌟</h2>
+                    <p class="section-description">
                         ¡No te pierdas las últimas sorpresas y ofertas más tiernas de Capibobba! ✨
-                    </div>
-                </div>
+                    </p>
+                </header>
                 
                 <!-- Frappé de Temporada con ID para el evento click -->
-                <!-- PRECIO ACTUALIZADO A $75 y texto del botón cambiado -->
-                <div class="promotion-item animate-on-scroll" id="fresasConCremaPromotion" data-name="Frappé Fresas con Crema (Temporada)" data-price="75">
-                    <div class="promotion-item-title">🍓🥛 Frappé de Temporada: "Fresas con Crema" 🍓🥛</div>
-                    <div class="promotion-item-description">
+                <div class="promotion-item animate-on-scroll" id="fresasConCremaPromotion" data-name="Frappé Fresas con Crema (Temporada)" data-price="75" tabindex="0">
+                    <h3 class="promotion-item-title">🍓🥛 Frappé de Temporada: "Fresas con Crema" 🍓🥛</h3>
+                    <p class="promotion-item-description">
                         ¡El clásico favorito de la abuela, pero en versión kawaii! Disfruta de la dulzura de la fresa natural combinada con la cremosidad más suave. ¡Un abrazo de fresas y amor en cada sorbo! Disponible solo por tiempo limitado.💖✨
-                    </div>
-                    <!-- Se ha añadido un estilo inline para centrar el botón aquí -->
-                    <button class="add-drink-to-cart-button" style="margin-top: 15px; margin: 15px auto 0;">Añadir 💖</button>
+                    </p>
+                    <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Fresas con Crema de Temporada al carrito">Añadir 💖</button>
                 </div>
 
-                <div class="promotion-item animate-on-scroll">
-                    <div class="promotion-item-title">🎁 Descuento por Primer Pedido 🎁</div>
-                    <div class="promotion-item-description">
+                <div class="promotion-item animate-on-scroll" tabindex="0">
+                    <h3 class="promotion-item-title">🎁 Descuento por Primer Pedido 🎁</h3>
+                    <p class="promotion-item-description">
                         ¡Bienvenido a la familia Capibobba! Obtén un 10% de descuento en tu primer pedido usando el código: **KAWAII10** al hacer tu encargo por WhatsApp. 🥳
-                    </div>
+                    </p>
                 </div>
             </section>
             
-            <!-- Sección de Toppings (now for display only, added via modal) -->
-            <section class="menu-section toppings-section animate-on-scroll">
-                <div class="section-header">
-                    <div class="section-title">🌈🧋 ¡Hazla tuya! Personaliza tu bebida 🧋🌈</div>
+            <!-- Sección de Toppings (ahora solo para visualización, la adición es vía modal) -->
+            <section class="menu-section toppings-section animate-on-scroll" id="toppings-section" aria-labelledby="toppings-section-title">
+                <header class="section-header">
+                    <h2 id="toppings-section-title" class="section-title">🌈🧋 ¡Hazla tuya! Personaliza tu bebida 🧋🌈</h2>
                     <div class="toppings-title">
                         <span style="font-size: 24px; font-weight: 800;">💖 Toppings kawaii</span>
                         <span class="topping-price">+$10 cada uno</span>
                     </div>
-                    <div class="section-description">
+                    <p class="section-description">
                         Selecciona estos toppings después de elegir tu bebida. ¡No se pueden añadir solos al carrito!
-                    </div>
+                    </p>
+                </header>
+                
+                <div class="topping-item animate-on-scroll" tabindex="0">
+                    <h3 class="topping-name">💥 Perlas explosivas de frutos rojos</h3>
+                    <p class="topping-description">Dulces mini-explosiones de amor ❤️🫧</p>
                 </div>
                 
-                <div class="topping-item animate-on-scroll">
-                    <div class="topping-name">💥 Perlas explosivas de frutos rojos</div>
-                    <div class="topping-description">Dulces mini-explosiones de amor ❤️🫧</div>
+                <div class="topping-item animate-on-scroll" tabindex="0">
+                    <h3 class="topping-name">🍏 Perlas explosivas de manzana verde</h3>
+                    <p class="topping-description">¡Explosión y frescura en cada sorbo! 🍏✨</p>
                 </div>
                 
-                <div class="topping-item animate-on-scroll">
-                    <div class="topping-name">🍏 Perlas explosivas de manzana verde</div>
-                    <div class="topping-description">¡Explosión y frescura en cada sorbo! 🍏✨</div>
+                <div class="topping-item animate-on-scroll" tabindex="0">
+                    <h3 class="topping-name">🤍 Perlas explosivas de litchi</h3>
+                    <p class="topping-description">Delicadas, frutales y muuuy adorables 🍡💖</p>
                 </div>
                 
-                <div class="topping-item animate-on-scroll">
-                    <div class="topping-name">🤍 Perlas explosivas de litchi</div>
-                    <div class="topping-description">Delicadas, frutales y muuuy adorables 🍡💖</div>
-                </div>
-                
-                <div class="topping-item animate-on-scroll">
-                    <div class="topping-name">🌈 Jelly arcoiris</div>
-                    <div class="topping-description">Suavecitos, coloridos y súper divertidos 🐻🌈</div>
+                <div class="topping-item animate-on-scroll" tabindex="0">
+                    <h3 class="topping-name">🌈 Jelly arcoiris</h3>
+                    <p class="topping-description">Suavecitos, coloridos y súper divertidos 🐻🌈</p>
                 </div>
             </section>
 
-            <!-- Decorative divider -->
-            <div class="kawaii-divider">
+            <!-- Divisor decorativo -->
+            <div class="kawaii-divider" aria-hidden="true">
                 <span class="emoji">✨</span>
                 <span class="emoji">🛒</span>
                 <span class="emoji">✨</span>
             </div>
 
-            <!-- --- Shopping Cart Section --- -->
-            <section class="menu-section shopping-cart-section animate-on-scroll" id="shoppingCartSection">
-                <div class="section-header">
-                    <div class="section-title">💖 Tu Carrito Kawaii 💖</div>
-                </div>
-                <ul id="cartItemsList" class="cart-items-list">
-                    <!-- Cart items will be dynamically added here -->
-                    <li style="text-align: center; color: #6b7280;">¡Tu carrito está vacío, añade algo delicioso! 💖</li>
+            <!-- Sección del Carrito de Compras -->
+            <section class="menu-section shopping-cart-section animate-on-scroll" id="shoppingCartSection" aria-labelledby="cart-section-title">
+                <header class="section-header">
+                    <h2 id="cart-section-title" class="section-title">💖 Tu Carrito Kawaii 💖</h2>
+                </header>
+                <ul id="cartItemsList" class="cart-items-list" aria-live="polite">
+                    <!-- Los items del carrito se añadirán dinámicamente aquí -->
+                    <li class="empty-cart-message">¡Tu carrito está vacío, añade algo delicioso! 💖</li>
                 </ul>
                 <div id="cartTotal" class="cart-total">Total: $0</div>
 
                 <div class="cart-actions">
-                    <button id="clearCartButton" class="cart-action-button clear-cart">
+                    <button id="clearCartButton" class="cart-action-button clear-cart" disabled aria-label="Vaciar todos los elementos del carrito">
                         Vaciar Carrito 🗑️
                     </button>
-                    <button id="orderWhatsAppButton" class="cart-action-button order-whatsapp-button">
+                    <button id="orderWhatsAppButton" class="cart-action-button order-whatsapp-button" disabled aria-label="Enviar pedido por WhatsApp">
                         Pedir por WhatsApp 📱
                     </button>
                 </div>
             </section>
-            <!-- --- End Shopping Cart Section --- -->
             
-            <!-- Sección de cómo ordenar (ahora con el número al final) -->
-            <section class="order-section animate-on-scroll">
+            <!-- Sección de cómo ordenar -->
+            <section class="order-section animate-on-scroll" id="order-process-section" aria-labelledby="order-title">
                 <div class="order-content">
-                    <div class="order-title">✨🧸 CÓMO ORDENAR TU BEBIDA KAWAII 🧸✨</div>
+                    <h2 id="order-title" class="order-title">✨🧸 CÓMO ORDENAR TU BEBIDA KAWAII 🧸✨</h2>
                     
                     <div class="order-steps">
-                        <div class="order-step">1. Elige tu bebida (frappé o caliente) y agrégala al carrito.</div>
-                        <div class="order-step">2. Si deseas, selecciona toppings para esa bebida en la ventana emergente.</div>
-                        <div class="order-step">3. Repite para cada bebida que quieras.</div>
-                        <div class="order-step">
+                        <p class="order-step">1. Elige tu bebida (frappé o caliente) y agrégala al carrito.</p>
+                        <p class="order-step">2. Si deseas, selecciona toppings para esa bebida en la ventana emergente.</p>
+                        <p class="order-step">3. Repite para cada bebida que quieras.</p>
+                        <p class="order-step">
                             4. Cuando estés listo, haz clic en "Pedir por WhatsApp" para enviar tu orden automáticamente.
-                        </div>
-                        <div class="order-step">
-                            5. Recibe tu bebida y toma muchas fotos! Y etiqueta a <a href="https://www.facebook.com/share/195krrAWVG/" target="_blank" style="color: inherit; text-decoration: underline;">@Capibobba</a>, mándanos tu post y gana un <strong>$10 de descuento</strong> en tu siguiente pedido. 📸💕
-                        </div>
+                        </p>
+                        <p class="order-step">
+                            5. Recibe tu bebida y toma muchas fotos! Y etiqueta a <a href="https://www.facebook.com/share/195krrAWVG/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">@Capibobba</a>, mándanos tu post y gana un <strong>$10 de descuento</strong> en tu siguiente pedido. 📸💕
+                        </p>
                     </div>
 
-                    <!-- Sección de WhatsApp (movida al final de las instrucciones) -->
+                    <!-- Sección de WhatsApp con número de contacto -->
                     <div class="whatsapp-section">
-                        <div class="whatsapp-text">Nuestro número de contacto:</div>
-                        <div class="whatsapp-number">
-                            7712794633
-                            <span class="whatsapp-click-legend">¡También puedes pedir dando click en "Pedir por WhatsApp" arriba!</span>
-                        </div>
+                        <p class="whatsapp-text">Nuestro número de contacto:</p>
+                        <a href="https://wa.me/5217712794633" target="_blank" rel="noopener noreferrer" class="whatsapp-link">
+                            <div class="whatsapp-number" role="button" tabindex="0" aria-label="Número de WhatsApp 771 279 4633">
+                                7712794633
+                                <span class="whatsapp-click-legend">¡También puedes pedir dando click en "Pedir por WhatsApp" arriba!</span>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </section>
             
-            <!-- Final message -->
+            <!-- Mensaje final -->
             <div class="final-message animate-on-scroll">
                 <div>
                     > Todos nuestros frappés son servidos con mucho cariño y los llevamos a la puerta de tu hogar velozmente 💕<br>
@@ -1877,626 +398,38 @@
                     ¡Te esperamos con una sonrisa y un vaso lleno de felicidad! 💖🌟
                 </div>
             </div>
-        </div>
-    </div>
+        </article>
+    </main>
 
-    <!-- Visor de Imágenes de Sabor (Overlay) -->
-    <div id="flavorImageOverlay" class="flavor-image-overlay">
+    <!-- Visor de Imágenes de Sabor (Overlay) - Modal -->
+    <div id="flavorImageOverlay" class="flavor-image-overlay" role="dialog" aria-modal="true" aria-labelledby="flavorImageName">
         <div class="flavor-image-content">
-            <img id="flavorImage" src="" alt="Sabor de Frappé">
-            <div class="flavor-image-name" id="flavorImageName"></div>
+            <img id="flavorImage" src="" alt="Imagen del sabor" width="300" height="300" loading="lazy">
+            <h3 class="flavor-image-name" id="flavorImageName"></h3>
+            <button class="close-modal-button" aria-label="Cerrar imagen del sabor">✖</button>
         </div>
     </div>
 
-    <!-- Topping Selection Modal (NEW) -->
-    <div id="toppingSelectionOverlay" class="topping-selection-overlay">
+    <!-- Modal de Selección de Toppings -->
+    <div id="toppingSelectionOverlay" class="topping-selection-overlay" role="dialog" aria-modal="true" aria-labelledby="topping-modal-title">
         <div class="topping-selection-content">
-            <div class="section-header">
-                <div class="section-title">¡Personaliza tu <span id="toppingDrinkName" class="current-drink-name-modal"></span>!</div>
+            <header class="section-header">
+                <h2 id="topping-modal-title" class="section-title">¡Personaliza tu <span id="toppingDrinkName" class="current-drink-name-modal"></span>!</h2>
                 <p>Selecciona los toppings que deseas añadir a esta bebida:</p>
-            </div>
+            </header>
             <div id="toppingsModalGrid" class="toppings-modal-grid">
-                <!-- Toppings will be dynamically loaded here by JS -->
+                <!-- Los toppings se cargarán dinámicamente aquí por JS -->
             </div>
             <div class="topping-selection-actions">
-                <button id="confirmToppingsButton">Confirmar Selección ✅</button>
-                <button id="noToppingsButton">Sin Toppings 🚫</button>
-                <button id="cancelToppingsButton">Cancelar ❌</button>
+                <button id="confirmToppingsButton" aria-label="Confirmar selección de toppings">Confirmar Selección ✅</button>
+                <button id="noToppingsButton" aria-label="No añadir toppings">Sin Toppings 🚫</button>
+                <button id="cancelToppingsButton" aria-label="Cancelar selección de toppings">Cancelar ❌</button>
             </div>
+            <button class="close-modal-button" aria-label="Cerrar selección de toppings">✖</button>
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Helper function to generate unique IDs
-            function generateUniqueId() {
-                return 'item-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
-            }
-
-            // Logic for theme-based logo display
-            function setInitialLogoTheme() {
-                const logoLight = document.getElementById('logoLight');
-                const logoDark = document.getElementById('logoDark');
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-                if (logoLight && logoDark) { // Ensure elements exist before trying to access
-                    if (prefersDark) {
-                        logoLight.style.opacity = '0';
-                        logoDark.style.opacity = '1';
-                    } else {
-                        logoLight.style.opacity = '1';
-                        logoDark.style.opacity = '0';
-                    }
-                }
-            }
-            setInitialLogoTheme();
-
-            // Image viewer logic for flavor items
-            const flavorItems = document.querySelectorAll('.flavor-item');
-            const flavorImageOverlay = document.getElementById('flavorImageOverlay');
-            const flavorImage = document.getElementById('flavorImage');
-            const flavorImageName = document.getElementById('flavorImageName');
-            
-            // Define all flavor images. Using a generic hot drinks image for now.
-            const genericHotDrinksImage = "https://i.imgur.com/EtT387b.jpeg";
-
-            const flavorImages = {
-                "Litchi": "https://i.imgur.com/Pu7yFxo.jpeg", 
-                "Fresa": "https://i.imgur.com/UMxtB2o.jpeg",
-                "Blueberry": "https://i.imgur.com/XMfisGw.jpeg",
-                "Mango": "https://i.imgur.com/VGEGSkT.jpeg",
-                "Piña colada": "https://i.imgur.com/U6LUnZt.jpeg",
-                "Maracuyá": "https://i.imgur.com/hrULvVp.jpeg",
-                "Guanábana": "https://placehold.co/300x300/E0F2FE/555555?text=Guanabana", // Placeholder for Guanábana
-                "Sandía": "https://i.imgur.com/FwsLeZz.jpeg", // UPDATED IMAGE FOR SANDÍA
-                "Chocolate Mexicano": "https://placehold.co/300x300/8B4513/FFFFFF?text=Choco+Mexicano", // Placeholder for Chocolate Mexicano
-                "Taro": "https://i.imgur.com/epvVrkT.jpeg", // Updated image URL for Taro
-                "Mazapán": "https://i.imgur.com/jrELu9J.jpeg",
-                "Chai": "https://i.imgur.com/wRIJ7AO.jpeg", 
-                "Mocha": "https://i.imgur.com/Pdp3Q4O.jpeg", 
-                "Cookies & Cream": "https://i.imgur.com/0e402nf.jpeg",
-                "Crema Irlandesa": "https://i.imgur.com/fJocyJw.jpeg",
-                "Matcha": "https://i.imgur.com/6QIRLrZ.jpeg",
-                // Images for hot drinks (all point to the generic hot drinks image for now)
-                "Chocolate Caliente": genericHotDrinksImage,
-                "Taro Caliente": genericHotDrinksImage,
-                "Mazapán Caliente": genericHotDrinksImage,
-                "Chai Caliente": genericHotDrinksImage,
-                "Mocha Caliente": genericHotDrinksImage,
-                "Cookies & Cream Caliente": genericHotDrinksImage,
-                "Crema Irlandesa Caliente": genericHotDrinksImage,
-                "Matcha Caliente": genericHotDrinksImage,
-                // Image for seasonal promotion
-                "Frappé Fresas con Crema (Temporada)": "https://i.imgur.com/m2Fc29F.jpeg"
-            };
-
-            flavorItems.forEach(item => {
-                // Keep the click for image display
-                item.addEventListener('click', function(event) {
-                    // Prevent button click from triggering image overlay if clicked directly on button
-                    if (event.target.tagName === 'BUTTON') {
-                        return; 
-                    }
-                    const flavorName = this.querySelector('.flavor-name').textContent;
-                    // Use a fallback placeholder if the image URL is not found
-                    const imageUrl = flavorImages[flavorName] || 'https://placehold.co/300x300/CCCCCC/FFF?text=Image+not+available'; 
-                    if (flavorImage) { // Check if flavorImage element exists
-                        flavorImage.src = imageUrl;
-                        // Robust image error handling for flavorImage
-                        flavorImage.onerror = function() { 
-                            this.src = 'https://placehold.co/300x300/FF6347/FFFFFF?text=Error+Loading'; // Red placeholder
-                            this.alt = 'Error loading image'; // Update alt text
-                        };
-                    }
-                    if (flavorImageName) { // Check if flavorImageName element exists
-                        flavorImageName.textContent = flavorName;
-                    }
-                    if (flavorImageOverlay) { // Check if flavorImageOverlay element exists
-                        flavorImageOverlay.classList.add('show'); 
-                    }
-                });
-            });
-
-            if (flavorImageOverlay) { // Check if flavorImageOverlay element exists
-                flavorImageOverlay.addEventListener('click', function() {
-                    flavorImageOverlay.classList.remove('show'); 
-                });
-            }
-
-            // Promotions Logic (Updated to use add-drink-to-cart-button)
-            const fresasConCremaPromotion = document.getElementById('fresasConCremaPromotion');
-            if (fresasConCremaPromotion) {
-                // Keep image display on promotion item click (not the button)
-                fresasConCremaPromotion.addEventListener('click', function(event) {
-                    if (event.target.tagName === 'BUTTON') {
-                        return;
-                    }
-                    // Specific image for the seasonal frappé
-                    if (flavorImage) {
-                        flavorImage.src = flavorImages["Frappé Fresas con Crema (Temporada)"] || 'https://placehold.co/300x300/CCCCCC/FFF?text=Image+not+available';
-                        // Robust image error handling for flavorImage
-                        flavorImage.onerror = function() { 
-                            this.src = 'https://placehold.co/300x300/FF6347/FFFFFF?text=Error+Loading'; // Red placeholder
-                            this.alt = 'Error loading image'; // Update alt text
-                        };
-                    }
-                    if (flavorImageName) {
-                        flavorImageName.textContent = "Frappé de Temporada: Fresas con Crema";
-                    }
-                    if (flavorImageOverlay) {
-                        flavorImageOverlay.classList.add('show');
-                    }
-                });
-            }
-
-            // Shopping Cart & Topping Selection Logic
-            let cart = []; // Stores selected items: { id, name, basePrice, selectedToppings: [{ name, price }] }
-            let currentDrinkBeingCustomized = null; // Holds the drink object while toppings are being selected
-            let lastClickedAddButton = null; // Reference to the button that was clicked
-
-            const cartItemsList = document.getElementById('cartItemsList');
-            const cartTotalElement = document.getElementById('cartTotal');
-            const clearCartButton = document.getElementById('clearCartButton');
-            const orderWhatsAppButton = document.getElementById('orderWhatsAppButton');
-            // Select ALL buttons with this class, including new hot drink buttons
-            const addDrinkToCartButtons = document.querySelectorAll('.add-drink-to-cart-button');
-
-            // --- NUEVO: Elementos del resumen del carrito en el header ---
-            const cartItemCountElement = document.getElementById('cartItemCount');
-            const cartIconEmojiElement = document.getElementById('cartIconEmoji');
-            const cartSummaryElement = document.getElementById('cartSummary'); // Referencia al contenedor del carrito
-            const shoppingCartSection = document.getElementById('shoppingCartSection'); // Referencia a la sección del carrito
-            // --- FIN NUEVO: Elementos del resumen del carrito en el header ---
-
-            // Topping Modal Elements
-            const toppingSelectionOverlay = document.getElementById('toppingSelectionOverlay');
-            const toppingDrinkNameElement = document.getElementById('toppingDrinkName');
-            const toppingsModalGrid = document.getElementById('toppingsModalGrid');
-            const confirmToppingsButton = document.getElementById('confirmToppingsButton');
-            const noToppingsButton = document.getElementById('noToppingsButton');
-            const cancelToppingsButton = document.getElementById('cancelToppingsButton');
-
-            // Define available toppings (matching data from HTML, but easier to manage here)
-            const availableToppings = [
-                { name: "Perlas explosivas de frutos rojos", price: 10 },
-                { name: "Perlas explosivas de manzana verde", price: 10 },
-                { name: "Perlas explosivas de litchi", price: 10 },
-                { name: "Jelly arcoiris", price: 10 }
-            ];
-
-            // Function to open the topping selection modal
-            function openToppingSelectionModal(drinkName, drinkPrice, clickedButton) {
-                currentDrinkBeingCustomized = {
-                    id: generateUniqueId(), // Assign a temporary ID
-                    name: drinkName,
-                    basePrice: drinkPrice,
-                    selectedToppings: []
-                };
-                lastClickedAddButton = clickedButton; // Store reference to the button
-
-                if (toppingDrinkNameElement) { // Check if element exists
-                    toppingDrinkNameElement.textContent = drinkName;
-                }
-                if (toppingsModalGrid) { // Check if element exists
-                    toppingsModalGrid.innerHTML = ''; // Clear previous toppings
-
-                    // Populate toppings in the modal
-                    availableToppings.forEach(topping => {
-                        const toppingItemDiv = document.createElement('div');
-                        toppingItemDiv.className = 'topping-modal-item';
-                        toppingItemDiv.dataset.name = topping.name;
-                        toppingItemDiv.dataset.price = topping.price;
-
-                        const isSelected = currentDrinkBeingCustomized.selectedToppings.some(t => t.name === topping.name);
-                        if (isSelected) {
-                            toppingItemDiv.classList.add('selected');
-                        }
-
-                        toppingItemDiv.innerHTML = `
-                            <span class="topping-modal-name">${topping.name}</span>
-                            <span class="topping-modal-price">+$${topping.price}</span>
-                            <button class="add-topping-button ${isSelected ? 'remove' : ''}" 
-                                    data-action="${isSelected ? 'remove' : 'add'}">
-                                ${isSelected ? 'Quitar ➖' : 'Añadir ✨'}
-                            </button>
-                        `;
-                        toppingsModalGrid.appendChild(toppingItemDiv);
-                    });
-
-                    // Attach event listeners for topping buttons in the modal
-                    toppingsModalGrid.querySelectorAll('.add-topping-button').forEach(button => {
-                        button.addEventListener('click', function() {
-                            const toppingItemDiv = this.closest('.topping-modal-item');
-                            const toppingName = toppingItemDiv.dataset.name;
-                            const toppingPrice = parseFloat(toppingItemDiv.dataset.price);
-
-                            const action = this.dataset.action;
-
-                            if (action === 'add') {
-                                currentDrinkBeingCustomized.selectedToppings.push({ name: toppingName, price: toppingPrice });
-                                toppingItemDiv.classList.add('selected');
-                                this.textContent = 'Quitar ➖';
-                                this.dataset.action = 'remove';
-                                this.classList.add('remove');
-                            } else {
-                                currentDrinkBeingCustomized.selectedToppings = currentDrinkBeingCustomized.selectedToppings.filter(t => t.name !== toppingName);
-                                toppingItemDiv.classList.remove('selected');
-                                this.textContent = 'Añadir ✨';
-                                this.dataset.action = 'add';
-                                this.classList.remove('remove');
-                            }
-                        });
-                    });
-                }
-
-                if (toppingSelectionOverlay) { // Check if element exists
-                    toppingSelectionOverlay.classList.add('show');
-                }
-            }
-
-            // Function to add the customized drink to the main cart
-            function addCustomizedDrinkToCart() {
-                if (currentDrinkBeingCustomized) {
-                    // Calculate total price for this specific drink instance
-                    let itemTotalPrice = currentDrinkBeingCustomized.basePrice;
-                    currentDrinkBeingCustomized.selectedToppings.forEach(t => {
-                        itemTotalPrice += t.price;
-                    });
-                    currentDrinkBeingCustomized.itemTotalPrice = itemTotalPrice;
-
-                    // Add to the main cart
-                    cart.push({ ...currentDrinkBeingCustomized }); // Push a copy
-                    currentDrinkBeingCustomized = null; // Clear the temporary drink
-                    if (toppingSelectionOverlay) { // Check if element exists
-                        toppingSelectionOverlay.classList.remove('show'); // Hide modal
-                    }
-                    updateCartDisplay();
-
-                    // Visual feedback on the add button
-                    if (lastClickedAddButton) {
-                        const originalText = 'Añadir 💖';
-                        const originalBackground = lastClickedAddButton.style.background || '';
-
-                        lastClickedAddButton.textContent = '¡Añadido! ✅';
-                        lastClickedAddButton.classList.add('added-feedback');
-                        
-                        setTimeout(() => {
-                            lastClickedAddButton.textContent = originalText;
-                            lastClickedAddButton.classList.remove('added-feedback');
-                            lastClickedAddButton.style.background = originalBackground; 
-                        }, 1000);
-                        lastClickedAddButton = null; 
-                    }
-                }
-            }
-
-            // Event Listeners for "Add Drink to Cart" buttons
-            addDrinkToCartButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const itemElement = this.closest('[data-name][data-price]');
-                    if (itemElement) { // Ensure itemElement exists
-                        const name = itemElement.dataset.name;
-                        const price = parseFloat(itemElement.dataset.price);
-                        openToppingSelectionModal(name, price, this); // Pass the clicked button
-                    }
-                });
-            });
-
-            // Event Listeners for Topping Modal Buttons
-            if (confirmToppingsButton) { // Check if element exists
-                confirmToppingsButton.addEventListener('click', addCustomizedDrinkToCart);
-            }
-            if (noToppingsButton) { // Check if element exists
-                noToppingsButton.addEventListener('click', function() {
-                    // If "No Toppings" is clicked, ensure selectedToppings is empty and add to cart
-                    if (currentDrinkBeingCustomized) {
-                        currentDrinkBeingCustomized.selectedToppings = [];
-                        addCustomizedDrinkToCart();
-                    }
-                });
-            }
-            if (cancelToppingsButton) { // Check if element exists
-                cancelToppingsButton.addEventListener('click', function() {
-                    currentDrinkBeingCustomized = null; // Discard current selection
-                    if (toppingSelectionOverlay) { // Check if element exists
-                        toppingSelectionOverlay.classList.remove('show'); // Hide modal
-                    }
-                    if (lastClickedAddButton) { // Reset the button if canceled
-                        lastClickedAddButton.textContent = 'Añadir 💖';
-                        lastClickedAddButton.classList.remove('added-feedback');
-                        lastClickedAddButton.style.background = ''; // Revert to original background (from CSS)
-                        lastClickedAddButton = null;
-                    }
-                });
-            }
-
-            // Function to clear the entire cart
-            function clearCart() {
-                console.log("clearCart() function called.");
-                console.log("Cart before clearing:", JSON.stringify(cart));
-                cart = []; // Clears the cart array
-                console.log("Cart after clearing:", JSON.stringify(cart));
-                updateCartDisplay(); // Updates the UI
-                console.log("Cart display updated after clearing.");
-
-                // Reset all add buttons
-                addDrinkToCartButtons.forEach(button => {
-                    button.textContent = 'Añadir 💖';
-                    button.classList.remove('added-feedback');
-                    button.style.background = ''; // Revert to original background defined in CSS
-                });
-                lastClickedAddButton = null; // Ensure the reference is also cleared
-            }
-
-
-            // Function to update the cart display in the HTML
-            function updateCartDisplay() {
-                if (!cartItemsList || !cartTotalElement) { // Ensure elements exist
-                    console.error("Cart display elements not found.");
-                    return;
-                }
-                cartItemsList.innerHTML = ''; // Clear current display
-                let total = 0;
-
-                // Group identical items for display
-                const groupedCart = {};
-                cart.forEach(item => {
-                    const toppingNames = item.selectedToppings.map(t => t.name).sort().join(', ');
-                    const key = `${item.name}|${toppingNames}`;
-
-                    if (groupedCart[key]) {
-                        groupedCart[key].quantity++;
-                    } else {
-                        groupedCart[key] = {
-                            // Only copy necessary display properties for the grouped item
-                            name: item.name,
-                            selectedToppings: item.selectedToppings,
-                            quantity: 1,
-                            // Recalculate total price for this specific instance (base + toppings)
-                            totalItemPrice: item.basePrice + item.selectedToppings.reduce((sum, t) => sum + t.price, 0),
-                            // Store the original ID to allow removing one instance at a time
-                            originalIds: [item.id]
-                        };
-                    }
-                });
-
-                const sortedGroupedItems = Object.values(groupedCart).sort((a, b) => a.name.localeCompare(b.name));
-
-                if (sortedGroupedItems.length === 0) {
-                    cartItemsList.innerHTML = '<li style="text-align: center; color: #6b7280;">¡Tu carrito está vacío, añade algo delicioso! 💖</li>';
-                } else {
-                    sortedGroupedItems.forEach(item => {
-                        const li = document.createElement('li');
-                        li.className = 'cart-item';
-
-                        let toppingsText = '';
-                        if (item.selectedToppings && item.selectedToppings.length > 0) {
-                            toppingsText = `(+ ${item.selectedToppings.map(t => t.name).join(', ')})`;
-                        }
-
-                        li.innerHTML = `
-                            <div class="item-main-info">
-                                <span class="item-quantity">${item.quantity}x</span> 
-                                <span class="item-name">${item.name}</span>
-                            </div>
-                            <div class="item-details">
-                                <span class="item-toppings">${toppingsText}</span>
-                                <span class="item-price">$${item.totalItemPrice * item.quantity}</span>
-                                <button class="remove-item-button" data-key="${item.name}|${item.selectedToppings.map(t => t.name).sort().join(', ')}">➖</button>
-                            </div>
-                        `;
-                        // The data-key refers to the grouped key, which will allow us to find the original item to remove
-                        cartItemsList.appendChild(li);
-                        total += item.totalItemPrice * item.quantity;
-                    });
-                }
-
-                cartTotalElement.textContent = `Total: $${total}`;
-
-                // --- NUEVO: Actualizar el contador de items en el header y animar ---
-                const totalItemsInCart = cart.reduce((sum, item) => sum + 1, 0); // Contar cada instancia
-                if (cartItemCountElement) {
-                    cartItemCountElement.textContent = totalItemsInCart;
-                }
-
-                if (cartIconEmojiElement && totalItemsInCart !== parseInt(cartItemCountElement.dataset.previousCount || 0)) {
-                    cartIconEmojiElement.classList.remove('pulse-animation');
-                    void cartIconEmojiElement.offsetWidth; // Truco para reiniciar la animación
-                    cartIconEmojiElement.classList.add('pulse-animation');
-                }
-                if (cartItemCountElement) {
-                    cartItemCountElement.dataset.previousCount = totalItemsInCart; // Guardar el conteo actual
-                }
-                // --- FIN NUEVO: Actualizar el contador de items en el header y animar ---
-
-                // Re-attach event listeners for dynamically created remove buttons
-                cartItemsList.querySelectorAll('.remove-item-button').forEach(button => {
-                    button.addEventListener('click', (event) => {
-                        const itemKeyToRemove = event.target.dataset.key; // Get the unique key for the grouped item
-                        
-                        // Find the corresponding item in the original cart array and remove ONE instance
-                        // We need to match by name and toppings to remove one instance of the displayed grouped item
-                        const [itemName, toppingNamesString] = itemKeyToRemove.split('|');
-                        const toppingsToMatch = toppingNamesString.split(', ').filter(Boolean); // Handle empty topping string
-
-                        const indexToRemove = cart.findIndex(cartItem => 
-                            cartItem.name === itemName &&
-                            cartItem.selectedToppings.length === toppingsToMatch.length &&
-                            // Check if all selected toppings match
-                            cartItem.selectedToppings.every(t => toppingsToMatch.includes(t.name)) &&
-                            // And importantly, that all toppings to match are present in the item's toppings
-                            toppingsToMatch.every(tName => cartItem.selectedToppings.some(st => st.name === tName))
-                        );
-
-                        if (indexToRemove > -1) {
-                            cart.splice(indexToRemove, 1);
-                        }
-                        updateCartDisplay();
-                    });
-                });
-
-                // Scroll the cart to the bottom
-                cartItemsList.scrollTop = cartItemsList.scrollHeight;
-            }
-
-            // Function to generate the WhatsApp message
-            function generateWhatsAppMessage() {
-                console.log("Attempting to generate WhatsApp message...");
-
-                if (cart.length === 0) {
-                    if (orderWhatsAppButton) { // Check if element exists
-                        orderWhatsAppButton.textContent = "¡Carrito Vacío! Añade algo 🚫";
-                        orderWhatsAppButton.style.background = "#FF6347";
-                        setTimeout(() => {
-                            orderWhatsAppButton.textContent = "Pedir por WhatsApp 📱";
-                            orderWhatsAppButton.style.background = "linear-gradient(45deg, #25D366, #128C7E)";
-                        }, 2000);
-                    }
-                    console.warn("Cart is empty. Cannot generate WhatsApp message.");
-                    return;
-                }
-
-                let message = "¡Hola! Me gustaría hacer el siguiente pedido de Capibobba:\n\n";
-                let finalTotal = 0;
-
-                // Group items for the WhatsApp message for clarity
-                const groupedForWhatsApp = {};
-                cart.forEach(item => {
-                    const toppingNames = item.selectedToppings.map(t => t.name).sort().join(', ');
-                    const key = `${item.name}|${toppingNames}`;
-
-                    if (groupedForWhatsApp[key]) {
-                        groupedForWhatsApp[key].quantity++;
-                        groupedForWhatsApp[key].totalPricePerItem += item.basePrice + item.selectedToppings.reduce((sum, t) => sum + t.price, 0);
-                    } else {
-                        groupedForWhatsApp[key] = {
-                            name: item.name,
-                            basePrice: item.basePrice,
-                            selectedToppings: item.selectedToppings,
-                            quantity: 1,
-                            totalPricePerItem: item.basePrice + item.selectedToppings.reduce((sum, t) => sum + t.price, 0)
-                        };
-                    }
-                });
-
-                let itemNumber = 1;
-                Object.values(groupedForWhatsApp).forEach(item => {
-                    let toppingsDetail = '';
-                    if (item.selectedToppings && item.selectedToppings.length > 0) {
-                        toppingsDetail = ` con ${item.selectedToppings.map(t => t.name).join(', ')}`;
-                    }
-                    message += `${itemNumber}. ${item.quantity}x ${item.name}${toppingsDetail} ($${item.totalPricePerItem * item.quantity})\n`;
-                    finalTotal += item.totalPricePerItem * item.quantity;
-                    itemNumber++;
-                });
-
-                message += `\nTotal del pedido: $${finalTotal}`;
-                message += `\n\n¡Estoy emocionado/a por mis bebidas kawaii! 💖`;
-                // Removed the "If some milk-based drink is 'hot', you can specify it here" instruction
-                // as now hot drinks have their own explicit names.
-
-                const whatsappNumber = "5217712794633";
-                const encodedMessage = encodeURIComponent(message);
-                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-
-                console.log("WhatsApp URL to open:", whatsappUrl);
-
-                // Attempt to open the window
-                const newWindow = window.open(whatsappUrl, '_blank');
-
-                // Check if the window was blocked by a pop-up blocker
-                if (newWindow === null || typeof newWindow === 'undefined' || newWindow.closed) {
-                    console.error("Popup blocked or window could not be opened.");
-                    // Provide visual feedback to the user
-                    if (orderWhatsAppButton) { // Check if element exists
-                        orderWhatsAppButton.textContent = "Pop-up bloqueado. ¡Revisa tu navegador! ⚠️";
-                        orderWhatsAppButton.style.background = "#FF6347"; // Red color for error
-                        setTimeout(() => {
-                            orderWhatsAppButton.textContent = "Pedir por WhatsApp 📱";
-                            orderWhatsAppButton.style.background = "linear-gradient(45deg, #25D366, #128C7E)"; // Revert to green
-                        }, 4000); // Give user more time to see the message
-                    }
-                } else {
-                    console.log("WhatsApp window opened successfully.");
-                }
-            }
-
-            // Corrected Event Listener Attachments
-            // Check if clearCartButton is found, and then attach listener
-            if (clearCartButton) {
-                clearCartButton.addEventListener('click', function() {
-                    console.log("Clear Cart button clicked.");
-                    clearCart();
-                });
-            } else {
-                console.error("Error: clearCartButton not found!");
-            }
-
-            // Check if orderWhatsAppButton is found, and then attach listener
-            if (orderWhatsAppButton) {
-                orderWhatsAppButton.addEventListener('click', generateWhatsAppMessage);
-            } else {
-                console.error("Error: orderWhatsAppButton not found!");
-            }
-            // End Corrected Event Listener Attachments
-
-            // Initial display update when page loads
-            updateCartDisplay();
-
-            // --- NUEVO: Intersection Observer para animaciones al scroll ---
-            const animatedElements = document.querySelectorAll('.animate-on-scroll, .animate-slide-in-left, .animate-slide-in-right');
-
-            const observerOptions = {
-                root: null, /* viewport */
-                rootMargin: '0px',
-                threshold: 0.1 /* 10% del elemento visible para activar */
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target); // Deja de observar una vez visible
-                    }
-                });
-            }, observerOptions);
-
-            animatedElements.forEach(element => {
-                observer.observe(element);
-            });
-            // --- FIN NUEVO: Intersection Observer para animaciones al scroll ---
-
-            // --- NUEVO: Lógica para que el carrito siga el scroll ---
-            if (cartSummaryElement) { // Asegúrate de que el elemento exista
-                const initialTopOffset = 20; // Posición inicial desde arriba del viewport
-                const scrollSpeedFactor = 0.1; // Factor de movimiento (0.1 significa 10% del scroll)
-                const maxTopOffset = 100; // Posición máxima desde arriba del viewport
-
-                function updateCartPosition() {
-                    const currentScrollY = window.scrollY;
-                    let newTop = initialTopOffset + (currentScrollY * scrollSpeedFactor);
-
-                    // Limita la posición superior para que no se vaya demasiado lejos
-                    newTop = Math.max(initialTopOffset, Math.min(maxTopOffset, newTop));
-
-                    cartSummaryElement.style.top = `${newTop}px`;
-                }
-
-                window.addEventListener('scroll', updateCartPosition);
-                // Llama a la función una vez al cargar para establecer la posición inicial
-                updateCartPosition();
-
-                // --- NUEVO: Evento click para el icono del carrito ---
-                cartSummaryElement.addEventListener('click', function() {
-                    if (shoppingCartSection) {
-                        shoppingCartSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-                // --- FIN NUEVO: Evento click para el icono del carrito ---
-            }
-            // --- FIN NUEVO: Lógica para que el carrito siga el scroll ---
-        });
-    </script>
+    <!-- Enlace al archivo JavaScript externo con defer para no bloquear el renderizado -->
+    <script src="script.js" defer></script>
 </body>
 </html>
-
