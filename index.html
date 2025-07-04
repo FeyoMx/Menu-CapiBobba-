@@ -13,17 +13,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <!-- Google Fonts: Precarga y estilos para Nunito y Balsamiq Sans -->
-    <!-- Estas URLs han sido actualizadas para asegurar la carga correcta. -->
     <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Precarga manual de los archivos woff2 para las fuentes críticas (opcional, pero buena práctica si se sabe qué pesos se usan más) -->
-    <!-- Asegúrate de que estas rutas coincidan con las que Google Fonts usa internamente para los pesos específicos que necesitas. -->
-    <!-- Si sigues viendo 404s, es posible que los nombres de los archivos woff2 cambien con las actualizaciones de Google Fonts. -->
-    <!-- La línea de arriba (<link href="...rel=stylesheet">) es la más robusta y suele ser suficiente. -->
-    <!-- Si quieres precargar, verifica las URLs exactas de los archivos .woff2 en la pestaña "Network" de las herramientas de desarrollador. -->
-    <!-- Por ahora, se usarán los enlaces de stylesheet que son más fiables. -->
-    <!-- <link rel="preload" href="https://fonts.gstatic.com/s/nunito/v16/XRXV3I6sdovS2ITcM5Xg.woff2" as="font" type="font/woff2" crossorigin> -->
-    <!-- <link rel="preload" href="https://fonts.gstatic.com/s/balsamiqsans/v7/Pujv6yXd6zCj_Lb4S-WJ7hR3.woff2" as="font" type="font/woff2" crossorigin> -->
 </head>
 <body>
     <!-- Burbujas de fondo animadas (elementos puramente decorativos) -->
@@ -149,6 +140,15 @@
                         ¡No te pierdas las últimas sorpresas y ofertas más tiernas de Capibobba! ✨
                     </p>
                 </header>
+
+                <!-- NUEVA ESPECIALIDAD: CHAMOYADA -->
+                <div class="promotion-item animate-on-scroll" id="chamoyadaPromotion" data-name="Chamoyada" data-price="75" tabindex="0">
+                    <h3 class="promotion-item-title">🌶️🥭 ¡Nueva! Especialidad: Chamoyada 🥭🌶️</h3>
+                    <p class="promotion-item-description">
+                        El toque picosito que estabas esperando en el menú, disfruta de una boba explosiva y llena de sabor. Escoge el sabor que quieres llevar al siguiente nivel entre las opciones base agua que tenemos.
+                    </p>
+                    <button class="add-drink-to-cart-button" aria-label="Añadir Chamoyada al carrito">Añadir 💖</button>
+                </div>
                 
                 <!-- Frappé de Temporada con ID para el evento click (se mantiene para un caso especial) -->
                 <div class="promotion-item animate-on-scroll" id="fresasConCremaPromotion" data-name="Frappé Fresas con Crema (Temporada)" data-price="75" tabindex="0">
@@ -300,6 +300,37 @@
             <button class="close-modal-button" aria-label="Cerrar selección de toppings">✖</button>
         </div>
     </div>
+
+    <!-- NUEVO: Modal de Personalización de Chamoyada -->
+    <div id="chamoyadaCustomizationOverlay" class="flavor-image-overlay" role="dialog" aria-modal="true" aria-labelledby="chamoyada-modal-title">
+        <div class="flavor-image-content">
+            <header class="section-header">
+                <h2 id="chamoyada-modal-title" class="section-title">¡Personaliza tu Chamoyada!</h2>
+                <p class="section-description">Elige tu sabor base y añade toppings.</p>
+            </header>
+
+            <div class="chamoyada-flavor-selection">
+                <h3 class="flavor-selection-title">Escoge tu sabor base (Base Agua)</h3>
+                <div id="chamoyadaBaseFlavorGrid" class="flavor-grid-small">
+                    <!-- Los sabores base agua se cargarán aquí dinámicamente por JS -->
+                </div>
+            </div>
+
+            <div class="chamoyada-topping-selection">
+                <h3 class="topping-selection-title">Añade Toppings (Opcional)</h3>
+                <div id="chamoyadaToppingsGrid" class="toppings-modal-grid">
+                    <!-- Los toppings existentes se cargarán aquí dinámicamente por JS -->
+                </div>
+            </div>
+
+            <div class="topping-selection-actions">
+                <button id="confirmChamoyadaButton" aria-label="Confirmar Chamoyada">Confirmar Chamoyada ✅</button>
+                <button id="cancelChamoyadaButton" aria-label="Cancelar Chamoyada">Cancelar ❌</button>
+            </div>
+            <button class="close-modal-button" aria-label="Cerrar personalización de Chamoyada">✖</button>
+        </div>
+    </div>
+    <!-- FIN NUEVO: Modal de Personalización de Chamoyada -->
 
     <!-- Enlace al archivo JavaScript externo con defer para no bloquear el renderizado -->
     <script src="script.js" defer></script>
