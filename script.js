@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Fresas con Crema",
             price: 75,
             description: "¡El clásico favorito de la abuela, pero en versión kawaii! Dulzura de fresa natural y cremosidad suave. 🍓🥛💖✨",
-            imageUrl: "https://i.imgur.com/your-fresas-con-crema-image.jpeg" // Reemplaza con la URL real de tu imagen
+            imageUrl: "https://i.imgur.com/m2Fc29F.jpeg" // Reemplaza con la URL real de tu imagen
         },
         // --- NUEVA ESPECIALIDAD: CHAMOYADA ---
         {
