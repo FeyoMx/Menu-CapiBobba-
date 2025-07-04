@@ -250,6 +250,43 @@ body {
         color: #FFB6C1;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     }
+
+    /* Dark mode for Chamoyada modal elements */
+    .chamoyada-flavor-selection, .chamoyada-topping-selection {
+        background: rgba(60, 60, 60, 0.7);
+        border-color: #9370DB;
+    }
+    .chamoyada-flavor-selection .flavor-selection-title,
+    .chamoyada-topping-selection .topping-selection-title {
+        color: #FFB6C1;
+    }
+    .chamoyada-base-flavor-item {
+        background: #3a3a3a;
+        border-color: #87CEEB;
+        color: #E0E0E0;
+    }
+    .chamoyada-base-flavor-item.selected {
+        background: #9370DB;
+        border-color: #FF69B4;
+        color: #F0F0F0;
+    }
+    #chamoyadaToppingsGrid {
+        background: rgba(45, 45, 45, 0.8);
+        border-color: #9370DB;
+    }
+    /* Dark mode for Chamoyada modal buttons */
+    #chamoyadaCustomizationOverlay #confirmChamoyadaButton {
+        background: linear-gradient(45deg, #4CAF50, #8BC34A); /* Green for confirm */
+    }
+    #chamoyadaCustomizationOverlay #confirmChamoyadaButton:hover {
+        background: linear-gradient(45deg, #8BC34A, #4CAF50);
+    }
+    #chamoyadaCustomizationOverlay #cancelChamoyadaButton {
+        background: linear-gradient(45deg, #FF6347, #FF4500); /* Red for cancel */
+    }
+    #chamoyadaCustomizationOverlay #cancelChamoyadaButton:hover {
+        background: linear-gradient(45deg, #FF4500, #FF6347);
+    }
 }
 
 /* Corazón flotante en la mascota */
@@ -486,7 +523,7 @@ body {
     transition: all 0.3s ease;
     width: fit-content; /* Ajusta el ancho al contenido */
     align-self: center; /* Centra el botón en flex container (eje cruzado) */
-    margin: 0 auto; /* ¡NUEVO! Centra horizontalmente el botón */
+    margin: 0 auto; /* Centra horizontalmente el botón */
     margin-top: auto; /* Empuja el botón hacia abajo si el contenido es desigual */
     display: flex; /* Para alineación de icono y texto */
     align-items: center;
@@ -941,10 +978,13 @@ body {
         top: -0.9375rem; /* -15px */
         right: -0.9375rem; /* -15px */
     }
+    /* Ajuste para modales en móviles */
     .flavor-image-content, .hot-drinks-image-content, .topping-selection-content {
         width: 90%;
         max-width: 18.75rem; /* 300px */
         padding: 1.25rem; /* 20px */
+        max-height: 90vh; /* Ajuste para que quepa en la pantalla */
+        overflow-y: auto; /* Permite el scroll si el contenido es muy largo */
     }
     .add-drink-to-cart-button, .cart-action-button {
         font-size: 1rem; /* 16px */
@@ -1003,8 +1043,10 @@ body {
     box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.3); /* 10px 30px */
     text-align: center;
     border: 4px solid #FF69B4;
-    max-width: 25rem; /* 400px */
-    width: 80%;
+    max-width: 28rem; /* 448px - Ligeramente más ancho para mejor visualización */
+    width: 90%; /* Ocupa más ancho en pantallas pequeñas */
+    max-height: 90vh; /* ¡NUEVO! Limita la altura máxima al 90% del viewport */
+    overflow-y: auto; /* ¡NUEVO! Permite el scroll vertical si el contenido excede max-height */
     transform: scale(0.7);
     opacity: 0;
     transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s ease-in-out;
@@ -1264,3 +1306,96 @@ body {
     clip: rect(0, 0, 0, 0);
     border: 0;
 }
+
+/* NUEVO: Estilos para el Modal de Personalización de Chamoyada */
+.chamoyada-flavor-selection, .chamoyada-topping-selection {
+    margin-bottom: 1.25rem; /* 20px */
+    padding: 0.9375rem; /* 15px */
+    border: 1px solid #FFB6C1;
+    border-radius: 0.9375rem; /* 15px */
+    background: rgba(255, 240, 245, 0.7); /* Light pinkish background */
+}
+
+.chamoyada-flavor-selection .flavor-selection-title,
+.chamoyada-topping-selection .topping-selection-title {
+    font-size: 1.25rem; /* 20px */
+    font-weight: 800;
+    color: #FF1493;
+    margin-bottom: 0.9375rem; /* 15px */
+    text-align: center;
+}
+
+.flavor-grid-small {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(8rem, 100%), 1fr)); /* Columnas más pequeñas para sabores */
+    gap: 0.625rem; /* 10px */
+    max-height: 150px; /* Limita la altura del grid de sabores */
+    overflow-y: auto; /* Añade scroll si los sabores exceden el espacio */
+    padding-right: 5px; /* Espacio para la barra de scroll */
+}
+
+.chamoyada-base-flavor-item {
+    background: #F0F8FF;
+    border: 2px solid #DDA0DD;
+    border-radius: 0.75rem; /* 12px */
+    padding: 0.625rem 0.75rem; /* 10px 12px */
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9375rem; /* 15px */
+    font-weight: 600;
+    color: #8B4513;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; /* Para apilar el radio y el texto */
+}
+
+.chamoyada-base-flavor-item input[type="radio"] {
+    margin-bottom: 0.3125rem; /* 5px */
+    accent-color: #FF69B4; /* Pink accent for radio button */
+}
+
+.chamoyada-base-flavor-item.selected {
+    background: #FFB6C1;
+    border-color: #FF1493;
+    box-shadow: 0 0.1875rem 0.5rem rgba(0, 0, 0, 0.15); /* 3px 8px */
+    color: #8B4513;
+}
+
+/* Asegura que los estilos de topping-modal-grid se apliquen a chamoyadaToppingsGrid */
+#chamoyadaToppingsGrid {
+    border: 1px dashed #DDA0DD; /* Mantiene el borde punteado para toppings */
+    background: rgba(255, 255, 255, 0.8);
+    max-height: 150px; /* Limita la altura del grid de toppings */
+    overflow-y: auto; /* Añade scroll si los toppings exceden el espacio */
+    padding-right: 5px; /* Espacio para la barra de scroll */
+}
+
+/* Estilos específicos para los botones de Confirmar y Cancelar de Chamoyada */
+#chamoyadaCustomizationOverlay #confirmChamoyadaButton {
+    background: linear-gradient(45deg, #25D366, #128C7E); /* Verde para confirmar */
+    color: white;
+    border: 2px solid white;
+    box-shadow: 0 0.3125rem 0.9375rem rgba(0, 0, 0, 0.2);
+}
+
+#chamoyadaCustomizationOverlay #confirmChamoyadaButton:hover {
+    background: linear-gradient(45deg, #128C7E, #25D366);
+    transform: translateY(-0.1875rem) scale(1.01);
+    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.3);
+}
+
+#chamoyadaCustomizationOverlay #cancelChamoyadaButton {
+    background: linear-gradient(45deg, #FF69B4, #FF1493); /* Rosa/Rojo para cancelar */
+    color: white;
+    border: 2px solid white;
+    box-shadow: 0 0.3125rem 0.9375rem rgba(0, 0, 0, 0.2);
+}
+
+#chamoyadaCustomizationOverlay #cancelChamoyadaButton:hover {
+    background: linear-gradient(45deg, #FF1493, #FF69B4);
+    transform: translateY(-0.1875rem) scale(1.01);
+    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.3);
+}
+/* FIN NUEVO: Estilos para los botones del Modal de Chamoyada */
