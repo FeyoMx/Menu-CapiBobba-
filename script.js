@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Chamoyada",
             price: 75, // Precio de la chamoyada, actualizado a $75
             description: "El toque picosito que estabas esperando en el menú, disfruta de una boba explosiva y llena de sabor. Escoge el sabor que quieres llevar al siguiente nivel entre las opciones base agua que tenemos.",
-            imageUrl: "https://placehold.co/300x300/FF6347/FFFFFF?text=Chamoyada" // Placeholder para la imagen de Chamoyada
+            imageUrl: "https://i.imgur.com/39xoolA.jpeg" // Placeholder para la imagen de Chamoyada
         },
         // --- FIN NUEVA ESPECIALIDAD ---
         // Bebidas Calientes (usarán una imagen genérica si no se especifica una individual)
