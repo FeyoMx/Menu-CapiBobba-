@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Guanábana",
             price: 75,
             description: "Exótica y refrescante, con un dulzor suave y cremoso 💚✨",
-            imageUrl: "https://placehold.co/300x300/E0F2FE/555555?text=Guanabana"
+            imageUrl: "https://i.imgur.com/xwZdwXY.jpeg"
         },
         {
             type: "water-based-frappe",
