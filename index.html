@@ -3,240 +3,336 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capibobba 💖 Menú Kawaii</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome para iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Enlace a tu archivo CSS personalizado -->
+    <title>MENÚ CAPIBOBBA - WhatsApp Optimized</title>
+    
+    <!-- Enlace al archivo CSS externo -->
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Fonts: Preconnect para mejorar la velocidad de descarga -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts: Precarga y estilos para Nunito y Balsamiq Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
 </head>
-<body class="bg-gradient-to-br from-pink-100 via-purple-100 to-blue-100 font-inter text-gray-800 min-h-screen flex flex-col">
+<body>
+    <!-- Burbujas de fondo animadas (elementos puramente decorativos) -->
+    <div class="bubbles-background" aria-hidden="true">
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+    </div>
 
-    <!-- Header Section -->
-    <header class="bg-white shadow-lg p-4 sticky top-0 z-50 rounded-b-xl animate-slide-in-down">
-        <div class="container mx-auto flex justify-between items-center">
-            <!-- Logo y Título -->
-            <div class="flex items-center space-x-3">
-                <img id="logoLight" src="https://i.imgur.com/G51f2rQ.png" alt="Capibobba Logo" class="h-12 w-12 rounded-full shadow-md">
-                <img id="logoDark" src="https://i.imgur.com/G51f2rQ.png" alt="Capibobba Logo Dark" class="h-12 w-12 rounded-full shadow-md hidden">
-                <h1 class="text-3xl font-bold text-pink-500">Capibobba</h1>
+    <!-- Contenedor principal de decoraciones kawaii flotantes (puramente decorativas) -->
+    <div class="kawaii-decorations-wrapper" aria-hidden="true">
+        <span class="kawaii-decoration bubble-tea-cup">🧋</span>
+        <span class="kawaii-decoration capybara-float-1">🦫</span>
+        <span class="kawaii-decoration capybara-float-2">🦫</span>
+        <span class="kawaii-decoration heart-float">💖</span>
+    </div>
+    
+    <!-- Contenedor principal de todo el contenido del menú -->
+    <main class="menu-container">
+        <!-- Encabezado principal de la página -->
+        <header class="header">
+            <div class="capybobba-mascot" role="img" aria-label="Capibobba Logo con un corazón flotante">
+                <!-- Imágenes del logo con atributos de rendimiento y accesibilidad -->
+                <img id="logoLight" src="https://i.imgur.com/llR0NN0.png" alt="Capibobba Logo Modo Claro" width="250" height="250" loading="eager">
+                <img id="logoDark" src="https://i.imgur.com/i7psA3z.png" alt="Capibobba Logo Modo Oscuro" width="250" height="250" loading="eager">
+            </div>
+            <h1 class="main-title">MENÚ CAPIBOBBA</h1>
+            <p class="tagline">¡Dale un abrazo a tu bebida favorita! 🧸💕</p>
+
+            <!-- Resumen del carrito flotante en el header -->
+            <div class="cart-summary" id="cartSummary" role="status" aria-live="polite" tabindex="0">
+                <span class="cart-icon-emoji" id="cartIconEmoji" aria-hidden="true">🛒</span>
+                <span class="cart-item-count" id="cartItemCount">0</span>
+                <span class="visually-hidden">elementos en el carrito</span>
+            </div>
+        </header>
+        
+        <!-- Contenedor principal del contenido del menú (secciones de productos, promociones, etc.) -->
+        <article class="content-wrapper">
+            <!-- Divisor decorativo -->
+            <div class="kawaii-divider" aria-hidden="true">
+                <span class="emoji">🌟</span>
+                <span class="emoji">✨</span>
+                <span class="emoji">🌟</span>
+            </div>
+            
+            <!-- Sección de Frappés base agua -->
+            <section class="menu-section animate-on-scroll" id="water-based-frappes" aria-labelledby="water-frappes-title">
+                <header class="section-header">
+                    <h2 id="water-frappes-title" class="section-title">🍹✨ Frappés mágicos base agua - 16oz ✨🍹</h2>
+                    <div class="price-banner">$75 (Incluye hielo ❄️ y ternura)</div>
+                    <p class="section-description">
+                        Refrescantes, frutales y muuuy kawaii 💖<br>
+                        Ideal para días soleados 🌞
+                    </p>
+                    <p class="click-legend">da click en los sabores para ver una imagen de la boba</p>
+                </header>
+                
+                <!-- Este div será llenado por JavaScript -->
+                <div class="flavor-grid" id="waterFrappesGrid">
+                    <!-- Productos de frappés base agua se insertarán aquí dinámicamente -->
+                </div>
+            </section>
+            
+            <!-- Divisor decorativo -->
+            <div class="kawaii-divider" aria-hidden="true">
+                <span class="emoji">🌈</span>
+                <span class="emoji">🧋</span>
+                <span class="emoji">🌈</span>
+            </div>
+            
+            <!-- Sección de Frappés base leche -->
+            <section class="menu-section animate-on-scroll" id="milk-based-frappes" aria-labelledby="milk-frappes-title">
+                <header class="section-header">
+                    <h2 id="milk-frappes-title" class="section-title">🍼💫 Frappés mágicos base leche - 16oz 💫🍼</h2>
+                    <div class="price-banner">$75 (Cremositos, dulces y súper abrazables 🤍)</div>
+                    <p class="section-description">¡Una nube cremosa con sabor! 🧋🐰</p>
+                    <p class="click-legend">da click en los sabores para ver una imagen de la boba</p>
+                </header>
+                
+                <!-- Este div será llenado por JavaScript -->
+                <div class="flavor-grid" id="milkFrappesGrid">
+                    <!-- Productos de frappés base leche se insertarán aquí dinámicamente -->
+                </div>
+            </section>
+            
+            <!-- Sección de bebidas calientes -->
+            <section class="menu-section hot-drinks animate-on-scroll" id="hot-drinks-section" aria-labelledby="hot-drinks-title">
+                <header class="section-header">
+                    <h2 id="hot-drinks-title" class="section-title">☕🌸 Bebidas Calientitas - 12oz 🌸☕</h2>
+                    <div class="price-banner">$60 – Ideal para esos días de frío o lluvia ☔🌧️</div>
+                    <p class="section-description">
+                        ¡Calientitas, reconfortantes y adorables para abrazar tu día! 💕
+                    </p>
+                    <p class="click-legend">da click en los sabores para ver una imagen de la bebida</p>
+                </header>
+                
+                <!-- Este div será llenado por JavaScript -->
+                <div class="flavor-grid" id="hotDrinksGrid">
+                    <!-- Productos de bebidas calientes se insertarán aquí dinámicamente -->
+                </div>
+            </section>
+
+            <!-- Divisor decorativo para la nueva sección -->
+            <div class="kawaii-divider" aria-hidden="true">
+                <span class="emoji">💖</span>
+                <span class="emoji">✨</span>
+                <span class="emoji">🎉</span>
             </div>
 
-            <!-- Contador de Visitantes (Solo para desarrolladores) -->
-            <div id="visitorCounterDisplay" class="flex items-center space-x-2 bg-pink-200 text-pink-700 px-3 py-1 rounded-full shadow-inner text-sm font-semibold hidden">
-                <span>Visitantes:</span>
-                <span id="visitorCount" class="font-bold">0</span>
+            <!-- Sección de Promociones y Novedades -->
+            <section class="menu-section promotions-section animate-on-scroll" id="promotions-news-section" aria-labelledby="promotions-title">
+                <header class="section-header">
+                    <h2 id="promotions-title" class="section-title">🌟 Novedades Kawaii y Promociones Exclusivas 🌟</h2>
+                    <p class="section-description">
+                        ¡No te pierdas las últimas sorpresas y ofertas más tiernas de Capibobba! ✨
+                    </p>
+                </header>
+
+                <!-- NUEVA ESPECIALIDAD: CHAMOYADA -->
+                <div class="promotion-item animate-on-scroll" id="chamoyadaPromotion" data-name="Chamoyada" data-price="75" tabindex="0">
+                    <h3 class="promotion-item-title">🌶️🥭 ¡Nueva! Especialidad: Chamoyada 🥭🌶️</h3>
+                    <p class="promotion-item-description">
+                        El toque picosito que estabas esperando en el menú, disfruta de una boba explosiva y llena de sabor. Escoge el sabor que quieres llevar al siguiente nivel entre las opciones base agua que tenemos.
+                    </p>
+                    <button class="add-drink-to-cart-button" aria-label="Añadir Chamoyada al carrito">Añadir 💖</button>
+                </div>
+                
+                <!-- Frappé de Temporada con ID para el evento click (se mantiene para un caso especial) -->
+                <div class="promotion-item animate-on-scroll" id="fresasConCremaPromotion" data-name="Frappé Fresas con Crema (Temporada)" data-price="75" tabindex="0">
+                    <h3 class="promotion-item-title">🍓🥛 Frappé de Temporada: "Fresas con Crema" 🍓🥛</h3>
+                    <p class="promotion-item-description">
+                        ¡El clásico favorito de la abuela, pero en versión kawaii! Disfruta de la dulzura de la fresa natural combinada con la cremosidad más suave. ¡Un abrazo de fresas y amor en cada sorbo! Disponible solo por tiempo limitado.💖✨
+                    </p>
+                    <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Fresas con Crema de Temporada al carrito">Añadir 💖</button>
+                </div>
+
+                <div class="promotion-item animate-on-scroll" tabindex="0">
+                    <h3 class="promotion-item-title">🎁 Descuento por Primer Pedido 🎁</h3>
+                    <p class="promotion-item-description">
+                        ¡Bienvenido a la familia Capibobba! Obtén un 10% de descuento en tu primer pedido usando el código: **KAWAII10** al hacer tu encargo por WhatsApp. 🥳
+                    </p>
+                </div>
+            </section>
+            
+            <!-- Sección de Toppings (ahora solo para visualización, la adición es vía modal) -->
+            <section class="menu-section toppings-section animate-on-scroll" id="toppings-section" aria-labelledby="toppings-section-title">
+                <header class="section-header">
+                    <h2 id="toppings-section-title" class="section-title">🌈🧋 ¡Hazla tuya! Personaliza tu bebida 🧋🌈</h2>
+                    <div class="toppings-title">
+                        <span style="font-size: 24px; font-weight: 800;">💖 Toppings kawaii</span>
+                        <span class="topping-price">+$10 cada uno</span>
+                    </div>
+                    <p class="section-description">
+                        Selecciona estos toppings después de elegir tu bebida. ¡No se pueden añadir solos al carrito!
+                    </p>
+                </header>
+                
+                <div class="topping-item animate-on-scroll" tabindex="0">
+                    <h3 class="topping-name">💥 Perlas explosivas de frutos rojos</h3>
+                    <p class="topping-description">Dulces mini-explosiones de amor ❤️🫧</p>
+                </div>
+                
+                <div class="topping-item animate-on-scroll" tabindex="0">
+                    <h3 class="topping-name">🍏 Perlas explosivas de manzana verde</h3>
+                    <p class="topping-description">¡Explosión y frescura en cada sorbo! 🍏✨</p>
+                </div>
+                
+                <div class="topping-item animate-on-scroll" tabindex="0">
+                    <h3 class="topping-name">🤍 Perlas explosivas de litchi</h3>
+                    <p class="topping-description">Delicadas, frutales y muuuy adorables 🍡💖</p>
+                </div>
+                
+                <div class="topping-item animate-on-scroll" tabindex="0">
+                    <h3 class="topping-name">🌈 Jelly arcoiris</h3>
+                    <p class="topping-description">Suavecitos, coloridos y súper divertidos 🐻🌈</p>
+                </div>
+            </section>
+
+            <!-- Divisor decorativo -->
+            <div class="kawaii-divider" aria-hidden="true">
+                <span class="emoji">✨</span>
+                <span class="emoji">🛒</span>
+                <span class="emoji">✨</span>
             </div>
 
-            <!-- Botón de Administrar Productos (Solo para desarrolladores) -->
-            <button id="openAdminPanelButton" class="admin-button bg-purple-500 text-white px-4 py-2 rounded-full shadow-lg hover:bg-purple-600 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-75" style="display: none;">
-                Administrar Productos ⚙️
-            </button>
+            <!-- Sección del Carrito de Compras -->
+            <section class="menu-section shopping-cart-section animate-on-scroll" id="shoppingCartSection" aria-labelledby="cart-section-title">
+                <header class="section-header">
+                    <h2 id="cart-section-title" class="section-title">💖 Tu Carrito Kawaii 💖</h2>
+                </header>
+                <ul id="cartItemsList" class="cart-items-list" aria-live="polite">
+                    <!-- Los items del carrito se añadirán dinámicamente aquí -->
+                    <li class="empty-cart-message">¡Tu carrito está vacío, añade algo delicioso! 💖</li>
+                </ul>
+                <div id="cartTotal" class="cart-total">Total: $0</div>
 
-            <!-- Resumen del Carrito (flotante) -->
-            <div id="cartSummary" class="fixed right-4 bg-white p-3 rounded-full shadow-xl cursor-pointer flex items-center space-x-2 z-40 transform transition-transform duration-300 hover:scale-105">
-                <span id="cartIconEmoji" class="text-3xl">🛒</span>
-                <span id="cartItemCount" class="bg-pink-500 text-white text-xs font-bold px-2 py-1 rounded-full">0</span>
-            </div>
-        </div>
-    </header>
+                <div class="cart-actions">
+                    <button id="clearCartButton" class="cart-action-button clear-cart" disabled aria-label="Vaciar todos los elementos del carrito">
+                        Vaciar Carrito 🗑️
+                    </button>
+                    <button id="orderWhatsAppButton" class="cart-action-button order-whatsapp-button" disabled aria-label="Enviar pedido por WhatsApp">
+                        Pedir por WhatsApp 📱
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Sección de cómo ordenar -->
+            <section class="order-section animate-on-scroll" id="order-process-section" aria-labelledby="order-title">
+                <div class="order-content">
+                    <h2 id="order-title" class="order-title">✨🧸 CÓMO ORDENAR TU BEBIDA KAWAII 🧸✨</h2>
+                    
+                    <div class="order-steps">
+                        <p class="order-step">1. Elige tu bebida (frappé o caliente) y agrégala al carrito.</p>
+                        <p class="order-step">2. Si deseas, selecciona toppings para esa bebida en la ventana emergente.</p>
+                        <p class="order-step">3. Repite para cada bebida que quieras.</p>
+                        <p class="order-step">
+                            4. Cuando estés listo, haz clic en "Pedir por WhatsApp" para enviar tu orden automáticamente.
+                        </p>
+                        <p class="order-step">
+                            5. Recibe tu bebida y toma muchas fotos! Y etiqueta a <a href="https://www.facebook.com/share/195krrAWVG/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">@Capibobba</a>, mándanos tu post y gana un <strong>$10 de descuento</strong> en tu siguiente pedido. 📸💕
+                        </p>
+                    </div>
 
-    <!-- Main Content -->
-    <main class="container mx-auto p-4 flex-grow">
-        <!-- Hero Section -->
-        <section class="text-center my-8 p-6 bg-white rounded-3xl shadow-xl animate-fade-in">
-            <h2 class="text-4xl font-extrabold text-purple-600 mb-4">¡Bienvenido al Mundo Kawaii de Capibobba!</h2>
-            <p class="text-lg text-gray-700 mb-6">Sumérgete en una explosión de sabores y ternura con nuestros frappés y bebidas únicos. ¡Cada sorbo es una aventura!</p>
-            <div class="flex justify-center items-center space-x-4">
-                <img src="https://i.imgur.com/Pu7yFxo.jpeg" alt="Frappé de Litchi" class="w-24 h-24 object-cover rounded-full shadow-lg border-4 border-pink-300">
-                <img src="https://i.imgur.com/jrELu9J.jpeg" alt="Frappé de Mazapán" class="w-24 h-24 object-cover rounded-full shadow-lg border-4 border-purple-300">
-                <img src="https://i.imgur.com/39xoolA.jpeg" alt="Chamoyada" class="w-24 h-24 object-cover rounded-full shadow-lg border-4 border-blue-300">
+                    <!-- Sección de WhatsApp con número de contacto -->
+                    <div class="whatsapp-section">
+                        <p class="whatsapp-text">Nuestro número de contacto:</p>
+                        <a href="https://wa.me/5217712794633" target="_blank" rel="noopener noreferrer" class="whatsapp-link">
+                            <div class="whatsapp-number" role="button" tabindex="0" aria-label="Número de WhatsApp 771 279 4633">
+                                7712794633
+                                <span class="whatsapp-click-legend">¡También puedes pedir dando click en "Pedir por WhatsApp" arriba!</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Mensaje final -->
+            <div class="final-message animate-on-scroll">
+                <div>
+                    > Todos nuestros frappés son servidos con mucho cariño y los llevamos a la puerta de tu hogar velozmente 💕<br>
+                    El diseño de tu bebida siempre será adorable! 🐾
+                </div>
+                <div class="highlight">
+                    ¿Listo para tomar algo tiernamente delicioso? 🧋✨<br>
+                    ¡Te esperamos con una sonrisa y un vaso lleno de felicidad! 💖🌟
+                </div>
             </div>
-        </section>
-
-        <!-- Promotion Section - Fresas con Crema -->
-        <section id="fresasConCremaPromotion" class="bg-red-100 border-2 border-red-300 p-6 my-8 rounded-3xl shadow-xl flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8 animate-slide-in-left" data-name="Frappé Fresas con Crema (Temporada)" data-price="75">
-            <div class="flex-shrink-0">
-                <img src="https://i.imgur.com/m2Fc29F.jpeg" alt="Frappé Fresas con Crema" class="w-48 h-48 object-cover rounded-full shadow-lg border-4 border-red-400">
-            </div>
-            <div class="text-center md:text-left">
-                <h2 class="promotion-item-title text-4xl font-extrabold text-red-600 mb-3">🍓🥛 Frappé de Temporada: "Fresas con Crema" 🍓🥛</h2>
-                <p class="promotion-item-description text-lg text-gray-700 mb-4">¡El clásico favorito de la abuela, pero en versión kawaii! Dulzura de fresa natural y cremosidad suave. 🍓🥛💖✨</p>
-                <p class="text-3xl font-bold text-red-500 mb-4">$75 MXN</p>
-                <button class="add-drink-to-cart-button bg-red-500 text-white px-6 py-3 rounded-full shadow-lg hover:bg-red-600 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75" aria-label="Añadir Frappé Fresas con Crema al carrito">
-                    ¡Lo quiero! 💖
-                </button>
-            </div>
-        </section>
-
-        <!-- Promotion Section - Chamoyada -->
-        <section id="chamoyadaPromotion" class="bg-orange-100 border-2 border-orange-300 p-6 my-8 rounded-3xl shadow-xl flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8 animate-slide-in-right" data-name="Chamoyada" data-price="75">
-            <div class="flex-shrink-0">
-                <img src="https://i.imgur.com/39xoolA.jpeg" alt="Chamoyada" class="w-48 h-48 object-cover rounded-full shadow-lg border-4 border-orange-400">
-            </div>
-            <div class="text-center md:text-left">
-                <h2 class="promotion-item-title text-4xl font-extrabold text-orange-600 mb-3">🌶️🥭 ¡Nueva! Especialidad: Chamoyada 🥭🌶️</h2>
-                <p class="promotion-item-description text-lg text-gray-700 mb-4">El toque picosito que estabas esperando en el menú, disfruta de una boba explosiva y llena de sabor. Escoge el sabor que quieres llevar al siguiente nivel entre las opciones base agua que tenemos.</p>
-                <p class="text-3xl font-bold text-orange-500 mb-4">$75 MXN</p>
-                <button class="add-drink-to-cart-button bg-orange-500 text-white px-6 py-3 rounded-full shadow-lg hover:bg-orange-600 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75" aria-label="Añadir Chamoyada al carrito">
-                    ¡Quiero una! 🌶️
-                </button>
-            </div>
-        </section>
-
-        <!-- Frappés Base Agua Section -->
-        <section class="my-8 p-6 bg-white rounded-3xl shadow-xl animate-fade-in">
-            <h2 class="text-3xl font-bold text-blue-500 mb-6 text-center">Frappés Base Agua 💧</h2>
-            <div id="waterFrappesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Products will be loaded here by JavaScript -->
-            </div>
-        </section>
-
-        <!-- Frappés Base Leche Section -->
-        <section class="my-8 p-6 bg-white rounded-3xl shadow-xl animate-fade-in">
-            <h2 class="text-3xl font-bold text-purple-500 mb-6 text-center">Frappés Base Leche 🥛</h2>
-            <div id="milkFrappesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Products will be loaded here by JavaScript -->
-            </div>
-        </section>
-
-        <!-- Bebidas Calientes Section -->
-        <section class="my-8 p-6 bg-white rounded-3xl shadow-xl animate-fade-in">
-            <h2 class="text-3xl font-bold text-red-500 mb-6 text-center">Bebidas Calientes 🔥</h2>
-            <div id="hotDrinksGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Products will be loaded here by JavaScript -->
-            </div>
-        </section>
-
-        <!-- Shopping Cart Section -->
-        <section id="shoppingCartSection" class="my-8 p-6 bg-white rounded-3xl shadow-xl animate-fade-in">
-            <h2 class="text-3xl font-bold text-green-500 mb-6 text-center">Tu Carrito de Compras 🛒</h2>
-            <ul id="cartItemsList" class="space-y-4 mb-6">
-                <!-- Cart items will be displayed here -->
-            </ul>
-            <p id="cartTotal" class="text-2xl font-bold text-gray-800 text-right mb-6">Total: $0.00</p>
-            <div class="flex flex-col sm:flex-row justify-end space-y-4 sm:space-y-0 sm:space-x-4">
-                <button id="clearCartButton" class="bg-gray-300 text-gray-700 px-6 py-3 rounded-full shadow-md hover:bg-gray-400 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75">
-                    Vaciar Carrito 🗑️
-                </button>
-                <button id="orderWhatsAppButton" class="bg-green-500 text-white px-6 py-3 rounded-full shadow-lg hover:bg-green-600 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">
-                    Pedir por WhatsApp 📱
-                </button>
-            </div>
-        </section>
+        </article>
     </main>
 
-    <!-- Footer Section -->
-    <footer class="bg-white shadow-lg p-4 mt-8 text-center text-gray-600 rounded-t-xl animate-slide-in-up">
-        <p>&copy; 2024 Capibobba. Todos los derechos reservados. Hecho con 💖 para ti.</p>
-    </footer>
-
-    <!-- Modales -->
-
-    <!-- Flavor Image Modal -->
+    <!-- Visor de Imágenes de Sabor (Overlay) - Modal -->
     <div id="flavorImageOverlay" class="flavor-image-overlay" role="dialog" aria-modal="true" aria-labelledby="flavorImageName">
-        <div class="modal-content">
-            <button class="close-modal-button" aria-label="Cerrar modal de imagen">✖️</button>
-            <h3 id="flavorImageName" class="modal-title"></h3>
-            <img id="flavorImage" src="" alt="" class="modal-image">
+        <div class="flavor-image-content">
+            <img id="flavorImage" src="" alt="Imagen del sabor" width="300" height="300" loading="lazy">
+            <h3 class="flavor-image-name" id="flavorImageName"></h3>
+            <button class="close-modal-button" aria-label="Cerrar imagen del sabor">✖</button>
         </div>
     </div>
 
-    <!-- Topping Selection Modal -->
-    <div id="toppingSelectionOverlay" class="topping-selection-overlay" role="dialog" aria-modal="true" aria-labelledby="toppingDrinkName">
-        <div class="modal-content">
-            <button class="close-modal-button" aria-label="Cerrar modal de toppings">✖️</button>
-            <h3 class="modal-title">Personaliza tu <span id="toppingDrinkName"></span></h3>
-            <p class="modal-subtitle">Añade toppings deliciosos:</p>
-            <div id="toppingsModalGrid" class="toppings-grid">
-                <!-- Toppings will be loaded here by JavaScript -->
+    <!-- Modal de Selección de Toppings -->
+    <div id="toppingSelectionOverlay" class="topping-selection-overlay" role="dialog" aria-modal="true" aria-labelledby="topping-modal-title">
+        <div class="topping-selection-content">
+            <header class="section-header">
+                <h2 id="topping-modal-title" class="section-title">¡Personaliza tu <span id="toppingDrinkName" class="current-drink-name-modal"></span>!</h2>
+                <p>Selecciona los toppings que deseas añadir a esta bebida:</p>
+            </header>
+            <div id="toppingsModalGrid" class="toppings-modal-grid">
+                <!-- Los toppings se cargarán dinámicamente aquí por JS -->
             </div>
-            <div class="modal-actions">
-                <button id="confirmToppingsButton" class="modal-button confirm-button">Confirmar Selección ✅</button>
-                <button id="noToppingsButton" class="modal-button secondary-button">Sin Toppings 🚫</button>
-                <button id="cancelToppingsButton" class="modal-button cancel-button">Cancelar ❌</button>
+            <div class="topping-selection-actions">
+                <button id="confirmToppingsButton" aria-label="Confirmar selección de toppings">Confirmar Selección ✅</button>
+                <button id="noToppingsButton" aria-label="No añadir toppings">Sin Toppings 🚫</button>
+                <button id="cancelToppingsButton" aria-label="Cancelar selección de toppings">Cancelar ❌</button>
             </div>
+            <button class="close-modal-button" aria-label="Cerrar selección de toppings">✖</button>
         </div>
     </div>
 
-    <!-- Chamoyada Customization Modal -->
-    <div id="chamoyadaCustomizationOverlay" class="chamoyada-customization-overlay" role="dialog" aria-modal="true" aria-labelledby="chamoyadaModalTitle">
-        <div class="modal-content">
-            <button class="close-modal-button" aria-label="Cerrar modal de Chamoyada">✖️</button>
-            <h3 id="chamoyadaModalTitle" class="modal-title">Personaliza tu Chamoyada 🥭🌶️</h3>
-            <p class="modal-subtitle">Elige tu sabor base (¡solo base agua!):</p>
-            <div id="chamoyadaBaseFlavorGrid" class="chamoyada-base-flavor-grid">
-                <!-- Base flavors will be loaded here by JavaScript -->
+    <!-- NUEVO: Modal de Personalización de Chamoyada -->
+    <div id="chamoyadaCustomizationOverlay" class="flavor-image-overlay" role="dialog" aria-modal="true" aria-labelledby="chamoyada-modal-title">
+        <div class="flavor-image-content">
+            <header class="section-header">
+                <h2 id="chamoyada-modal-title" class="section-title">¡Personaliza tu Chamoyada!</h2>
+                <p class="section-description">Elige tu sabor base y añade toppings.</p>
+            </header>
+
+            <div class="chamoyada-flavor-selection">
+                <h3 class="flavor-selection-title">Escoge tu sabor base (Base Agua)</h3>
+                <div id="chamoyadaBaseFlavorGrid" class="flavor-grid-small">
+                    <!-- Los sabores base agua se cargarán aquí dinámicamente por JS -->
+                </div>
             </div>
-            <p class="modal-subtitle mt-4">Añade toppings (opcional):</p>
-            <div id="chamoyadaToppingsGrid" class="toppings-grid">
-                <!-- Toppings will be loaded here by JavaScript -->
+
+            <div class="chamoyada-topping-selection">
+                <h3 class="topping-selection-title">Añade Toppings (Opcional)</h3>
+                <div id="chamoyadaToppingsGrid" class="toppings-modal-grid">
+                    <!-- Los toppings existentes se cargarán aquí dinámicamente por JS -->
+                </div>
             </div>
-            <div class="modal-actions">
-                <button id="confirmChamoyadaButton" class="modal-button confirm-button">Confirmar Chamoyada ✅</button>
-                <button id="cancelChamoyadaButton" class="modal-button cancel-button">Cancelar ❌</button>
+
+            <div class="topping-selection-actions">
+                <button id="confirmChamoyadaButton" aria-label="Confirmar Chamoyada">Confirmar Chamoyada ✅</button>
+                <button id="cancelChamoyadaButton" aria-label="Cancelar Chamoyada">Cancelar ❌</button>
             </div>
+            <button class="close-modal-button" aria-label="Cerrar personalización de Chamoyada">✖</button>
         </div>
     </div>
+    <!-- FIN NUEVO: Modal de Personalización de Chamoyada -->
 
-    <!-- Admin Panel Overlay -->
-    <div id="adminPanelOverlay" class="admin-panel-overlay" role="dialog" aria-modal="true" aria-labelledby="adminPanelTitle">
-        <div class="modal-content admin-modal-content">
-            <button class="close-modal-button" aria-label="Cerrar panel de administración">✖️</button>
-            <h3 id="adminPanelTitle" class="modal-title">Administración de Productos ⚙️</h3>
-
-            <!-- Formulario para Añadir/Editar Producto -->
-            <h4 class="text-xl font-semibold text-purple-600 mb-4">Añadir/Editar Producto</h4>
-            <form id="productForm" class="space-y-4 mb-8">
-                <input type="hidden" id="productId">
-                <div>
-                    <label for="productType" class="block text-sm font-medium text-gray-700">Tipo de Producto:</label>
-                    <select id="productType" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500">
-                        <option value="">Selecciona un tipo</option>
-                        <option value="water-based-frappe">Frappé Base Agua</option>
-                        <option value="milk-based-frappe">Frappé Base Leche</option>
-                        <option value="hot-drink">Bebida Caliente</option>
-                        <option value="promotion">Promoción (Chamoyada/Fresas con Crema)</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="productName" class="block text-sm font-medium text-gray-700">Nombre Interno (único):</label>
-                    <input type="text" id="productName" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500">
-                </div>
-                <div>
-                    <label for="productDisplayName" class="block text-sm font-medium text-gray-700">Nombre Visible:</label>
-                    <input type="text" id="productDisplayName" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500">
-                </div>
-                <div>
-                    <label for="productPrice" class="block text-sm font-medium text-gray-700">Precio:</label>
-                    <input type="number" id="productPrice" step="0.01" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500">
-                </div>
-                <div>
-                    <label for="productDescription" class="block text-sm font-medium text-gray-700">Descripción:</label>
-                    <textarea id="productDescription" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"></textarea>
-                </div>
-                <div>
-                    <label for="productImageUrl" class="block text-sm font-medium text-gray-700">URL de Imagen:</label>
-                    <input type="url" id="productImageUrl" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500">
-                </div>
-                <div class="flex space-x-4">
-                    <button type="submit" id="saveProductButton" class="bg-green-500 text-white px-4 py-2 rounded-full shadow-lg hover:bg-green-600 transition duration-300">Guardar Producto ✨</button>
-                    <button type="button" id="cancelEditButton" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-full shadow-md hover:bg-gray-400 transition duration-300">Cancelar Edición ↩️</button>
-                </div>
-            </form>
-
-            <!-- Lista de Productos Existentes -->
-            <h4 class="text-xl font-semibold text-purple-600 mb-4">Productos Existentes</h4>
-            <ul id="adminProductsList" class="space-y-2">
-                <!-- Products will be listed here by JavaScript for admin -->
-            </ul>
-        </div>
-    </div>
-
-    <!-- Enlace a tu archivo JavaScript -->
-    <script type="module" src="script.js"></script>
+    <!-- Enlace al archivo JavaScript externo con defer para no bloquear el renderizado -->
+    <script src="script.js" defer></script>
 </body>
 </html>
