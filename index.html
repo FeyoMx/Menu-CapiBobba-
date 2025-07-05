@@ -57,282 +57,189 @@
                 <span class="cart-item-count" id="cartItemCount">0</span>
                 <span class="visually-hidden">elementos en el carrito</span>
             </div>
+
+            <!-- Botón de administración de productos -->
+            <button id="openAdminPanelButton" class="admin-button" style="display: none;">
+                Administrar Productos ⚙️
+            </button>
         </header>
         
-        <!-- Contenedor principal del contenido del menú (secciones de productos, promociones, etc.) -->
-        <article class="content-wrapper">
-            <!-- Divisor decorativo -->
-            <div class="kawaii-divider" aria-hidden="true">
-                <span class="emoji">🌟</span>
-                <span class="emoji">✨</span>
-                <span class="emoji">🌟</span>
+        <!-- Sección de Bebidas Frías (Frappés de Agua) -->
+        <section class="menu-section animate-slide-in-left">
+            <h2 class="section-title">💧 Frappés de Agua 💧</h2>
+            <div class="flavor-grid" id="waterFrappesGrid">
+                <!-- Los productos se cargarán aquí dinámicamente desde Firestore -->
             </div>
-            
-            <!-- Sección de Frappés base agua -->
-            <section class="menu-section animate-on-scroll" id="water-based-frappes" aria-labelledby="water-frappes-title">
-                <header class="section-header">
-                    <h2 id="water-frappes-title" class="section-title">🍹✨ Frappés mágicos base agua - 16oz ✨🍹</h2>
-                    <div class="price-banner">$75 (Incluye hielo ❄️ y ternura)</div>
-                    <p class="section-description">
-                        Refrescantes, frutales y muuuy kawaii 💖<br>
-                        Ideal para días soleados 🌞
-                    </p>
-                    <p class="click-legend">da click en los sabores para ver una imagen de la boba</p>
-                </header>
-                
-                <!-- Este div será llenado por JavaScript -->
-                <div class="flavor-grid" id="waterFrappesGrid">
-                    <!-- Productos de frappés base agua se insertarán aquí dinámicamente -->
-                </div>
-            </section>
-            
-            <!-- Divisor decorativo -->
-            <div class="kawaii-divider" aria-hidden="true">
-                <span class="emoji">🌈</span>
-                <span class="emoji">🧋</span>
-                <span class="emoji">🌈</span>
+        </section>
+
+        <!-- Sección de Bebidas Frías (Frappés de Leche) -->
+        <section class="menu-section animate-slide-in-right">
+            <h2 class="section-title">🥛 Frappés de Leche 🥛</h2>
+            <div class="flavor-grid" id="milkFrappesGrid">
+                <!-- Los productos se cargarán aquí dinámicamente desde Firestore -->
             </div>
-            
-            <!-- Sección de Frappés base leche -->
-            <section class="menu-section animate-on-scroll" id="milk-based-frappes" aria-labelledby="milk-frappes-title">
-                <header class="section-header">
-                    <h2 id="milk-frappes-title" class="section-title">🍼💫 Frappés mágicos base leche - 16oz 💫🍼</h2>
-                    <div class="price-banner">$75 (Cremositos, dulces y súper abrazables 🤍)</div>
-                    <p class="section-description">¡Una nube cremosa con sabor! 🧋🐰</p>
-                    <p class="click-legend">da click en los sabores para ver una imagen de la boba</p>
-                </header>
-                
-                <!-- Este div será llenado por JavaScript -->
-                <div class="flavor-grid" id="milkFrappesGrid">
-                    <!-- Productos de frappés base leche se insertarán aquí dinámicamente -->
-                </div>
-            </section>
-            
-            <!-- Sección de bebidas calientes -->
-            <section class="menu-section hot-drinks animate-on-scroll" id="hot-drinks-section" aria-labelledby="hot-drinks-title">
-                <header class="section-header">
-                    <h2 id="hot-drinks-title" class="section-title">☕🌸 Bebidas Calientitas - 12oz 🌸☕</h2>
-                    <div class="price-banner">$60 – Ideal para esos días de frío o lluvia ☔🌧️</div>
-                    <p class="section-description">
-                        ¡Calientitas, reconfortantes y adorables para abrazar tu día! 💕
-                    </p>
-                    <p class="click-legend">da click en los sabores para ver una imagen de la bebida</p>
-                </header>
-                
-                <!-- Este div será llenado por JavaScript -->
-                <div class="flavor-grid" id="hotDrinksGrid">
-                    <!-- Productos de bebidas calientes se insertarán aquí dinámicamente -->
-                </div>
-            </section>
+        </section>
 
-            <!-- Divisor decorativo para la nueva sección -->
-            <div class="kawaii-divider" aria-hidden="true">
-                <span class="emoji">💖</span>
-                <span class="emoji">✨</span>
-                <span class="emoji">🎉</span>
-            </div>
-
-            <!-- Sección de Promociones y Novedades -->
-            <section class="menu-section promotions-section animate-on-scroll" id="promotions-news-section" aria-labelledby="promotions-title">
-                <header class="section-header">
-                    <h2 id="promotions-title" class="section-title">🌟 Novedades Kawaii y Promociones Exclusivas 🌟</h2>
-                    <p class="section-description">
-                        ¡No te pierdas las últimas sorpresas y ofertas más tiernas de Capibobba! ✨
-                    </p>
-                </header>
-
-                <!-- NUEVA ESPECIALIDAD: CHAMOYADA -->
-                <div class="promotion-item animate-on-scroll" id="chamoyadaPromotion" data-name="Chamoyada" data-price="75" tabindex="0">
-                    <h3 class="promotion-item-title">🌶️🥭 ¡Nueva! Especialidad: Chamoyada 🥭🌶️</h3>
-                    <p class="promotion-item-description">
-                        El toque picosito que estabas esperando en el menú, disfruta de una boba explosiva y llena de sabor. Escoge el sabor que quieres llevar al siguiente nivel entre las opciones base agua que tenemos.
-                    </p>
-                    <button class="add-drink-to-cart-button" aria-label="Añadir Chamoyada al carrito">Añadir 💖</button>
-                </div>
-                
-                <!-- Frappé de Temporada con ID para el evento click (se mantiene para un caso especial) -->
-                <div class="promotion-item animate-on-scroll" id="fresasConCremaPromotion" data-name="Frappé Fresas con Crema (Temporada)" data-price="75" tabindex="0">
-                    <h3 class="promotion-item-title">🍓🥛 Frappé de Temporada: "Fresas con Crema" 🍓🥛</h3>
-                    <p class="promotion-item-description">
-                        ¡El clásico favorito de la abuela, pero en versión kawaii! Disfruta de la dulzura de la fresa natural combinada con la cremosidad más suave. ¡Un abrazo de fresas y amor en cada sorbo! Disponible solo por tiempo limitado.💖✨
-                    </p>
-                    <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Fresas con Crema de Temporada al carrito">Añadir 💖</button>
-                </div>
-
-                <div class="promotion-item animate-on-scroll" tabindex="0">
-                    <h3 class="promotion-item-title">🎁 Descuento por Primer Pedido 🎁</h3>
-                    <p class="promotion-item-description">
-                        ¡Bienvenido a la familia Capibobba! Obtén un 10% de descuento en tu primer pedido usando el código: **KAWAII10** al hacer tu encargo por WhatsApp. 🥳
-                    </p>
-                </div>
-            </section>
-            
-            <!-- Sección de Toppings (ahora solo para visualización, la adición es vía modal) -->
-            <section class="menu-section toppings-section animate-on-scroll" id="toppings-section" aria-labelledby="toppings-section-title">
-                <header class="section-header">
-                    <h2 id="toppings-section-title" class="section-title">🌈🧋 ¡Hazla tuya! Personaliza tu bebida 🧋🌈</h2>
-                    <div class="toppings-title">
-                        <span style="font-size: 24px; font-weight: 800;">💖 Toppings kawaii</span>
-                        <span class="topping-price">+$10 cada uno</span>
-                    </div>
-                    <p class="section-description">
-                        Selecciona estos toppings después de elegir tu bebida. ¡No se pueden añadir solos al carrito!
-                    </p>
-                </header>
-                
-                <div class="topping-item animate-on-scroll" tabindex="0">
-                    <h3 class="topping-name">💥 Perlas explosivas de frutos rojos</h3>
-                    <p class="topping-description">Dulces mini-explosiones de amor ❤️🫧</p>
-                </div>
-                
-                <div class="topping-item animate-on-scroll" tabindex="0">
-                    <h3 class="topping-name">🍏 Perlas explosivas de manzana verde</h3>
-                    <p class="topping-description">¡Explosión y frescura en cada sorbo! 🍏✨</p>
-                </div>
-                
-                <div class="topping-item animate-on-scroll" tabindex="0">
-                    <h3 class="topping-name">🤍 Perlas explosivas de litchi</h3>
-                    <p class="topping-description">Delicadas, frutales y muuuy adorables 🍡💖</p>
-                </div>
-                
-                <div class="topping-item animate-on-scroll" tabindex="0">
-                    <h3 class="topping-name">🌈 Jelly arcoiris</h3>
-                    <p class="topping-description">Suavecitos, coloridos y súper divertidos 🐻🌈</p>
-                </div>
-            </section>
-
-            <!-- Divisor decorativo -->
-            <div class="kawaii-divider" aria-hidden="true">
-                <span class="emoji">✨</span>
-                <span class="emoji">🛒</span>
-                <span class="emoji">✨</span>
-            </div>
-
-            <!-- Sección del Carrito de Compras -->
-            <section class="menu-section shopping-cart-section animate-on-scroll" id="shoppingCartSection" aria-labelledby="cart-section-title">
-                <header class="section-header">
-                    <h2 id="cart-section-title" class="section-title">💖 Tu Carrito Kawaii 💖</h2>
-                </header>
-                <ul id="cartItemsList" class="cart-items-list" aria-live="polite">
-                    <!-- Los items del carrito se añadirán dinámicamente aquí -->
-                    <li class="empty-cart-message">¡Tu carrito está vacío, añade algo delicioso! 💖</li>
-                </ul>
-                <div id="cartTotal" class="cart-total">Total: $0</div>
-
-                <div class="cart-actions">
-                    <button id="clearCartButton" class="cart-action-button clear-cart" disabled aria-label="Vaciar todos los elementos del carrito">
-                        Vaciar Carrito 🗑️
-                    </button>
-                    <button id="orderWhatsAppButton" class="cart-action-button order-whatsapp-button" disabled aria-label="Enviar pedido por WhatsApp">
-                        Pedir por WhatsApp 📱
-                    </button>
-                </div>
-            </section>
-            
-            <!-- Sección de cómo ordenar -->
-            <section class="order-section animate-on-scroll" id="order-process-section" aria-labelledby="order-title">
-                <div class="order-content">
-                    <h2 id="order-title" class="order-title">✨🧸 CÓMO ORDENAR TU BEBIDA KAWAII 🧸✨</h2>
-                    
-                    <div class="order-steps">
-                        <p class="order-step">1. Elige tu bebida (frappé o caliente) y agrégala al carrito.</p>
-                        <p class="order-step">2. Si deseas, selecciona toppings para esa bebida en la ventana emergente.</p>
-                        <p class="order-step">3. Repite para cada bebida que quieras.</p>
-                        <p class="order-step">
-                            4. Cuando estés listo, haz clic en "Pedir por WhatsApp" para enviar tu orden automáticamente.
-                        </p>
-                        <p class="order-step">
-                            5. Recibe tu bebida y toma muchas fotos! Y etiqueta a <a href="https://www.facebook.com/share/195krrAWVG/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">@Capibobba</a>, mándanos tu post y gana un <strong>$10 de descuento</strong> en tu siguiente pedido. 📸💕
-                        </p>
-                    </div>
-
-                    <!-- Sección de WhatsApp con número de contacto -->
-                    <div class="whatsapp-section">
-                        <p class="whatsapp-text">Nuestro número de contacto:</p>
-                        <a href="https://wa.me/5217712794633" target="_blank" rel="noopener noreferrer" class="whatsapp-link">
-                            <div class="whatsapp-number" role="button" tabindex="0" aria-label="Número de WhatsApp 771 279 4633">
-                                7712794633
-                                <span class="whatsapp-click-legend">¡También puedes pedir dando click en "Pedir por WhatsApp" arriba!</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Mensaje final -->
-            <div class="final-message animate-on-scroll">
-                <div>
-                    > Todos nuestros frappés son servidos con mucho cariño y los llevamos a la puerta de tu hogar velozmente 💕<br>
-                    El diseño de tu bebida siempre será adorable! 🐾
-                </div>
-                <div class="highlight">
-                    ¿Listo para tomar algo tiernamente delicioso? 🧋✨<br>
-                    ¡Te esperamos con una sonrisa y un vaso lleno de felicidad! 💖🌟
+        <!-- Promoción Especial: Chamoyada -->
+        <section class="promotion-section animate-on-scroll" id="chamoyadaPromotion" style="display: none;">
+            <div class="promotion-content">
+                <h2 class="promotion-item-title">🌶️🥭 ¡Nueva! Especialidad: Chamoyada 🥭🌶️</h2>
+                <p class="promotion-item-description">Refrescante frappé con un toque picosito de chamoy y el sabor de tu fruta favorita. ¡Personalízala!</p>
+                <div class="promotion-actions">
+                    <button class="add-drink-to-cart-button" data-name="Chamoyada" data-price="75" aria-label="Añadir Chamoyada al carrito">¡La quiero! 🤤</button>
                 </div>
             </div>
-        </article>
+        </section>
+
+        <!-- Promoción Especial: Frappé Fresas con Crema (Temporada) -->
+        <section class="promotion-section animate-on-scroll" id="fresasConCremaPromotion" style="display: none;">
+            <div class="promotion-content">
+                <h2 class="promotion-item-title">🍓🥛 Frappé de Temporada: "Fresas con Crema" 🍓🥛</h2>
+                <p class="promotion-item-description">La combinación perfecta de fresas frescas y la suavidad de la crema en un delicioso frappé. ¡Solo por tiempo limitado!</p>
+                <div class="promotion-actions">
+                    <button class="add-drink-to-cart-button" data-name="Frappé Fresas con Crema (Temporada)" data-price="65" aria-label="Añadir Frappé Fresas con Crema al carrito">¡Pruébalo! 😋</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Bebidas Calientes -->
+        <section class="menu-section animate-slide-in-left">
+            <h2 class="section-title">☕ Bebidas Calientes ☕</h2>
+            <div class="flavor-grid" id="hotDrinksGrid">
+                <!-- Los productos se cargarán aquí dinámicamente desde Firestore -->
+            </div>
+        </section>
+
+        <!-- Sección del Carrito de Compras -->
+        <section class="shopping-cart-section animate-on-scroll" id="shoppingCartSection">
+            <h2 class="section-title">Mi Carrito 🛍️</h2>
+            <ul id="cartItemsList" class="cart-items-list">
+                <!-- Los elementos del carrito se añadirán aquí dinámicamente -->
+                <li class="empty-cart-message">¡Tu carrito está vacío, añade algo delicioso! 💖</li>
+            </ul>
+            <div class="cart-total" id="cartTotal">Total: $0.00</div>
+            <div class="cart-actions">
+                <button id="clearCartButton" class="clear-cart-button" disabled>Vaciar Carrito 🗑️</button>
+                <button id="orderWhatsAppButton" class="order-whatsapp-button" disabled>Pedir por WhatsApp 📱</button>
+            </div>
+        </section>
+
+        <!-- Contador de Visitantes (visible solo para el desarrollador) -->
+        <div id="visitorCounterDisplay" class="visitor-counter-display" style="display: none;">
+            <span>Visitantes únicos: <span id="visitorCount">0</span></span>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Capibobba. Todos los derechos reservados. Hecho con 💖 y Capibaras.</p>
+        </footer>
     </main>
 
-    <!-- Visor de Imágenes de Sabor (Overlay) - Modal -->
-    <div id="flavorImageOverlay" class="flavor-image-overlay" role="dialog" aria-modal="true" aria-labelledby="flavorImageName">
-        <div class="flavor-image-content">
-            <img id="flavorImage" src="" alt="Imagen del sabor" width="300" height="300" loading="lazy">
-            <h3 class="flavor-image-name" id="flavorImageName"></h3>
-            <button class="close-modal-button" aria-label="Cerrar imagen del sabor">✖</button>
+    <!-- Modal para mostrar imagen de sabor -->
+    <div id="flavorImageOverlay" class="flavor-image-overlay">
+        <div class="flavor-image-modal-content">
+            <button class="close-modal-button" aria-label="Cerrar modal de imagen">✖️</button>
+            <h3 id="flavorImageName" class="modal-title"></h3>
+            <img id="flavorImage" src="" alt="Imagen de sabor" class="flavor-modal-image">
         </div>
     </div>
 
-    <!-- Modal de Selección de Toppings -->
-    <div id="toppingSelectionOverlay" class="topping-selection-overlay" role="dialog" aria-modal="true" aria-labelledby="topping-modal-title">
-        <div class="topping-selection-content">
-            <header class="section-header">
-                <h2 id="topping-modal-title" class="section-title">¡Personaliza tu <span id="toppingDrinkName" class="current-drink-name-modal"></span>!</h2>
-                <p>Selecciona los toppings que deseas añadir a esta bebida:</p>
-            </header>
+    <!-- Modal para selección de toppings -->
+    <div id="toppingSelectionOverlay" class="topping-selection-overlay">
+        <div class="topping-selection-modal-content">
+            <button class="close-modal-button" aria-label="Cerrar modal de toppings">✖️</button>
+            <h3 class="modal-title">Personaliza tu <span id="toppingDrinkName"></span></h3>
+            <p class="modal-subtitle">Añade tus toppings favoritos:</p>
             <div id="toppingsModalGrid" class="toppings-modal-grid">
-                <!-- Los toppings se cargarán dinámicamente aquí por JS -->
+                <!-- Toppings se cargarán aquí dinámicamente -->
             </div>
-            <div class="topping-selection-actions">
-                <button id="confirmToppingsButton" aria-label="Confirmar selección de toppings">Confirmar Selección ✅</button>
-                <button id="noToppingsButton" aria-label="No añadir toppings">Sin Toppings 🚫</button>
-                <button id="cancelToppingsButton" aria-label="Cancelar selección de toppings">Cancelar ❌</button>
+            <div class="modal-actions">
+                <button id="confirmToppingsButton" class="confirm-button">Confirmar Selección ✅</button>
+                <button id="noToppingsButton" class="no-toppings-button">Sin Toppings 🚫</button>
+                <button id="cancelToppingsButton" class="cancel-button">Cancelar ❌</button>
             </div>
-            <button class="close-modal-button" aria-label="Cerrar selección de toppings">✖</button>
         </div>
     </div>
 
-    <!-- NUEVO: Modal de Personalización de Chamoyada -->
-    <div id="chamoyadaCustomizationOverlay" class="flavor-image-overlay" role="dialog" aria-modal="true" aria-labelledby="chamoyada-modal-title">
-        <div class="flavor-image-content">
-            <header class="section-header">
-                <h2 id="chamoyada-modal-title" class="section-title">¡Personaliza tu Chamoyada!</h2>
-                <p class="section-description">Elige tu sabor base y añade toppings.</p>
-            </header>
-
-            <div class="chamoyada-flavor-selection">
-                <h3 class="flavor-selection-title">Escoge tu sabor base (Base Agua)</h3>
-                <div id="chamoyadaBaseFlavorGrid" class="flavor-grid-small">
-                    <!-- Los sabores base agua se cargarán aquí dinámicamente por JS -->
-                </div>
+    <!-- Modal para personalización de Chamoyada -->
+    <div id="chamoyadaCustomizationOverlay" class="chamoyada-customization-overlay">
+        <div class="chamoyada-customization-modal-content">
+            <button class="close-modal-button" aria-label="Cerrar modal de Chamoyada">✖️</button>
+            <h3 class="modal-title">Personaliza tu Chamoyada 🥭🌶️</h3>
+            <p class="modal-subtitle">1. Elige tu sabor base:</p>
+            <div id="chamoyadaBaseFlavorGrid" class="chamoyada-base-flavor-grid">
+                <!-- Sabores base se cargarán aquí dinámicamente -->
             </div>
-
-            <div class="chamoyada-topping-selection">
-                <h3 class="topping-selection-title">Añade Toppings (Opcional)</h3>
-                <div id="chamoyadaToppingsGrid" class="toppings-modal-grid">
-                    <!-- Los toppings existentes se cargarán aquí dinámicamente por JS -->
-                </div>
+            <p class="modal-subtitle">2. Añade toppings (opcional):</p>
+            <div id="chamoyadaToppingsGrid" class="toppings-modal-grid">
+                <!-- Toppings se cargarán aquí dinámicamente -->
             </div>
-
-            <div class="topping-selection-actions">
-                <button id="confirmChamoyadaButton" aria-label="Confirmar Chamoyada">Confirmar Chamoyada ✅</button>
-                <button id="cancelChamoyadaButton" aria-label="Cancelar Chamoyada">Cancelar ❌</button>
+            <div class="modal-actions">
+                <button id="confirmChamoyadaButton" class="confirm-button">Añadir Chamoyada al Carrito ✅</button>
+                <button id="cancelChamoyadaButton" class="cancel-button">Cancelar ❌</button>
             </div>
-            <button class="close-modal-button" aria-label="Cerrar personalización de Chamoyada">✖</button>
         </div>
     </div>
-    <!-- FIN NUEVO: Modal de Personalización de Chamoyada -->
 
-    <!-- Enlace al archivo JavaScript externo con defer para no bloquear el renderizado -->
-    <script src="script.js" defer></script>
+    <!-- Modal para el panel de administración de productos -->
+    <div id="adminPanelOverlay" class="admin-panel-overlay">
+        <div class="admin-panel-content">
+            <button class="close-modal-button" aria-label="Cerrar panel de administración">✖️</button>
+            <h2 class="modal-title">⚙️ Administración de Productos ⚙️</h2>
+
+            <form id="productForm" class="product-form">
+                <input type="hidden" id="productId">
+                
+                <div class="form-group">
+                    <label for="productType">Tipo de Producto:</label>
+                    <select id="productType" required>
+                        <option value="">Selecciona un tipo</option>
+                        <option value="water-based-frappe">Frappé de Agua</option>
+                        <option value="milk-based-frappe">Frappé de Leche</option>
+                        <option value="hot-drink">Bebida Caliente</option>
+                        <option value="promotion">Promoción (Chamoyada/Fresas con Crema)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="productName">Nombre Interno (ej. "Fresa"):</label>
+                    <input type="text" id="productName" placeholder="Nombre único del producto" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="productDisplayName">Nombre para Mostrar (ej. "Frappé de Fresa"):</label>
+                    <input type="text" id="productDisplayName" placeholder="Nombre visible en el menú" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="productPrice">Precio:</label>
+                    <input type="number" id="productPrice" step="0.01" placeholder="Ej. 65.00" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="productDescription">Descripción:</label>
+                    <textarea id="productDescription" placeholder="Breve descripción del producto" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="productImageUrl">URL de Imagen:</label>
+                    <input type="url" id="productImageUrl" placeholder="URL de la imagen del producto">
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" id="saveProductButton" class="confirm-button">Guardar Producto ✨</button>
+                    <button type="button" id="cancelEditButton" class="cancel-button">Limpiar Formulario 🔄</button>
+                </div>
+            </form>
+
+            <h3 class="admin-list-title">Productos Actuales</h3>
+            <ul id="adminProductsList" class="admin-products-list">
+                <!-- Los productos se listarán aquí para edición/eliminación -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- Enlace al archivo JavaScript externo (siempre al final del body) -->
+    <script type="module" src="script.js"></script>
 </body>
 </html>
