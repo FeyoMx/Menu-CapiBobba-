@@ -8,14 +8,13 @@
     <!-- Enlace al archivo CSS externo -->
     <link rel="stylesheet" href="styles.css">
     
-    <!-- Precarga de fuentes para mejorar LCP (Largest Contentful Paint) -->
-    <!-- Asegúrate de que estas rutas sean correctas para tus archivos de fuente -->
-    <link rel="preload" href="https://fonts.gstatic.com/s/nunito/v16/XRXV3I6sdovS2ITcM5Xg.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="https://fonts.gstatic.com/s/balsamiqsans/v7/Pujv6yXd6zCj_Lb4S-WJ7hR3.woff2" as="font" type="font/woff2" crossorigin>
-    
-    <!-- Preconnect para Google Fonts, mejora la velocidad de descarga -->
+    <!-- Google Fonts: Preconnect para mejorar la velocidad de descarga -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts: Precarga y estilos para Nunito y Balsamiq Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
 </head>
 <body>
     <!-- Burbujas de fondo animadas (elementos puramente decorativos) -->
@@ -81,55 +80,9 @@
                     <p class="click-legend">da click en los sabores para ver una imagen de la boba</p>
                 </header>
                 
-                <div class="flavor-grid">
-                    <!-- Cada item de sabor es un div con tabindex para accesibilidad por teclado -->
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Litchi (Agua)" data-price="75" tabindex="0">
-                        <h3 class="flavor-name">Litchi</h3>
-                        <p class="flavor-description">Dulce y exótico como un abrazo frutal de nube ☁️💕 (¡pruébalo si no lo conoces!)</p>
-                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Litchi al carrito">Añadir 💖</button>
-                    </div>
-                    
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Fresa (Agua)" data-price="75" tabindex="0">
-                        <h3 class="flavor-name">Fresa</h3>
-                        <p class="flavor-description">El clásico más tierno 🍓💖 ¡como una caricia de fresita!</p>
-                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Fresa al carrito">Añadir 💖</button>
-                    </div>
-                    
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Blueberry (Agua)" data-price="75" tabindex="0">
-                        <h3 class="flavor-name">Blueberry</h3>
-                        <p class="flavor-description">Dulzura encantadora con un toque de magia azul 💙🫐</p>
-                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Blueberry al carrito">Añadir 💖</button>
-                    </div>
-                    
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Mango (Agua)" data-price="75" tabindex="0">
-                        <h3 class="flavor-name">Mango</h3>
-                        <p class="flavor-description">Tropical y juguetón 🥭☀️ ¡Pura alegría líquida!</p>
-                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Mango al carrito">Añadir 💖</button>
-                    </div>
-                    
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Piña Colada (Agua)" data-price="75" tabindex="0">
-                        <h3 class="flavor-name">Piña colada</h3>
-                        <p class="flavor-description">Vacaciones kawaii en cada sorbo 🍍🥥 ¡fresca y coqueta!</p>
-                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Piña Colada al carrito">Añadir 💖</button>
-                    </div>
-                    
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Maracuyá (Agua)" data-price="75" tabindex="0">
-                        <h3 class="flavor-name">Maracuyá</h3>
-                        <p class="flavor-description">Ácida y divertida, perfecta para los más atrevidos 💛✨</p>
-                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Maracuyá al carrito">Añadir 💖</button>
-                    </div>
-
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Guanábana (Agua)" data-price="75" tabindex="0">
-                        <h3 class="flavor-name">Guanábana</h3>
-                        <p class="flavor-description">Exótica y refrescante, con un dulzor suave y cremoso 💚✨</p>
-                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Guanábana al carrito">Añadir 💖</button>
-                    </div>
-
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Sandía (Agua)" data-price="75" tabindex="0">
-                        <h3 class="flavor-name">Sandía</h3>
-                        <p class="flavor-description">Refrescante y dulce, el sabor del verano en cada sorbo 🍉☀️</p>
-                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Sandía al carrito">Añadir 💖</button>
-                    </div>
+                <!-- Este div será llenado por JavaScript -->
+                <div class="flavor-grid" id="waterFrappesGrid">
+                    <!-- Productos de frappés base agua se insertarán aquí dinámicamente -->
                 </div>
             </section>
             
@@ -149,54 +102,9 @@
                     <p class="click-legend">da click en los sabores para ver una imagen de la boba</p>
                 </header>
                 
-                <div class="flavor-grid">
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Chocolate Mexicano (Leche)" data-price="75" tabindex="0">
-                        <h3 class="flavor-name">Chocolate Mexicano</h3>
-                        <p class="flavor-description">El toque tradicional de cacao con canela y un secreto de la abuela 🍫🌶️✨</p>
-                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Chocolate Mexicano al carrito">Añadir 💖</button>
-                    </div>
-
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Taro (Leche)" data-price="75" tabindex="0">
-                        <h3 class="flavor-name">Taro</h3>
-                        <p class="flavor-description">Cremoso y delicado  🌰💜 (¡tu nuevo favorito si no lo conoces!)</p>
-                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Taro al carrito">Añadir 💖</button>
-                    </div>
-                    
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Mazapán (Leche)" data-price="75" tabindex="0">
-                        <h3 class="flavor-name">Mazapán</h3>
-                        <p class="flavor-description">Sabor a infancia mexicana 🎠💕 ¡un apapacho de cacahuate!</p>
-                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Mazapán al carrito">Añadir 💖</button>
-                    </div>
-                    
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Chai (Leche)" data-price="75" tabindex="0">
-                        <h3 class="flavor-name">Chai</h3>
-                        <p class="flavor-description">Especiado y cálido ☕✨ ¡ideal para días nublados!</p>
-                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Chai al carrito">Añadir 💖</button>
-                    </div>
-                    
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Mocha (Leche)" data-price="75" tabindex="0">
-                        <h3 class="flavor-name">Mocha</h3>
-                        <p class="flavor-description">Café y chocolate en perfecta armonía 🍫☕💞</p>
-                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Mocha al carrito">Añadir 💖</button>
-                    </div>
-                    
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Cookies & Cream (Leche)" data-price="75" tabindex="0">
-                        <h3 class="flavor-name">Cookies & Cream</h3>
-                        <p class="flavor-description">Como beber una galleta con leche 🍪🥛 ¡ñam!</p>
-                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Cookies & Cream al carrito">Añadir 💖</button>
-                    </div>
-                    
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Crema Irlandesa (Leche)" data-price="75" tabindex="0">
-                        <h3 class="flavor-name">Crema Irlandesa</h3>
-                        <p class="flavor-description">Cremosa y misteriosa 🍮✨ (sin alcohol)</p>
-                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Crema Irlandesa al carrito">Añadir 💖</button>
-                    </div>
-                    
-                    <div class="flavor-item animate-on-scroll" data-name="Frappé Matcha (Leche)" data-price="75" tabindex="0">
-                        <h3 class="flavor-name">Matcha</h3>
-                        <p class="flavor-description">Té verde japonés con energía kawaii 💚🌿 ¡pura paz zen!</p>
-                        <button class="add-drink-to-cart-button" aria-label="Añadir Frappé Matcha al carrito">Añadir 💖</button>
-                    </div>
+                <!-- Este div será llenado por JavaScript -->
+                <div class="flavor-grid" id="milkFrappesGrid">
+                    <!-- Productos de frappés base leche se insertarán aquí dinámicamente -->
                 </div>
             </section>
             
@@ -211,54 +119,9 @@
                     <p class="click-legend">da click en los sabores para ver una imagen de la bebida</p>
                 </header>
                 
-                <div class="flavor-grid">
-                    <div class="flavor-item animate-on-scroll" data-name="Chocolate Caliente" data-price="60" tabindex="0">
-                        <h3 class="flavor-name">Chocolate Caliente</h3>
-                        <p class="flavor-description">El abrazo más dulce y cálido en una taza 🍫☕💖</p>
-                        <button class="add-drink-to-cart-button" aria-label="Añadir Chocolate Caliente al carrito">Añadir 💖</button>
-                    </div>
-                    
-                    <div class="flavor-item animate-on-scroll" data-name="Taro Caliente" data-price="60" tabindex="0">
-                        <h3 class="flavor-name">Taro Caliente</h3>
-                        <p class="flavor-description">Cremoso y delicado, perfecto para el frío 🌰💜</p>
-                        <button class="add-drink-to-cart-button" aria-label="Añadir Taro Caliente al carrito">Añadir 💖</button>
-                    </div>
-                    
-                    <div class="flavor-item animate-on-scroll" data-name="Mazapán Caliente" data-price="60" tabindex="0">
-                        <h3 class="flavor-name">Mazapán Caliente</h3>
-                        <p class="flavor-description">Sabor a infancia mexicana, ahora calientito 🎠💕</p>
-                        <button class="add-drink-to-cart-button" aria-label="Añadir Mazapán Caliente al carrito">Añadir 💖</button>
-                    </div>
-                    
-                    <div class="flavor-item animate-on-scroll" data-name="Chai Caliente" data-price="60" tabindex="0">
-                        <h3 class="flavor-name">Chai Caliente</h3>
-                        <p class="flavor-description">Especiado y reconfortante, un clásico invernal ✨☕</p>
-                        <button class="add-drink-to-cart-button" aria-label="Añadir Chai Caliente al carrito">Añadir 💖</button>
-                    </div>
-                    
-                    <div class="flavor-item animate-on-scroll" data-name="Mocha Caliente" data-price="60" tabindex="0">
-                        <h3 class="flavor-name">Mocha Caliente</h3>
-                        <p class="flavor-description">La combinación perfecta de café y chocolate, caliente y delicioso ☕🍫</p>
-                        <button class="add-drink-to-cart-button" aria-label="Añadir Mocha Caliente al carrito">Añadir 💖</button>
-                    </div>
-                    
-                    <div class="flavor-item animate-on-scroll" data-name="Cookies & Cream Caliente" data-price="60" tabindex="0">
-                        <h3 class="flavor-name">Cookies & Cream Caliente</h3>
-                        <p class="flavor-description">Como beber una galleta con leche, pero calientita 🍪🥛</p>
-                        <button class="add-drink-to-cart-button" aria-label="Añadir Cookies & Cream Caliente al carrito">Añadir 💖</button>
-                    </div>
-                    
-                    <div class="flavor-item animate-on-scroll" data-name="Crema Irlandesa Caliente" data-price="60" tabindex="0">
-                        <h3 class="flavor-name">Crema Irlandesa Caliente</h3>
-                        <p class="flavor-description">Cremosa y misteriosa, para una tarde acogedora 🍮✨</p>
-                        <button class="add-drink-to-cart-button" aria-label="Añadir Crema Irlandesa Caliente al carrito">Añadir 💖</button>
-                    </div>
-                    
-                    <div class="flavor-item animate-on-scroll" data-name="Matcha Caliente" data-price="60" tabindex="0">
-                        <h3 class="flavor-name">Matcha Caliente</h3>
-                        <p class="flavor-description">Té verde japonés con energía zen, calientito y reconfortante 💚🌿</p>
-                        <button class="add-drink-to-cart-button" aria-label="Añadir Matcha Caliente al carrito">Añadir 💖</button>
-                    </div>
+                <!-- Este div será llenado por JavaScript -->
+                <div class="flavor-grid" id="hotDrinksGrid">
+                    <!-- Productos de bebidas calientes se insertarán aquí dinámicamente -->
                 </div>
             </section>
 
@@ -277,8 +140,17 @@
                         ¡No te pierdas las últimas sorpresas y ofertas más tiernas de Capibobba! ✨
                     </p>
                 </header>
+
+                <!-- NUEVA ESPECIALIDAD: CHAMOYADA -->
+                <div class="promotion-item animate-on-scroll" id="chamoyadaPromotion" data-name="Chamoyada" data-price="75" tabindex="0">
+                    <h3 class="promotion-item-title">🌶️🥭 ¡Nueva! Especialidad: Chamoyada 🥭🌶️</h3>
+                    <p class="promotion-item-description">
+                        El toque picosito que estabas esperando en el menú, disfruta de una boba explosiva y llena de sabor. Escoge el sabor que quieres llevar al siguiente nivel entre las opciones base agua que tenemos.
+                    </p>
+                    <button class="add-drink-to-cart-button" aria-label="Añadir Chamoyada al carrito">Añadir 💖</button>
+                </div>
                 
-                <!-- Frappé de Temporada con ID para el evento click -->
+                <!-- Frappé de Temporada con ID para el evento click (se mantiene para un caso especial) -->
                 <div class="promotion-item animate-on-scroll" id="fresasConCremaPromotion" data-name="Frappé Fresas con Crema (Temporada)" data-price="75" tabindex="0">
                     <h3 class="promotion-item-title">🍓🥛 Frappé de Temporada: "Fresas con Crema" 🍓🥛</h3>
                     <p class="promotion-item-description">
@@ -428,6 +300,37 @@
             <button class="close-modal-button" aria-label="Cerrar selección de toppings">✖</button>
         </div>
     </div>
+
+    <!-- NUEVO: Modal de Personalización de Chamoyada -->
+    <div id="chamoyadaCustomizationOverlay" class="flavor-image-overlay" role="dialog" aria-modal="true" aria-labelledby="chamoyada-modal-title">
+        <div class="flavor-image-content">
+            <header class="section-header">
+                <h2 id="chamoyada-modal-title" class="section-title">¡Personaliza tu Chamoyada!</h2>
+                <p class="section-description">Elige tu sabor base y añade toppings.</p>
+            </header>
+
+            <div class="chamoyada-flavor-selection">
+                <h3 class="flavor-selection-title">Escoge tu sabor base (Base Agua)</h3>
+                <div id="chamoyadaBaseFlavorGrid" class="flavor-grid-small">
+                    <!-- Los sabores base agua se cargarán aquí dinámicamente por JS -->
+                </div>
+            </div>
+
+            <div class="chamoyada-topping-selection">
+                <h3 class="topping-selection-title">Añade Toppings (Opcional)</h3>
+                <div id="chamoyadaToppingsGrid" class="toppings-modal-grid">
+                    <!-- Los toppings existentes se cargarán aquí dinámicamente por JS -->
+                </div>
+            </div>
+
+            <div class="topping-selection-actions">
+                <button id="confirmChamoyadaButton" aria-label="Confirmar Chamoyada">Confirmar Chamoyada ✅</button>
+                <button id="cancelChamoyadaButton" aria-label="Cancelar Chamoyada">Cancelar ❌</button>
+            </div>
+            <button class="close-modal-button" aria-label="Cerrar personalización de Chamoyada">✖</button>
+        </div>
+    </div>
+    <!-- FIN NUEVO: Modal de Personalización de Chamoyada -->
 
     <!-- Enlace al archivo JavaScript externo con defer para no bloquear el renderizado -->
     <script src="script.js" defer></script>
