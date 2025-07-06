@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Tamarindo",
             price: 75,
             description: "El toque agridulce y divertido que te hará bailar de alegría 🤎✨",
-            imageUrl: "https://placehold.co/300x300/8B4513/FFFFFF?text=Tamarindo"
+            imageUrl: "https://i.imgur.com/6Dj6eKN.jpeg"
         },
         // Frappés base leche
         {
