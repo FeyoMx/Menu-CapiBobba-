@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function() {
             type: "chamoyada",
             name: "Chamoyada",
             displayName: "Chamoyada",
-            price: 75, // Precio de la chamoyada, actualizado a $75
+            price: 80, // Precio de la chamoyada, actualizado a $80
             description: "El toque picosito que estabas esperando en el menú, disfruta de una boba explosiva y llena de sabor. Escoge el sabor que quieres llevar al siguiente nivel entre las opciones base agua que tenemos.",
             imageUrl: "https://i.imgur.com/39xoolA.jpeg" // Placeholder para la imagen de Chamoyada
         },
