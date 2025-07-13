@@ -168,6 +168,14 @@ document.addEventListener('DOMContentLoaded', function() {
             description: "Té verde japonés con energía kawaii 💚🌿 ¡pura paz zen!",
             imageUrl: "https://i.imgur.com/6QIRLrZ.jpeg"
         },
+        {
+            type: "milk-based-frappe",
+            name: "Frappé Pay de limón (Leche)",
+            displayName: "Pay de limón 🥧🍋‍🟩",
+            price: 75,
+            description: "Fresco, cremoso, con un toque ácido y dulce.",
+            imageUrl: "https://i.imgur.com/v5zT5sa.jpeg" // Placeholder
+        },
         // --- NUEVO: Producto de Temporada "Fresas con Crema" ---
         {
             type: "milk-based-frappe", // O un tipo "promotion" si se gestionan de forma diferente
@@ -348,6 +356,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Toppings disponibles (coincide con los datos del HTML)
     const availableToppings = [
+        { name: "Tapioca Extra", price: 10 },
+        { name: "Perlas cristal", price: 10 },
         { name: "Perlas explosivas de frutos rojos", price: 10 },
         { name: "Perlas explosivas de manzana verde", price: 10 },
         { name: "Perlas explosivas de litchi", price: 10 },
