@@ -1017,7 +1017,7 @@ document.addEventListener('DOMContentLoaded', function() {
         message += `\nTotal del pedido: $${finalTotal.toFixed(2)}`;
         message += `\n\n¡Estoy emocionado/a por mis bebidas kawaii! 💖`;
 
-        const whatsappNumber = "5217712794633"; // Ensure this number is correct
+        const whatsappNumber = "5217711831526"; // Ensure this number is correct
         const encodedMessage = encodeURIComponent(message);
         const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
