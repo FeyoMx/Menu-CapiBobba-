@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Litchi",
             price: 75,
             description: "Dulce y exótico como un abrazo frutal de nube ☁️💕 (¡pruébalo si no lo conoces!)",
-            imageUrl: "https://i.imgur.com/Pu7yFxo.jpeg"
+            imageUrl: "https://i.imgur.com/Pu7yFxol.jpeg"
         },
         {
             type: "water-based-frappe",
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Fresa",
             price: 75,
             description: "El clásico más tierno 🍓💖 ¡como una caricia de fresita!",
-            imageUrl: "https://i.imgur.com/UMxtB2o.jpeg"
+            imageUrl: "https://i.imgur.com/UMxtB2ol.jpeg"
         },
         {
             type: "water-based-frappe",
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Blueberry",
             price: 75,
             description: "Dulzura encantadora con un toque de magia azul 💙🫐",
-            imageUrl: "https://i.imgur.com/XMfisGw.jpeg"
+            imageUrl: "https://i.imgur.com/XMfisGwl.jpeg"
         },
         {
             type: "water-based-frappe",
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Mango",
             price: 75,
             description: "Tropical y juguetón 🥭☀️ ¡Pura alegría líquida!",
-            imageUrl: "https://i.imgur.com/VGEGSkT.jpeg"
+            imageUrl: "https://i.imgur.com/VGEGSkTl.jpeg"
         },
         {
             type: "water-based-frappe",
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Piña colada",
             price: 75,
             description: "Vacaciones kawaii en cada sorbo 🍍🥥 ¡fresca y coqueta!",
-            imageUrl: "https://i.imgur.com/U6LUnZt.jpeg"
+            imageUrl: "https://i.imgur.com/U6LUnZtl.jpeg"
         },
         {
             type: "water-based-frappe",
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Maracuyá",
             price: 75,
             description: "Ácida y divertida, perfecta para los más atrevidos 💛✨",
-            imageUrl: "https://i.imgur.com/hrULvVp.jpeg"
+            imageUrl: "https://i.imgur.com/hrULvVpl.jpeg"
         },
         {
             type: "water-based-frappe",
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Guanábana",
             price: 75,
             description: "Exótica y refrescante, con un dulzor suave y cremoso 💚✨",
-            imageUrl: "https://i.imgur.com/xwZdwXY.jpeg"
+            imageUrl: "https://i.imgur.com/xwZdwXYl.jpeg"
         },
         {
             type: "water-based-frappe",
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Sandía",
             price: 75,
             description: "Refrescante y dulce, el sabor del verano en cada sorbo 🍉☀️",
-            imageUrl: "https://i.imgur.com/FwsLeZz.jpeg"
+            imageUrl: "https://i.imgur.com/FwsLeZzl.jpeg"
         },
         {
             type: "water-based-frappe",
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Tamarindo",
             price: 75,
             description: "El toque agridulce y divertido que te hará bailar de alegría 🤎✨",
-            imageUrl: "https://i.imgur.com/6Dj6eKN.jpeg"
+            imageUrl: "https://i.imgur.com/6Dj6eKNl.jpeg"
         },
         // Frappés base leche
         {
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Taro",
             price: 75,
             description: "Cremoso y delicado  🌰💜 (¡tu nuevo favorito si no lo conoces!)",
-            imageUrl: "https://i.imgur.com/epvVrkT.jpeg"
+            imageUrl: "https://i.imgur.com/epvVrkTl.jpeg"
         },
         {
             type: "milk-based-frappe",
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Mazapán",
             price: 75,
             description: "Sabor a infancia mexicana 🎠💕 ¡un apapacho de cacahuate!",
-            imageUrl: "https://i.imgur.com/jrELu9J.jpeg"
+            imageUrl: "https://i.imgur.com/jrELu9Jl.jpeg"
         },
         {
             type: "milk-based-frappe",
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Chai",
             price: 75,
             description: "Especiado y cálido ☕✨ ¡ideal para días nublados!",
-            imageUrl: "https://i.imgur.com/wRIJ7AO.jpeg"
+            imageUrl: "https://i.imgur.com/wRIJ7AOl.jpeg"
         },
         {
             type: "milk-based-frappe",
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Mocha",
             price: 75,
             description: "Café y chocolate en perfecta armonía 🍫☕💞",
-            imageUrl: "https://i.imgur.com/Pdp3Q4O.jpeg"
+            imageUrl: "https://i.imgur.com/Pdp3Q4Ol.jpeg"
         },
         {
             type: "milk-based-frappe",
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Cookies & Cream",
             price: 75,
             description: "Como beber una galleta con leche 🍪🥛 ¡ñam!",
-            imageUrl: "https://i.imgur.com/0e402nf.jpeg"
+            imageUrl: "https://i.imgur.com/0e402nfl.jpeg"
         },
         {
             type: "milk-based-frappe",
@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Crema Irlandesa",
             price: 75,
             description: "Cremosa y misteriosa 🍮✨ (sin alcohol)",
-            imageUrl: "https://i.imgur.com/fJocyJw.jpeg"
+            imageUrl: "https://i.imgur.com/fJocyJwl.jpeg"
         },
         {
             type: "milk-based-frappe",
@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Matcha",
             price: 75,
             description: "Té verde japonés con energía kawaii 💚🌿 ¡pura paz zen!",
-            imageUrl: "https://i.imgur.com/6QIRLrZ.jpeg"
+            imageUrl: "https://i.imgur.com/6QIRLrZl.jpeg"
         },
         {
             type: "milk-based-frappe",
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Pay de limón 🥧🍋‍🟩",
             price: 75,
             description: "Fresco, cremoso, con un toque ácido y dulce.",
-            imageUrl: "https://i.imgur.com/v5zT5sa.jpeg" // Placeholder
+            imageUrl: "https://i.imgur.com/v5zT5sal.jpeg" // Placeholder
         },
         // --- NUEVO: Producto de Temporada "Fresas con Crema" ---
         {
@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Fresas con Crema",
             price: 75,
             description: "¡El clásico favorito de la abuela, pero en versión kawaii! Dulzura de fresa natural y cremosidad suave. 🍓🥛💖✨",
-            imageUrl: "https://i.imgur.com/m2Fc29F.jpeg" // Reemplaza con la URL real de tu imagen
+            imageUrl: "https://i.imgur.com/m2Fc29Fl.jpeg" // Reemplaza con la URL real de tu imagen
         },
         // --- NUEVA ESPECIALIDAD: CHAMOYADA ---
         {
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Chamoyada",
             price: 80, // Precio de la chamoyada, actualizado a $80
             description: "El toque picosito que estabas esperando en el menú, disfruta de una boba explosiva y llena de sabor. Escoge el sabor que quieres llevar al siguiente nivel entre las opciones base agua que tenemos.",
-            imageUrl: "https://i.imgur.com/39xoolA.jpeg" // Placeholder para la imagen de Chamoyada
+            imageUrl: "https://i.imgur.com/39xoolAl.jpeg" // Placeholder para la imagen de Chamoyada
         },
         // --- FIN NUEVA ESPECIALIDAD ---
         // Bebidas Calientes (usarán una imagen genérica si no se especifica una individual)
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Chocolate Caliente",
             price: 60,
             description: "El abrazo más dulce y cálido en una taza 🍫☕💖",
-            imageUrl: "https://i.imgur.com/EtT387b.jpeg" // Generic hot drink image
+            imageUrl: "https://i.imgur.com/EtT387bl.jpeg" // Generic hot drink image
         },
         {
             type: "hot-drink",
@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Taro Caliente",
             price: 60,
             description: "Cremoso y delicado, perfecto para el frío 🌰💜",
-            imageUrl: "https://i.imgur.com/EtT387b.jpeg"
+            imageUrl: "https://i.imgur.com/EtT387bl.jpeg"
         },
         {
             type: "hot-drink",
@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Mazapán Caliente",
             price: 60,
             description: "Sabor a infancia mexicana, ahora calientito 🎠💕",
-            imageUrl: "https://i.imgur.com/EtT387b.jpeg"
+            imageUrl: "https://i.imgur.com/EtT387bl.jpeg"
         },
         {
             type: "hot-drink",
@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Chai Caliente",
             price: 60,
             description: "Especiado y reconfortante, un clásico invernal ✨☕",
-            imageUrl: "https://i.imgur.com/EtT387b.jpeg"
+            imageUrl: "https://i.imgur.com/EtT387bl.jpeg"
         },
         {
             type: "hot-drink",
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Mocha Caliente",
             price: 60,
             description: "La combinación perfecta de café y chocolate, caliente y delicioso ☕🍫",
-            imageUrl: "https://i.imgur.com/EtT387b.jpeg"
+            imageUrl: "https://i.imgur.com/EtT387bl.jpeg"
         },
         {
             type: "hot-drink",
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Cookies & Cream Caliente",
             price: 60,
             description: "Como beber una galleta con leche, pero calientita 🍪🥛",
-            imageUrl: "https://i.imgur.com/EtT387b.jpeg"
+            imageUrl: "https://i.imgur.com/EtT387bl.jpeg"
         },
         {
             type: "hot-drink",
@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Crema Irlandesa Caliente",
             price: 60,
             description: "Cremosa y misteriosa, para una tarde acogedora 🍮✨",
-            imageUrl: "https://i.imgur.com/EtT387b.jpeg"
+            imageUrl: "https://i.imgur.com/EtT387bl.jpeg"
         },
         {
             type: "hot-drink",
@@ -258,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayName: "Matcha Caliente",
             price: 60,
             description: "Té verde japonés con energía zen, calientito y reconfortante 💚🌿",
-            imageUrl: "https://i.imgur.com/6QIRLrZ.jpeg"
+            imageUrl: "https://i.imgur.com/6QIRLrZl.jpeg"
         }
     ];
 
